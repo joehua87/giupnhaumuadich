@@ -1,0 +1,46 @@
+{
+  "name": "dew_liveview",
+  "version": "1.0.0",
+  "description": "To start your Phoenix server:",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "vite build && cp assets/sprite-icons.svg apps/giupnhaumuadich_web/priv/static/assets && mix phx.digest",
+    "dev": "vite serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@codemirror/basic-setup": "^0.18.2",
+    "@codemirror/lang-markdown": "^0.18.4",
+    "@codemirror/state": "^0.18.7",
+    "@fontsource/roboto": "^4.5.0",
+    "emoji-regex": "^9.2.2",
+    "fuse.js": "^6.4.6",
+    "phoenix": "^1.5.9",
+    "phoenix_html": "^2.14.3",
+    "phoenix_live_view": "^0.15.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.12.0",
+    "topbar": "^1.0.1",
+    "xregexp": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "@types/phoenix": "^1.5.1",
+    "@types/phoenix_live_view": "^0.15.0",
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
+    "@vitejs/plugin-react-refresh": "^1.3.5",
+    "typescript": "^4.3.4",
+    "vite": "^2.3.8",
+    "vite-plugin-windicss": "^1.0.4",
+    "windicss": "^3.1.3"
+  }
+}

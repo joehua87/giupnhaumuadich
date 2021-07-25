@@ -1,0 +1,382 @@
+{
+    "selMY149FAU3nUMjZ": {
+        "id": "selMY149FAU3nUMjZ",
+        "name": "Can thiệp đột quỵ",
+        "color": "orangeDark"
+    },
+    "selWKX6gcrO2HZzZU": {
+        "id": "selWKX6gcrO2HZzZU",
+        "name": "Chẩn đoán hình ảnh",
+        "color": "tealDarker"
+    },
+    "selnGR9ZbmPV9jOgU": {
+        "id": "selnGR9ZbmPV9jOgU",
+        "name": "Chấn thương chỉnh hình",
+        "color": "yellowMedium"
+    },
+    "selmTzRW73IO2wpiZ": {
+        "id": "selmTzRW73IO2wpiZ",
+        "name": "Nội Cơ Xương Khớp",
+        "color": "tealDark"
+    },
+    "sel5WcEIdntNU9itG": {
+        "id": "sel5WcEIdntNU9itG",
+        "name": "Da liễu",
+        "color": "orangeDarker"
+    },
+    "sel6Ni5aR3KbHYKlQ": {
+        "id": "sel6Ni5aR3KbHYKlQ",
+        "color": "teal",
+        "name": "Nội tổng quát"
+    },
+    "sel62PBLm5Hn0IXCP": {
+        "id": "sel62PBLm5Hn0IXCP",
+        "name": "Dinh dưỡng",
+        "color": "grayMedium"
+    },
+    "sel2soZeooLIvwo8H": {
+        "id": "sel2soZeooLIvwo8H",
+        "name": "Dược",
+        "color": "redMedium"
+    },
+    "selHZ5FUKemPOtruJ": {
+        "id": "selHZ5FUKemPOtruJ",
+        "color": "yellow",
+        "name": "Hô hấp"
+    },
+    "selaOFw0cQz0BHB8n": {
+        "id": "selaOFw0cQz0BHB8n",
+        "name": "Ký sinh trùng",
+        "color": "redDarker"
+    },
+    "selCDr6fVWEfqtprJ": {
+        "id": "selCDr6fVWEfqtprJ",
+        "name": "Giun sán",
+        "color": "pinkDark"
+    },
+    "selHKGQkwui5RM3Q9": {
+        "id": "selHKGQkwui5RM3Q9",
+        "name": "Lao",
+        "color": "grayMedium"
+    },
+    "seleRdWpmwmbnLgQC": {
+        "id": "seleRdWpmwmbnLgQC",
+        "name": "Bệnh phổi",
+        "color": "redDark"
+    },
+    "selmqkHW9swyYmpBQ": {
+        "id": "selmqkHW9swyYmpBQ",
+        "name": "Nội khoa",
+        "color": "purple"
+    },
+    "selui5eclCeQ7Zk84": {
+        "id": "selui5eclCeQ7Zk84",
+        "name": "TMH",
+        "color": "yellow"
+    },
+    "selXB2glFXfcbNjzD": {
+        "id": "selXB2glFXfcbNjzD",
+        "color": "cyan",
+        "name": "Lão khoa"
+    },
+    "sel5sHVR342uENfgM": {
+        "id": "sel5sHVR342uENfgM",
+        "name": "Mắt",
+        "color": "cyanDark"
+    },
+    "selAHNk5wlAJyzmng": {
+        "id": "selAHNk5wlAJyzmng",
+        "name": "Mắt Nhi",
+        "color": "green"
+    },
+    "selK9asJ0rsOixT6f": {
+        "id": "selK9asJ0rsOixT6f",
+        "name": "Ngoại Nhi",
+        "color": "teal"
+    },
+    "selG7o1BaeZTfpUGk": {
+        "id": "selG7o1BaeZTfpUGk",
+        "name": "Ngoại Niệu",
+        "color": "greenMedium"
+    },
+    "selRRuy1AAgd09uov": {
+        "id": "selRRuy1AAgd09uov",
+        "name": "Ngoại thần kinh",
+        "color": "orangeDarker"
+    },
+    "selmtoHy8Bws3TPg6": {
+        "id": "selmtoHy8Bws3TPg6",
+        "name": "Cột sống",
+        "color": "yellowDark"
+    },
+    "selcSkvcp9UaAgUxz": {
+        "id": "selcSkvcp9UaAgUxz",
+        "name": "Ngoại tiêu hoá",
+        "color": "tealDarker"
+    },
+    "sel1asUR7TEYEs1SE": {
+        "id": "sel1asUR7TEYEs1SE",
+        "name": "Ngoại tổng quát",
+        "color": "pinkDarker"
+    },
+    "sel7WlgBDUx5HzZI9": {
+        "id": "sel7WlgBDUx5HzZI9",
+        "name": "Nhi khoa",
+        "color": "pinkMedium"
+    },
+    "selSctGdVDIg56RqX": {
+        "id": "selSctGdVDIg56RqX",
+        "name": "Huyết học",
+        "color": "gray"
+    },
+    "sel6XwUyUP2wByb8s": {
+        "id": "sel6XwUyUP2wByb8s",
+        "color": "orange",
+        "name": "Ung bướu"
+    },
+    "seluhPz5DNu48IW61": {
+        "id": "seluhPz5DNu48IW61",
+        "name": "Thần kinh",
+        "color": "pink"
+    },
+    "selzr4dzVE2ltmZDN": {
+        "id": "selzr4dzVE2ltmZDN",
+        "name": "Y học gia đình",
+        "color": "blueDark"
+    },
+    "selDWsrqR1kTEDbTN": {
+        "id": "selDWsrqR1kTEDbTN",
+        "name": "Nhiễm",
+        "color": "orangeDarker"
+    },
+    "selzk7TZE0zWeNn9l": {
+        "id": "selzk7TZE0zWeNn9l",
+        "name": "Nội nhiễm",
+        "color": "gray"
+    },
+    "selfhqoMQxTYUl8je": {
+        "id": "selfhqoMQxTYUl8je",
+        "name": "Chuyên khoa gan",
+        "color": "purpleDark"
+    },
+    "selj26Uwn5yG7XedB": {
+        "id": "selj26Uwn5yG7XedB",
+        "name": "Nội Thần Kinh",
+        "color": "grayMedium"
+    },
+    "selGZMWtm49aA8mW1": {
+        "id": "selGZMWtm49aA8mW1",
+        "color": "green",
+        "name": "Nội tiết"
+    },
+    "selPRGVhe2tWejK8p": {
+        "id": "selPRGVhe2tWejK8p",
+        "name": "Phẫu thuật thần kinh sọ não",
+        "color": "pinkDark"
+    },
+    "selygRHA3DGKGTYOs": {
+        "id": "selygRHA3DGKGTYOs",
+        "name": "Phòng phẫu thuật tạo hình thẫm mỹ ",
+        "color": "tealDarker"
+    },
+    "selEPNiCANdvLk8Ex": {
+        "id": "selEPNiCANdvLk8Ex",
+        "name": "Răng hàm mặt",
+        "color": "grayMedium"
+    },
+    "selGuj4uPqWHz1H9T": {
+        "id": "selGuj4uPqWHz1H9T",
+        "name": "Sản phụ Khoa",
+        "color": "tealDark"
+    },
+    "selEV4TuZdC49xW6a": {
+        "id": "selEV4TuZdC49xW6a",
+        "name": "Hiếm muộn",
+        "color": "red"
+    },
+    "sel4XWiPfTSev5cS9": {
+        "id": "sel4XWiPfTSev5cS9",
+        "name": "Siêu âm",
+        "color": "grayDarker"
+    },
+    "selufRiRp8GuqTdd5": {
+        "id": "selufRiRp8GuqTdd5",
+        "color": "blue",
+        "name": "Tai mũi họng"
+    },
+    "selgVbK2rngRwuhGV": {
+        "id": "selgVbK2rngRwuhGV",
+        "name": "Tâm lý lâm sàng",
+        "color": "tealDarker"
+    },
+    "selpcyXyD0IGaXOXW": {
+        "id": "selpcyXyD0IGaXOXW",
+        "name": "Tâm lý y học",
+        "color": "purpleDark"
+    },
+    "selGSBZvP4MWS2JBc": {
+        "id": "selGSBZvP4MWS2JBc",
+        "name": "Thần kinh nhi",
+        "color": "purpleMedium"
+    },
+    "sel0AWQOvIni3Y0KC": {
+        "id": "sel0AWQOvIni3Y0KC",
+        "name": "Cơ xương khớp",
+        "color": "blueDark"
+    },
+    "selfTJtykz2brkHSt": {
+        "id": "selfTJtykz2brkHSt",
+        "name": "PHCN",
+        "color": "yellowDarker"
+    },
+    "seledUtvUxVY1vFpX": {
+        "id": "seledUtvUxVY1vFpX",
+        "name": "Thính học",
+        "color": "greenMedium"
+    },
+    "sel0vQb6Cmr01GWYX": {
+        "id": "sel0vQb6Cmr01GWYX",
+        "name": "Tiền đình",
+        "color": "orange"
+    },
+    "selxi9qyIZENSZoaw": {
+        "id": "selxi9qyIZENSZoaw",
+        "name": "Tiết niệu",
+        "color": "cyanDark"
+    },
+    "selLGSDrgPUryTrjW": {
+        "id": "selLGSDrgPUryTrjW",
+        "name": "Nam khoa",
+        "color": "cyanDarker"
+    },
+    "sel31fEAqA4yuKuSK": {
+        "id": "sel31fEAqA4yuKuSK",
+        "name": "Tiêu hoá",
+        "color": "cyan"
+    },
+    "selxSVXfidN0oHCF9": {
+        "id": "selxSVXfidN0oHCF9",
+        "name": "Tiêu hoá gan mật",
+        "color": "yellowMedium"
+    },
+    "selvvaQRE5RZWXrwX": {
+        "id": "selvvaQRE5RZWXrwX",
+        "name": "Tim mạch",
+        "color": "purpleDark"
+    },
+    "selsDMa05RiaHMAnT": {
+        "id": "selsDMa05RiaHMAnT",
+        "name": "Viêm gan",
+        "color": "purple"
+    },
+    "selLAoivnMUsr2Ilb": {
+        "id": "selLAoivnMUsr2Ilb",
+        "name": "Y học cỗ truyền ",
+        "color": "teal"
+    },
+    "selvbpUSvbjdMlr20": {
+        "id": "selvbpUSvbjdMlr20",
+        "name": "Béo phì",
+        "color": "green"
+    },
+    "selM5PEUyBzlDY3o0": {
+        "id": "selM5PEUyBzlDY3o0",
+        "name": "Tiền tiểu đường",
+        "color": "orangeMedium"
+    },
+    "selzJe9OfAclnRuDn": {
+        "id": "selzJe9OfAclnRuDn",
+        "name": "Đo khám độ để làm mắt kính",
+        "color": "orange"
+    },
+    "selbT3nmNMs9vKmCw": {
+        "id": "selbT3nmNMs9vKmCw",
+        "name": "DsCK1",
+        "color": "purple"
+    },
+    "selHXNziQ7Fv2BAZo": {
+        "id": "selHXNziQ7Fv2BAZo",
+        "name": "Hồi sức cấp cứu",
+        "color": "grayDark"
+    },
+    "selR2MT3SyUXZsiJ7": {
+        "id": "selR2MT3SyUXZsiJ7",
+        "name": "Trĩ",
+        "color": "teal"
+    },
+    "selcuSNP0vn1eYe0X": {
+        "id": "selcuSNP0vn1eYe0X",
+        "name": "Trực tràng",
+        "color": "yellow"
+    },
+    "sel6vcdbUZVq0aVlx": {
+        "id": "sel6vcdbUZVq0aVlx",
+        "name": "Dược sĩ",
+        "color": "cyanDarker"
+    },
+    "selyWG3xWvrKrzDjk": {
+        "id": "selyWG3xWvrKrzDjk",
+        "name": "Nhà thuốc",
+        "color": "purple"
+    },
+    "selyn18DkY4Rk4NEr": {
+        "id": "selyn18DkY4Rk4NEr",
+        "name": "Nhi đồng 2",
+        "color": "red"
+    },
+    "selPv22zD267VPJZZ": {
+        "id": "selPv22zD267VPJZZ",
+        "name": "Điều dưỡng",
+        "color": "cyanMedium"
+    },
+    "selTzWIp9FVhL2POl": {
+        "id": "selTzWIp9FVhL2POl",
+        "name": "Thận",
+        "color": "blueDarker"
+    },
+    "selCfXKzMKLaNeamD": {
+        "id": "selCfXKzMKLaNeamD",
+        "name": "Thận nhân tạo",
+        "color": "pink"
+    },
+    "selyGmJ6ropZoL2AS": {
+        "id": "selyGmJ6ropZoL2AS",
+        "name": "răng miệng",
+        "color": "pink"
+    },
+    "selzPyINTxbwnzspw": {
+        "id": "selzPyINTxbwnzspw",
+        "name": "Dị ứng",
+        "color": "blueDark"
+    },
+    "selKaWJvokdBMXaxd": {
+        "id": "selKaWJvokdBMXaxd",
+        "name": "Tham vấn tâm lý",
+        "color": "blue"
+    },
+    "sel2iFb9rnSNhSOdz": {
+        "id": "sel2iFb9rnSNhSOdz",
+        "name": "CĐHA",
+        "color": "blueDarker"
+    },
+    "sel4PIX6BVH7RuTKP": {
+        "id": "sel4PIX6BVH7RuTKP",
+        "name": "sinh thiết u phổi",
+        "color": "yellow"
+    },
+    "selyXQHEWCdG26Gk7": {
+        "id": "selyXQHEWCdG26Gk7",
+        "name": "lao phổi",
+        "color": "redDarker"
+    },
+    "sel0IIGOylLqRnhVp": {
+        "id": "sel0IIGOylLqRnhVp",
+        "name": "Gan mật",
+        "color": "grayDarker"
+    },
+    "seldAfMp6niHKGATi": {
+        "id": "seldAfMp6niHKGATi",
+        "name": "ung thư",
+        "color": "tealDark"
+    }
+}
