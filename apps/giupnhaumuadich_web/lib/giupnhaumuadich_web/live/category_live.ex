@@ -2,11 +2,31 @@ defmodule GiupnhaumuadichWeb.CategoryLive do
   use GiupnhaumuadichWeb, :live_view
   import Ecto.Query, only: [from: 2]
   alias GiupnhaumuadichWeb.Components.DoctorCard
-  alias Giupnhaumuadich.{Repo, Category, Doctor, DoctorCategory}
+  alias Giupnhaumuadich.{Repo, Category, Doctor, DoctorCategory, MedicalRecord}
 
   @impl true
   def mount(params, _session, socket) do
     {:ok, load_data(socket, params)}
+  end
+
+  @impl true
+  def handle_event("submit", params, socket = %{assigns: %{category: %{id: category_id}}}) do
+    # {:ok, load_data(socket, params)}
+    with {:ok, %{id: id, token: token}} <-
+           params
+           |> Map.put("category_id", category_id)
+           |> MedicalRecord.new()
+           |> Repo.insert() do
+      socket =
+        socket
+        |> push_redirect(to: Routes.public_medical_record_path(socket, :show, id, token: token))
+
+      {:noreply, socket}
+    else
+      _ ->
+        # TODO: Send error flash
+        {:noreply, socket}
+    end
   end
 
   @impl true

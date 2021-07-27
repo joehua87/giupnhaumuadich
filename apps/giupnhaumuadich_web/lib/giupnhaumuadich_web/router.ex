@@ -17,6 +17,11 @@ defmodule GiupnhaumuadichWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/api", GiupnhaumuadichWeb do
+    pipe_through :api
+    post "/medical-records", MedicalRecordController, :create
+  end
+
   scope "/", GiupnhaumuadichWeb do
     pipe_through :browser
 
@@ -31,6 +36,7 @@ defmodule GiupnhaumuadichWeb.Router do
     live "/bai-viet/:slug", PostLive, :show
     live "/tim-kiem", SearchLive, :index
     live "/chu-de/:slug", TopicLive, :show
+    live "/benh-an/:id", PublicMedicalRecordLive, :show
   end
 
   # Other scopes may use custom stacks.

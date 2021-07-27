@@ -3,6 +3,8 @@
 // its own CSS file.
 import 'virtual:windi.css'
 import './app.css'
+import 'react-datepicker/dist/react-datepicker.css'
+
 // import { renderApp } from './entry'
 
 // webpack automatically bundles all modules in your
@@ -18,7 +20,7 @@ import 'phoenix_html'
 import { Socket } from 'phoenix'
 import topbar from 'topbar'
 import { LiveSocket, ViewHook } from 'phoenix_live_view'
-import { renderForm } from './components/Form'
+import { renderForm } from './components/MedicalRecordForm'
 
 declare global {
   interface Window {
@@ -35,7 +37,7 @@ let liveSocket = new LiveSocket('/live', Socket, {
   hooks: {
     DiagnosisForm: {
       mounted(this: ViewHook) {
-        renderForm(this.el)
+        renderForm(this)
       },
     },
   },
