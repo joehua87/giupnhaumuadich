@@ -3,6 +3,10 @@ export interface BaseField {
   name: string
   label: string
   type: 'text' | 'number' | 'select' | 'multi_select' | 'textarea'
+  showIf?: {
+    field: string[]
+    value: string
+  }
   validations?: RegisterOptions
 }
 

@@ -1,5 +1,11 @@
 import React from 'react'
-import { Controller, Control, UseFormRegister, DeepMap } from 'react-hook-form'
+import {
+  Controller,
+  Control,
+  UseFormRegister,
+  DeepMap,
+  UseFormGetValues,
+} from 'react-hook-form'
 import { Field } from './types'
 import { MultiSelect } from './MultiSelect'
 import { FormGroup } from './FormGroup'
@@ -10,16 +16,25 @@ export function FormField({
   prefix,
   register,
   control,
+  getValues,
   errors,
 }: {
   field: Field
   prefix: string
   control: Control<any>
   register: UseFormRegister<any>
+  getValues: UseFormGetValues<any>
   errors: DeepMap<any, any>
 }) {
   const key = `${prefix}.${field.name}`
   const errorText = errors[prefix]?.[field.name]?.message
+
+  if (field.showIf) {
+    const value = getValues([prefix, ...field.showIf.field].join('.'))
+    if (value !== field.showIf.value) {
+      return null
+    }
+  }
 
   switch (field.type) {
     case 'text':

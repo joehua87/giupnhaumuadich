@@ -52,12 +52,20 @@ const commonFields: Field[] = [
     name: 'female_only',
     label: 'Dành cho nữ',
     type: 'multi_select',
+    showIf: {
+      field: ['sex'],
+      value: 'Nữ',
+    },
     options: ['Đang có thai', 'Đang cho con bú'],
   },
   {
     name: 'thang_co_thai',
     label: 'Đang có thai mấy tháng',
     type: 'number',
+    showIf: {
+      field: ['sex'],
+      value: 'Nữ',
+    },
   },
   {
     name: 'huyet_ap_trung_binh',
@@ -135,7 +143,11 @@ export function MedicalRecordForm({
     handleSubmit,
     control,
     formState: { errors },
+    getValues,
+    watch,
   } = useForm()
+
+  watch('common_field_values.sex')
 
   return (
     <form
@@ -223,6 +235,7 @@ export function MedicalRecordForm({
               errors={errors}
               control={control}
               register={register}
+              getValues={getValues}
             />
           )
         })}
@@ -238,6 +251,7 @@ export function MedicalRecordForm({
               errors={errors}
               control={control}
               register={register}
+              getValues={getValues}
             />
           )
         })}
