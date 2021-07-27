@@ -37,6 +37,7 @@ defmodule GiupnhaumuadichWeb.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:phx_gen_auth, "~> 0.7", only: [:dev], runtime: false},
       {:mongodb_driver, "~> 0.7.4"},
       {:number, "~> 1.0"},
       {:surface, "~> 0.5.0"},

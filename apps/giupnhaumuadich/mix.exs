@@ -36,6 +36,7 @@ defmodule Giupnhaumuadich.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 2.0"},
       {:nanoid, "~> 2.0"},
       {:mongodb_driver, "~> 0.7.4"},
       {:scrivener_ecto, "~> 2.7"},

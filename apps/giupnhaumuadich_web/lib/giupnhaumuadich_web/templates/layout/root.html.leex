@@ -22,6 +22,7 @@
             <li class="mr-2 px-2"><%= live_redirect "Bài viết", to: Routes.posts_path(@conn, :index) %></li>
             <li class="mr-2 px-2"><%= live_redirect "Tìm kiếm", to: Routes.search_path(@conn, :index) %></li>
           </ul>
+          <%= render "_user_menu.html", assigns %>
         </nav>
       </section>
     </header>
