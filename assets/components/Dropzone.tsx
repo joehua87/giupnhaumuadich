@@ -65,12 +65,12 @@ export function MyDropzone({
       />
 
       {isDragActive ? (
-        <p className="border border-dotted rounded-sm cursor-pointer flex bg-neutral-50 border-neutral-600 h-20 mt-3 text-sm p-2 text-neutral-900 items-center justify-center">
+        <p className="border border-dotted rounded-sm cursor-pointer flex bg-gray-50 border-gray-600 h-20 mt-3 text-sm p-2 text-gray-900 items-center justify-center">
           {activeText}
         </p>
       ) : (
-        <p className="border border-dotted rounded-sm cursor-pointer flex bg-neutral-50 border-neutral-600 h-20 mt-3 text-sm p-2 text-neutral-600 items-center justify-center">
-          {/* <Icon icon="image" className="h-4 mr-1 text-neutral-900 w-4" /> */}
+        <p className="border border-dotted rounded-sm cursor-pointer flex bg-gray-50 border-gray-600 h-20 mt-3 text-sm p-2 text-gray-600 items-center justify-center">
+          {/* <Icon icon="image" className="h-4 mr-1 text-gray-900 w-4" /> */}
           {text}
         </p>
       )}

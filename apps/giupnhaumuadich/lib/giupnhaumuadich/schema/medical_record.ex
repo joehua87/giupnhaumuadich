@@ -5,7 +5,13 @@ defmodule Giupnhaumuadich.MedicalRecord do
   alias Giupnhaumuadich.{Category, Doctor}
 
   @required_fields [:name, :phone, :birthday, :region, :category_id]
-  @optional_fields [:facebook_uid, :field_values, :images, :state]
+  @optional_fields [
+    :facebook_uid,
+    :common_field_values,
+    :specialize_field_values,
+    :assets,
+    :state
+  ]
 
   schema "medical_records" do
     field :name, :string
@@ -13,12 +19,15 @@ defmodule Giupnhaumuadich.MedicalRecord do
     field :facebook_uid, :string
     field :region, :map
     field :birthday, :date
-    field :field_values, :map
+    field :common_field_values, :map
+    field :specialize_field_values, :map
     field :assets, {:map, {:array, :string}}
     belongs_to :category, Category
     belongs_to :doctor, Doctor
     field :state, Ecto.Enum, values: [:pending, :in_process, :completed], default: :pending
     field :token, :string
+
+    timestamps()
   end
 
   def changeset(entity, params) do

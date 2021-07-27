@@ -20,12 +20,6 @@ defmodule GiupnhaumuadichWeb.PublicMedicalRecordLive do
     <div>Bác sĩ: {@entity.doctor_id && @entity.doctor.name}</div>
     <div>Tình trạng: {@entity.state}</div>
     <div class="bg-yellow-50">Thông tin bệnh án: Work in progress</div>
-    <div>
-      {#for src <- (@entity.images || [])}
-        <img class="border h-32 w-32" src={"/upload/#{src}"} />
-      {/for}
-      </div>
-    <div class="bg-yellow-50">Add lightbox</div>
     """
   end
 

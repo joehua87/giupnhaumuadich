@@ -3,13 +3,98 @@ import { render } from 'react-dom'
 import { useForm, Controller } from 'react-hook-form'
 import { MyDropzone } from './Dropzone'
 import { ViewHook } from 'phoenix_live_view'
-import { RegionSelect } from './RegionSelect'
+// import { RegionSelect } from './RegionSelect'
 import DatePicker from 'react-datepicker'
 import { Field } from './types'
-import { MultiSelect } from './MultiSelect'
 import { FormGroup } from './FormGroup'
+import { FormField } from './FormField'
 
-const fields: Field[] = [
+const commonFields: Field[] = [
+  {
+    name: 'height',
+    label: 'Chiều cao (cm)',
+    type: 'number',
+    validations: {
+      required: {
+        value: true,
+        message: 'Bạn vui lòng điền trường này',
+      },
+      max: {
+        value: 300,
+        message: 'Chiều cao không được quả 300cm',
+      },
+    },
+  },
+  {
+    name: 'weight',
+    label: 'Cân nặng (kg)',
+    type: 'number',
+    validations: {
+      required: {
+        value: true,
+        message: 'Bạn vui lòng điền trường này',
+      },
+    },
+  },
+  {
+    name: 'sex',
+    label: 'Giới tính',
+    type: 'select',
+    options: ['Nam', 'Nữ', 'Khác'],
+    validations: {
+      required: {
+        value: true,
+        message: 'Bạn vui lòng điền trường này',
+      },
+    },
+  },
+  {
+    name: 'female_only',
+    label: 'Dành cho nữ',
+    type: 'multi_select',
+    options: ['Đang có thai', 'Đang cho con bú'],
+  },
+  {
+    name: 'thang_co_thai',
+    label: 'Đang có thai mấy tháng',
+    type: 'number',
+  },
+  {
+    name: 'huyet_ap_trung_binh',
+    label: 'Huyết áp trung bình',
+    type: 'number',
+  },
+  {
+    name: 'dang_cho_con_may_thang_bu',
+    label: 'Đang cho con mấy tháng bú',
+    type: 'number',
+  },
+  {
+    name: 'benh_nen',
+    label: 'Bệnh nền',
+    type: 'multi_select',
+    options: [
+      'Tiểu đường',
+      'Tăng huyết áp',
+      'Viêm gan mạn tính',
+      'Thiếu máu cơ tim',
+      'Ung thư',
+    ],
+  },
+  {
+    name: 'di_ung_thuoc',
+    label: 'Tiền sử dị ứng thuốc',
+    type: 'select',
+    options: ['Không', 'Có'],
+  },
+  {
+    name: 'di_ung_thuoc_chi_tiet',
+    label: 'Mô tả chi tiết tên thuốc/biệt dược dị ứng',
+    type: 'textarea',
+  },
+]
+
+const specializedFields: Field[] = [
   {
     name: 'symptoms',
     label: 'Triệu chứng',
@@ -38,18 +123,6 @@ const fields: Field[] = [
     label: 'Mô tả thêm về bệnh',
     type: 'textarea',
   },
-  {
-    name: 'other_desease',
-    label: 'Bệnh nền',
-    type: 'multi_select',
-    options: [
-      'Tiểu đường',
-      'Tăng huyết áp',
-      'Viêm gan mạn tính',
-      'Thiếu máu cơ tim',
-      'Ung thư',
-    ],
-  },
 ]
 
 export function MedicalRecordForm({
@@ -70,132 +143,124 @@ export function MedicalRecordForm({
         live.pushEvent('submit', params)
       })}
     >
-      <FormGroup label="Họ tên" errorText={errors.name?.message}>
-        <input
-          className="w-full input"
-          {...register('name', {
+      <div className="bg-white border mb-8 p-4">
+        <h3 className="mb-4 heading-3">Thông tin cơ bản</h3>
+        <FormGroup label="Họ tên" errorText={errors.name?.message}>
+          <input
+            className="w-full input"
+            {...register('name', {
+              required: {
+                message: 'Trường bắt buộc, ban vui lòng điền',
+                value: true,
+              },
+              minLength: {
+                value: 4,
+                message: 'Họ tên phải hơn 4 ký tự',
+              },
+            })}
+          />
+        </FormGroup>
+        <FormGroup label="Số điện thoại" errorText={errors.phone?.message}>
+          <input
+            className="w-full input"
+            {...register('phone', {
+              required: {
+                message: 'Trường bắt buộc, ban vui lòng điền',
+                value: true,
+              },
+              pattern: {
+                message: 'Điện thoại không hợp lệ',
+                value: /0\d{8,10}/,
+              },
+            })}
+          />
+        </FormGroup>
+        <Controller
+          control={control}
+          name="birthday"
+          rules={{
             required: {
               message: 'Trường bắt buộc, ban vui lòng điền',
               value: true,
             },
-            minLength: {
-              value: 4,
-              message: 'Họ tên phải hơn 4 ký tự',
-            },
-          })}
+          }}
+          render={({ field: { onChange, value } }) => (
+            <FormGroup label="Năm sinh" errorText={errors.birthday?.message}>
+              <DatePicker
+                selected={value}
+                onChange={onChange}
+                dateFormat="dd/MM/yyyy"
+                placeholderText="Ví dụ 29/2/2000"
+                className="input"
+              />
+            </FormGroup>
+          )}
         />
-      </FormGroup>
-      <FormGroup label="Số điện thoại" errorText={errors.phone?.message}>
-        <input
-          className="w-full input"
-          {...register('phone', {
-            required: {
-              message: 'Trường bắt buộc, ban vui lòng điền',
-              value: true,
-            },
-            pattern: { message: 'Điện thoại không hợp lệ', value: /0\d{8,10}/ },
-          })}
-        />
-      </FormGroup>
-      <Controller
-        control={control}
-        name="birthday"
-        rules={{
-          required: {
-            message: 'Trường bắt buộc, ban vui lòng điền',
-            value: true,
-          },
-        }}
-        render={({ field: { onChange, value } }) => (
-          <FormGroup label="Năm sinh" errorText={errors.birthday?.message}>
-            <DatePicker
-              selected={value}
-              onChange={onChange}
-              dateFormat="dd/MM/yyyy"
-              placeholderText="Ví dụ 29/2/2000"
-              className="input"
+        <FormGroup label="Link Facebook">
+          <input className="w-full input" {...register('facebook_uid')} />
+        </FormGroup>
+        <FormGroup label="Địa chỉ">
+          <input className="w-full input" {...register('region')} />
+        </FormGroup>
+        {/* <Controller
+          control={control}
+          name="region"
+          render={({ field: { onChange, value } }) => (
+            <FormGroup label="Địa chỉ" errorText={errors.region?.message}>
+              <RegionSelect value={value} onChange={onChange} />
+            </FormGroup>
+          )}
+        /> */}
+      </div>
+      <div className="bg-white border mb-8 p-4">
+        <h3 className="mb-4 heading-3">Thông tin chung</h3>
+        {commonFields.map((field) => {
+          return (
+            <FormField
+              key={field.name}
+              field={field}
+              prefix="field_values"
+              control={control}
+              register={register}
             />
-          </FormGroup>
-        )}
-      />
-      <FormGroup label="Link Facebook">
-        <input className="w-full input" {...register('facebook_uid')} />
-      </FormGroup>
-      <Controller
-        control={control}
-        name="region"
-        render={({ field: { onChange, value } }) => (
-          <FormGroup label="Địa chỉ" errorText={errors.region?.message}>
-            <RegionSelect value={value} onChange={onChange} />
-          </FormGroup>
-        )}
-      />
-      {fields.map((field) => {
-        switch (field.type) {
-          case 'text':
-            return (
-              <FormGroup key={field.name} label={field.label}>
-                <input
-                  className="w-full input"
-                  {...register(`field_values.${field.name}`)}
-                />
-              </FormGroup>
-            )
-          case 'number':
-            return (
-              <FormGroup key={field.name} label={field.label}>
-                <input
-                  className="w-full input"
-                  type="number"
-                  {...register(`field_values.${field.name}`)}
-                />
-              </FormGroup>
-            )
-          case 'textarea':
-            return (
-              <FormGroup key={field.name} label={field.label}>
-                <textarea
-                  className="w-full input"
-                  {...register(`field_values.${field.name}`)}
-                />
-              </FormGroup>
-            )
-          case 'multi_select':
-            return (
-              <FormGroup key={field.name} label={field.label}>
-                <Controller
-                  control={control}
-                  name={`field_values.${field.name}`}
-                  render={({ field: { onChange, value } }) => (
-                    <MultiSelect
-                      field={field}
-                      onChange={onChange}
-                      value={value}
-                    />
-                  )}
-                />
-              </FormGroup>
-            )
-        }
-      })}
-      <Controller
-        control={control}
-        name="assets.prescription"
-        render={({ field: { onChange, value } }) => (
-          <FormGroup label="Hình ảnh đơn thuốc">
-            <MyDropzone value={value || []} onChange={onChange} />
-          </FormGroup>
-        )}
-      />
-      <Controller
-        control={control}
-        name="assets.examination"
-        render={({ field: { onChange, value } }) => (
-          <FormGroup label="Hình ảnh kết quả xét nghiệm gần nhất">
-            <MyDropzone value={value || []} onChange={onChange} />
-          </FormGroup>
-        )}
-      />
+          )
+        })}
+      </div>
+      <div className="bg-white border mb-8 p-4">
+        <h3 className="mb-4 heading-3">Thông tin chuyên khoa</h3>
+        {specializedFields.map((field) => {
+          return (
+            <FormField
+              key={field.name}
+              field={field}
+              prefix="specialized_field_values"
+              control={control}
+              register={register}
+            />
+          )
+        })}
+      </div>
+      <div className="bg-white border mb-8 p-4">
+        <h3 className="mb-4 heading-3">Hình ảnh</h3>
+        <Controller
+          control={control}
+          name="assets.prescription"
+          render={({ field: { onChange, value } }) => (
+            <FormGroup label="Hình ảnh đơn thuốc">
+              <MyDropzone value={value || []} onChange={onChange} />
+            </FormGroup>
+          )}
+        />
+        <Controller
+          control={control}
+          name="assets.examination"
+          render={({ field: { onChange, value } }) => (
+            <FormGroup label="Hình ảnh kết quả xét nghiệm gần nhất">
+              <MyDropzone value={value || []} onChange={onChange} />
+            </FormGroup>
+          )}
+        />
+      </div>
       <div>
         <button
           type="submit"

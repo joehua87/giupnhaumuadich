@@ -1,7 +1,9 @@
+import { RegisterOptions } from 'react-hook-form'
 export interface BaseField {
   name: string
   label: string
-  type: 'text' | 'number' | 'multi_select' | 'textarea'
+  type: 'text' | 'number' | 'select' | 'multi_select' | 'textarea'
+  validations?: RegisterOptions
 }
 
 export interface TextField extends BaseField {
@@ -19,4 +21,14 @@ export interface MultiSelectField extends BaseField {
   options: string[]
 }
 
-export type Field = TextField | TextAreaField | NumberField | MultiSelectField
+export interface SelectField extends BaseField {
+  type: 'select'
+  options: string[]
+}
+
+export type Field =
+  | TextField
+  | TextAreaField
+  | NumberField
+  | SelectField
+  | MultiSelectField

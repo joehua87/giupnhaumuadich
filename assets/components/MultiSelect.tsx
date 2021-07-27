@@ -13,7 +13,7 @@ export function MultiSelect({
   return (
     <div className="grid gap-2 grid-cols-1 lg:grid-cols-3">
       {field.options
-        .sort((a, b) => a.localeCompare(b))
+        // .sort((a, b) => a.localeCompare(b))
         .map((x) => (
           <label key={x}>
             <input

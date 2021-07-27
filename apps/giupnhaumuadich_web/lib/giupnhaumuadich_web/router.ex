@@ -19,7 +19,6 @@ defmodule GiupnhaumuadichWeb.Router do
 
   scope "/api", GiupnhaumuadichWeb do
     pipe_through :api
-    post "/medical-records", MedicalRecordController, :create
   end
 
   scope "/", GiupnhaumuadichWeb do

@@ -2,14 +2,15 @@ defmodule Giupnhaumuadich.Category do
   use Giupnhaumuadich.Schema
   import Ecto.Changeset
 
-  @required_fields [:name, :slug, :tags]
-  @optional_fields [:description, :image, :doctor_count]
+  @required_fields [:name, :slug]
+  @optional_fields [:description, :tags, :symptoms, :image, :doctor_count]
 
   schema "categories" do
     field :name, :string
     field :slug, :string
     field :description, :string
     field :tags, {:array, :string}, default: []
+    field :symptoms, {:array, :string}, default: []
     field :image, :string
     field :doctor_count, :integer
   end
