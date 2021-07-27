@@ -40,6 +40,7 @@ defmodule GiupnhaumuadichWeb.MixProject do
       {:phx_gen_auth, "~> 0.7", only: [:dev], runtime: false},
       {:mongodb_driver, "~> 0.7.4"},
       {:number, "~> 1.0"},
+      {:mime, "~> 1.6"},
       {:surface, "~> 0.5.0"},
       {:phoenix, "~> 1.5.9"},
       {:phoenix_ecto, "~> 4.0"},

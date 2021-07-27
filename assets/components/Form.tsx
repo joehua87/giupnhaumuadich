@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { useForm, Controller } from 'react-hook-form'
+import { MyDropzone } from './Dropzone'
 
 export interface BaseField {
   name: string
@@ -136,6 +137,13 @@ export function Form() {
 
   return (
     <form onSubmit={handleSubmit(console.log)}>
+      <Controller
+        control={control}
+        name="images"
+        render={({ field: { onChange, value } }) => (
+          <MyDropzone value={value || []} onChange={onChange} />
+        )}
+      />
       {fields.map((field) => {
         switch (field.type) {
           case 'text':
@@ -177,7 +185,7 @@ export function Form() {
                       value={value}
                     />
                   )}
-                ></Controller>
+                />
               </div>
             )
         }

@@ -20,6 +20,9 @@ defmodule GiupnhaumuadichWeb.Router do
   scope "/", GiupnhaumuadichWeb do
     pipe_through :browser
 
+    post "/upload", UploadController, :create
+    get "/upload/:id", UploadController, :get
+
     live "/", PageLive, :index
     live "/chuyen-khoa/:slug", CategoryLive, :show
     live "/bac-si", DoctorsLive, :index
