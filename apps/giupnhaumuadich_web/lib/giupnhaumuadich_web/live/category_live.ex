@@ -23,9 +23,8 @@ defmodule GiupnhaumuadichWeb.CategoryLive do
 
       {:noreply, socket}
     else
-      _ ->
-        # TODO: Send error flash
-        {:noreply, socket}
+      _error ->
+        {:noreply, put_flash(socket, :error, "Error happens")}
     end
   end
 

@@ -38,6 +38,13 @@ defmodule GiupnhaumuadichWeb.Router do
     live "/benh-an/:id", PublicMedicalRecordLive, :show
   end
 
+  scope "/admin", GiupnhaumuadichWeb do
+    pipe_through :browser
+
+    live "/benh-an", AdminMedicalRecordsLive, :index
+    live "/benh-an/:id", AdminMedicalRecordLive, :show
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", GiupnhaumuadichWeb do
   #   pipe_through :api
