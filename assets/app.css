@@ -18,7 +18,8 @@ table {
   @apply border-t border-l;
 }
 
-td {
+td,
+th {
   @apply px-2 py-1 text-gray-700 border-r border-b;
 }
 
@@ -26,7 +27,7 @@ thead {
   @apply bg-gray-100;
 }
 
-thead td {
+thead th {
   @apply font-medium text-gray-600;
 }
 

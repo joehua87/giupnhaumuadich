@@ -42,7 +42,7 @@ defmodule GiupnhaumuadichWeb.AdminUsersLive do
     <table>
       <thead>
         <tr>
-          <th style="width: 80px">Index</th>
+          <th style="width: 60px">Index</th>
           <th style="width: 120px">Email</th>
           <th style="width: 300px">Role</th>
           <th style="width: 300px">Inserted at</th>
@@ -51,7 +51,7 @@ defmodule GiupnhaumuadichWeb.AdminUsersLive do
       <tbody>
         {#for {entity, index} <- Enum.with_index(@data.entities)}
           <tr>
-            <td>{index}</td>
+            <td class="text-right">{index + 1}</td>
             <td>{entity.email}</td>
             <td><RoleEdit value={entity.role} user_id={entity.id} change="set_role" /></td>
             <td>{Timex.format!(entity.inserted_at, "{relative}", :relative)}</td>

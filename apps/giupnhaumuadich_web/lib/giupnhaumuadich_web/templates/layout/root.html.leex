@@ -14,7 +14,7 @@
   </head>
   <body>
     <header class="bg-brand-700">
-      <section class="container flex h-16 text-brand-50">
+      <section class="container flex h-12 text-brand-100">
         <nav class="flex w-full items-center justify-between">
           <ul class="flex">
             <li class="mr-2 px-2"><%= live_redirect "Trang chủ", to: Routes.page_path(@conn, :index) %></li>
@@ -27,11 +27,13 @@
       </section>
     </header>
     <header class="bg-gray-700">
-      <section class="container flex h-8 text-brand-50">
+      <section class="container flex h-8 text-brand-100">
         <nav class="flex w-full items-center justify-between">
           <ul class="flex">
             <li class="mr-2 px-2"><%= live_redirect "Bệnh án", to: Routes.admin_medical_records_path(@conn, :index) %></li>
             <li class="mr-2 px-2"><%= live_redirect "Người dùng", to: Routes.admin_users_path(@conn, :index) %></li>
+            <li class="mr-2 px-2"><%= live_redirect "Chuyên khoa", to: Routes.admin_categories_path(@conn, :index) %></li>
+            <li class="mr-2 px-2"><%= live_redirect "Bác sĩ", to: Routes.admin_doctors_path(@conn, :index) %></li>
           </ul>
         </nav>
       </section>
