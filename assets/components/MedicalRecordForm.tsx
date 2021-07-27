@@ -150,7 +150,7 @@ export function MedicalRecordForm({
             className="w-full input"
             {...register('name', {
               required: {
-                message: 'Trường bắt buộc, ban vui lòng điền',
+                message: 'Bạn vui lòng điền trường này',
                 value: true,
               },
               minLength: {
@@ -165,7 +165,7 @@ export function MedicalRecordForm({
             className="w-full input"
             {...register('phone', {
               required: {
-                message: 'Trường bắt buộc, ban vui lòng điền',
+                message: 'Bạn vui lòng điền trường này',
                 value: true,
               },
               pattern: {
@@ -180,7 +180,7 @@ export function MedicalRecordForm({
           name="birthday"
           rules={{
             required: {
-              message: 'Trường bắt buộc, ban vui lòng điền',
+              message: 'Bạn vui lòng điền trường này',
               value: true,
             },
           }}
@@ -200,7 +200,7 @@ export function MedicalRecordForm({
           <input className="w-full input" {...register('facebook_uid')} />
         </FormGroup>
         <FormGroup label="Địa chỉ">
-          <input className="w-full input" {...register('region')} />
+          <input className="w-full input" {...register('region.address')} />
         </FormGroup>
         {/* <Controller
           control={control}
@@ -219,7 +219,8 @@ export function MedicalRecordForm({
             <FormField
               key={field.name}
               field={field}
-              prefix="field_values"
+              prefix="common_field_values"
+              errors={errors}
               control={control}
               register={register}
             />
@@ -234,6 +235,7 @@ export function MedicalRecordForm({
               key={field.name}
               field={field}
               prefix="specialized_field_values"
+              errors={errors}
               control={control}
               register={register}
             />
