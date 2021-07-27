@@ -7,7 +7,7 @@ defmodule Giupnhaumuadich.Accounts.User do
     field :email, :string
     field :password, :string, virtual: true
     field :hashed_password, :string
-    field :role, :string
+    field :role, Ecto.Enum, values: [:standard, :doctor, :moderator, :admin], default: :standard
     field :confirmed_at, :naive_datetime
 
     timestamps()
@@ -136,5 +136,9 @@ defmodule Giupnhaumuadich.Accounts.User do
     else
       add_error(changeset, :current_password, "is not valid")
     end
+  end
+
+  def role_changeset(changeset, role) do
+    cast(changeset, %{role: role}, [:role])
   end
 end

@@ -26,6 +26,16 @@
         </nav>
       </section>
     </header>
+    <header class="bg-gray-700">
+      <section class="container flex h-8 text-brand-50">
+        <nav class="flex w-full items-center justify-between">
+          <ul class="flex">
+            <li class="mr-2 px-2"><%= live_redirect "Bệnh án", to: Routes.admin_medical_records_path(@conn, :index) %></li>
+            <li class="mr-2 px-2"><%= live_redirect "Người dùng", to: Routes.admin_users_path(@conn, :index) %></li>
+          </ul>
+        </nav>
+      </section>
+    </header>
     <%= @inner_content %>
     <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
       <div class="bg-gray-500 py-4">

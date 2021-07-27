@@ -1,9 +1,9 @@
 defmodule GiupnhaumuadichWeb.Components.Pagination do
   use Surface.Component
   alias Surface.Components.LiveRedirect
-  prop(path, :string, required: true)
-  prop(query, :any, required: true)
-  prop(paging, :any, required: true)
+  prop path, :string, required: true
+  prop query, :any, required: true
+  prop paging, :any, required: true
 
   def render(%{path: path, query: query, paging: paging} = assigns) do
     prev = make_prev_url(path, query, paging)
