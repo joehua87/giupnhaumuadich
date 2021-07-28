@@ -171,6 +171,7 @@ export function MedicalRecordForm({
   } = useForm()
 
   watch('common_field_values.sex')
+  watch('common_field_values.di_ung_thuoc')
 
   return (
     <form
@@ -178,7 +179,7 @@ export function MedicalRecordForm({
         live.pushEvent('submit', params)
       })}
     >
-      <div className="bg-white border mb-4 p-3 rounded-md">
+      <div className="bg-white border rounded-md mb-4 p-3">
         <h3 className="mb-4 heading-3">Thông tin liên lạc</h3>
         <FormGroup label="Họ tên" errorText={errors.name?.message}>
           <input
@@ -247,7 +248,7 @@ export function MedicalRecordForm({
           )}
         /> */}
       </div>
-      <div className="bg-white border mb-4 p-3 rounded-md">
+      <div className="bg-white border rounded-md mb-4 p-3">
         <h3 className="mb-4 heading-3">Thông tin chung</h3>
         {commonFields.map((field) => {
           return (
@@ -263,7 +264,7 @@ export function MedicalRecordForm({
           )
         })}
       </div>
-      <div className="bg-white border mb-4 p-3 rounded-md">
+      <div className="bg-white border rounded-md mb-4 p-3">
         <h3 className="mb-4 heading-3">Thông tin chuyên khoa</h3>
         {specializedFields.map((field) => {
           return (
@@ -279,7 +280,7 @@ export function MedicalRecordForm({
           )
         })}
       </div>
-      <div className="bg-white border mb-4 p-3 rounded-md">
+      <div className="bg-white border rounded-md mb-4 p-3">
         <h3 className="mb-4 heading-3">Hình ảnh đính kèm</h3>
         <Controller
           control={control}
@@ -312,7 +313,7 @@ export function MedicalRecordForm({
       <div>
         <button
           type="submit"
-          className="rounded bg-brand-600 text-white text-lg py-3 px-4 hover:bg-brand-700 w-full"
+          className="rounded bg-brand-600 text-white text-lg w-full py-3 px-4 hover:bg-brand-700"
         >
           Gửi đề nghị trợ giúp y khoa
         </button>
