@@ -29,7 +29,7 @@ defmodule GiupnhaumuadichWeb.Router do
 
     live "/", PageLive, :index
     live "/tu-van-y-te", MedicalConsultationLive, :show
-    live "/chuyen-khoa/:slug", CategoryLive, :show
+    live "/tu-van-y-te/:slug", CategoryLive, :show
     live "/tro-giup-y-te", MedicalHelpLive, :index
     live "/bac-si", DoctorsLive, :index
     live "/bac-si/:slug", DoctorLive, :show
