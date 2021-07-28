@@ -34,28 +34,28 @@ defmodule GiupnhaumuadichWeb.PageLive do
       <img src="/images/safety-suit.svg" class="w-10 h-10 mr-2" />
       <div class="">
         <span class="font-medium block">Trợ giúp bệnh nhân Covid</span>
-        <span class="block text-sm text-gray-600">Tư vấn bệnh, sức khỏe, tâm lý, thuốc</span>
+        <span class="block text-sm text-gray-600">Cách điều trị, theo dõi tại nhà…</span>
       </div>
     </a>
     <a href="/tro-giup-y-te" class="flex items-center w-full py-3 bg-white my-3 rounded-md px-3 shadow">
       <img src="/images/groceries.svg" class="w-10 h-10 mr-2" />
       <div class="">
         <span class="font-medium block">Trợ giúp thực phẩm</span>
-        <span class="block text-sm text-gray-600">Tư vấn bệnh, sức khỏe, tâm lý, thuốc</span>
+        <span class="block text-sm text-gray-600">Gạo mỳ, rau củ,…</span>
       </div>
     </a>
     <a href="/tro-giup-y-te" class="flex items-center w-full py-3 bg-white my-3 rounded-md px-3 shadow">
       <img src="/images/medicine.svg" class="w-10 h-10 mr-2" />
       <div class="">
         <span class="font-medium block">Trợ giúp vật tư y tế</span>
-        <span class="block text-sm text-gray-600">Tư vấn bệnh, sức khỏe, tâm lý, thuốc</span>
+        <span class="block text-sm text-gray-600">Thuốc men, thiết bị chuyên dụng,…</span>
       </div>
     </a>
     <a href="/tro-giup-y-te" class="flex items-center w-full py-3 bg-white my-3 rounded-md px-3 shadow">
       <img src="/images/medical.svg" class="w-10 h-10 mr-2" />
       <div class="">
         <span class="font-medium block">Tra cứu điện thoại trạm y tế</span>
-        <span class="block text-sm text-gray-600">Tư vấn bệnh, sức khỏe, tâm lý, thuốc</span>
+        <span class="block text-sm text-gray-600">Danh sách trạm y tế toàn TP.HCM</span>
       </div>
     </a>
     <a href="/tro-giup-y-te" class="flex items-center w-full py-2 bg-red-600 text-white uppercase rounded-md justify-center mt-4">
