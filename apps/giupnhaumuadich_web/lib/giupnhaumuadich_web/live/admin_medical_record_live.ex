@@ -11,9 +11,12 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordLive do
   @impl true
   def render(assigns) do
     ~F"""
-    <h1 class="heading-1">Medical Record</h1>
+    <h1 class="heading-1">Gửi yêu cầu trợ giúp y tế thành công</h1>
     <p class="rounded bg-yellow-50 p-2">Bạn vui lòng lưu đường dẫn này để theo dõi phải hỏi từ bác sĩ</p>
-    <div>Họ tên: {@entity.name}</div>
+    <div class="grid grid-cols-3">
+      <div>Họ tên:</div>
+      <div class="col-span-2">{@entity.name}</div>
+    </div>
     <div>Số điện thoại: {@entity.phone}</div>
     <div>Ngày sinh: {@entity.birthday}</div>
     <div>Chuyên khoa: {@entity.category.name}</div>
