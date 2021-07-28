@@ -28,6 +28,7 @@ defmodule GiupnhaumuadichWeb.Router do
     get "/upload/:id", UploadController, :get
 
     live "/", PageLive, :index
+    live "/tu-van-y-te", MedicalConsultationLive, :show
     live "/chuyen-khoa/:slug", CategoryLive, :show
     live "/tro-giup-y-te", MedicalHelpLive, :index
     live "/bac-si", DoctorsLive, :index
