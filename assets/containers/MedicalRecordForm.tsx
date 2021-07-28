@@ -67,13 +67,17 @@ const commonFields: Field[] = [
     },
   },
   {
-    name: 'huyet_ap_trung_binh',
-    label: 'Huyết áp trung bình',
-    type: 'number',
-  },
-  {
     name: 'dang_cho_con_may_thang_bu',
     label: 'Đang cho con mấy tháng bú',
+    type: 'number',
+    showIf: {
+      field: ['sex'],
+      value: 'Nữ',
+    },
+  },
+  {
+    name: 'huyet_ap_trung_binh',
+    label: 'Huyết áp trung bình (vd: 110/70)',
     type: 'number',
   },
   {
@@ -83,10 +87,25 @@ const commonFields: Field[] = [
     options: [
       'Tiểu đường',
       'Tăng huyết áp',
-      'Viêm gan mạn tính',
-      'Thiếu máu cơ tim',
+      'Bệnh gan mạn tính',
+      'Bệnh phổi mạn tính',
+      'Bệnh tim mạch mạn tính',
+      'Bệnh thần kinh',
+      'Hội chứng Down',
+      'Nhiễm HIV',
+      'Suy giảm miễn dịch',
+      'Thừa cân và béo phì',
+      'Bệnh hồng cầu hình lưỡi liềm hay tan máu bẩm sinh',
+      'Cấy ghép tạng hoặc tế bào máu gốc',
+      'Đột quỵ hay bệnh mạch máu não',
       'Ung thư',
+      'Khác',
     ],
+  },
+  {
+    name: 'benh_nen_chi_tiet',
+    label: 'Mô tả bệnh nền chi tiết',
+    type: 'textarea',
   },
   {
     name: 'di_ung_thuoc',
@@ -98,6 +117,10 @@ const commonFields: Field[] = [
     name: 'di_ung_thuoc_chi_tiet',
     label: 'Mô tả chi tiết tên thuốc/biệt dược dị ứng',
     type: 'textarea',
+    showIf: {
+      field: ['di_ung_thuoc'],
+      value: 'Có',
+    },
   },
 ]
 
@@ -123,11 +146,12 @@ const specializedFields: Field[] = [
       'Khàn tiếng',
       'Khối vùng cổ',
       'Khối vùng đầu mặt',
+      'Khác',
     ],
   },
   {
     name: 'note',
-    label: 'Mô tả thêm về bệnh',
+    label: 'Mô tả chi tiết về triệu chứng đang gặp',
     type: 'textarea',
   },
 ]
@@ -154,8 +178,8 @@ export function MedicalRecordForm({
         live.pushEvent('submit', params)
       })}
     >
-      <div className="bg-white border mb-8 p-4">
-        <h3 className="mb-4 heading-3">Thông tin cơ bản</h3>
+      <div className="bg-white border mb-4 p-3 rounded-md">
+        <h3 className="mb-4 heading-3">Thông tin liên lạc</h3>
         <FormGroup label="Họ tên" errorText={errors.name?.message}>
           <input
             className="w-full input"
@@ -207,10 +231,10 @@ export function MedicalRecordForm({
             </FormGroup>
           )}
         />
-        <FormGroup label="Link Facebook">
+        {/* <FormGroup label="Link Facebook (không bắt buộc)">
           <input className="w-full input" {...register('facebook_uid')} />
-        </FormGroup>
-        <FormGroup label="Địa chỉ">
+        </FormGroup> */}
+        <FormGroup label="Địa chỉ (không bắt buộc)">
           <input className="w-full input" {...register('region.address')} />
         </FormGroup>
         {/* <Controller
@@ -223,7 +247,7 @@ export function MedicalRecordForm({
           )}
         /> */}
       </div>
-      <div className="bg-white border mb-8 p-4">
+      <div className="bg-white border mb-4 p-3 rounded-md">
         <h3 className="mb-4 heading-3">Thông tin chung</h3>
         {commonFields.map((field) => {
           return (
@@ -239,7 +263,7 @@ export function MedicalRecordForm({
           )
         })}
       </div>
-      <div className="bg-white border mb-8 p-4">
+      <div className="bg-white border mb-4 p-3 rounded-md">
         <h3 className="mb-4 heading-3">Thông tin chuyên khoa</h3>
         {specializedFields.map((field) => {
           return (
@@ -255,8 +279,8 @@ export function MedicalRecordForm({
           )
         })}
       </div>
-      <div className="bg-white border mb-8 p-4">
-        <h3 className="mb-4 heading-3">Hình ảnh</h3>
+      <div className="bg-white border mb-4 p-3 rounded-md">
+        <h3 className="mb-4 heading-3">Hình ảnh đính kèm</h3>
         <Controller
           control={control}
           name="assets.prescription"
@@ -270,7 +294,16 @@ export function MedicalRecordForm({
           control={control}
           name="assets.examination"
           render={({ field: { onChange, value } }) => (
-            <FormGroup label="Hình ảnh kết quả xét nghiệm gần nhất">
+            <FormGroup label="Hình ảnh các kết quả xét nghiệm gần nhất">
+              <MyDropzone value={value || []} onChange={onChange} />
+            </FormGroup>
+          )}
+        />
+        <Controller
+          control={control}
+          name="assets.currentSymptoms"
+          render={({ field: { onChange, value } }) => (
+            <FormGroup label="Hình ảnh triệu chứng nếu có">
               <MyDropzone value={value || []} onChange={onChange} />
             </FormGroup>
           )}
@@ -279,9 +312,9 @@ export function MedicalRecordForm({
       <div>
         <button
           type="submit"
-          className="rounded bg-brand-600 text-white text-lg py-1 px-4 hover:bg-brand-700"
+          className="rounded bg-brand-600 text-white text-lg py-3 px-4 hover:bg-brand-700 w-full"
         >
-          Đăng ký
+          Gửi đề nghị trợ giúp y khoa
         </button>
       </div>
     </form>

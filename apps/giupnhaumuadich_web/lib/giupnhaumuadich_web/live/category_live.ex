@@ -32,10 +32,10 @@ defmodule GiupnhaumuadichWeb.CategoryLive do
   def render(assigns) do
     ~F"""
     <div>
-      <div class="container max-w-screen-md">
+      <div class="max-w-screen-lg">
         <h1 class="my-6 heading-1">{String.capitalize(@category.name)}</h1>
-        <div class="rounded bg-yellow-50 my-4 p-4">
-          <p>Nếu tình trạng bệnh của bạn chưa thực sự cấp thiết, mình nên điền thông tin đầy đủ rõ ràng ở form bên dưới để bác sĩ dễ dàng chẩn đoán</p>
+        <div class="rounded bg-yellow-50 border border-yellow-200 my-4 p-3 text-yellow-700">
+          <p>Vui lòng điền thông tin càng chi tiết càng tốt để giúp tiết kiệm thời gian chẩn đoán cho bác sỹ.</p>
         </div>
         <div id="diagnosis-form" phx-hook="DiagnosisForm" />
       </div>
