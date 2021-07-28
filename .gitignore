@@ -35,3 +35,4 @@ npm-debug.log
 _build
 node_modules
 log
+apps/giupnhaumuadich_web/priv/cert/*.pem
