@@ -5,6 +5,10 @@ defmodule Giupnhaumuadich.Accounts.User do
   @derive {Inspect, except: [:password]}
   schema "users" do
     field :email, :string
+    field :provider, Ecto.Enum, values: [:email, :facebook], default: :email
+    field :name, :string
+    field :avatar, :string
+    field :bio, :string
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :role, Ecto.Enum, values: [:standard, :doctor, :moderator, :admin], default: :standard
@@ -32,7 +36,7 @@ defmodule Giupnhaumuadich.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :provider, :password, :name, :avatar])
     |> validate_email()
     |> validate_password(opts)
   end

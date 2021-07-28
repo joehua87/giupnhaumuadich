@@ -5,6 +5,7 @@ specifiers:
   '@codemirror/lang-markdown': ^0.18.4
   '@codemirror/state': ^0.18.7
   '@fontsource/roboto': ^4.5.0
+  '@types/facebook-js-sdk': ^3.3.4
   '@types/node': ^15.12.4
   '@types/phoenix': ^1.5.1
   '@types/phoenix_live_view': ^0.15.0
@@ -51,6 +52,7 @@ dependencies:
   xregexp: 5.0.2
 
 devDependencies:
+  '@types/facebook-js-sdk': 3.3.4
   '@types/node': 15.14.2
   '@types/phoenix': 1.5.2
   '@types/phoenix_live_view': 0.15.1
@@ -589,6 +591,10 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.0
+    dev: true
+
+  /@types/facebook-js-sdk/3.3.4:
+    resolution: {integrity: sha512-bjbV16xLR6ZtwmFMhnn9r4hLSM7LGYxfygzDuKcJYQpUfMp8FO/M/ShdYgQ+x/BVwO6pv6wUtXcnH0gTmDSoTA==}
     dev: true
 
   /@types/node/15.14.2:

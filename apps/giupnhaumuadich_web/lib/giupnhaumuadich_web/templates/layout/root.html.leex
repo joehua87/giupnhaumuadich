@@ -13,9 +13,8 @@
     <script defer type="module" src="<%= assets_path(@conn, "app.js") %>"></script>
   </head>
   <body>
-    <header class="bg-brand-700 fixed bottom-0">
-      <section class="container flex h-12 text-brand-100>
-        <nav class="flex w-full items-center justify-between">
+    <header class="bg-brand-700 bottom-0 fixed">
+      <section class="container flex h-12 text-brand-100> <nav class="flex w-full items-center justify-between">
           <ul class="flex">
             <li class="mr-2 px-2"><%= live_redirect "Trang chủ", to: Routes.page_path(@conn, :index) %></li>
             <li class="mr-2 px-2"><%= live_redirect "Bác sĩ", to: Routes.doctors_path(@conn, :index) %><Icon icon="message-square" /></li>
@@ -38,16 +37,14 @@
         </nav>
       </section>
     </header>
-
-   <div class="p-3">
-    <a href="/tro-giup-y-te" class="bg-blue-100 border border-blue-200 w-full py-3 block my-2 px-4 rounded-md">Trợ giúp y tế</a>
-    <a href="/tro-giup-y-te" class="bg-yellow-100 border border-yellow-200 w-full py-3 block my-2 px-4 rounded-md">Trợ giúp covid</a>
-    <a href="/tro-giup-y-te" class="bg-pink-100 border border-pink-200 w-full py-3 block my-2 px-4 rounded-md">Trợ giúp lương thực</a>
-    <a href="/tro-giup-y-te" class="bg-purple-100 border border-purple-200 w-full py-3 block my-2 px-4 rounded-md">Trợ giúp vật tư y tế</a>
-    <a href="/tro-giup-y-te" class="bg-green-100 border border-green-200 w-full py-3 block my-2 px-4 rounded-md">Tra cứu điện thoại trạm y tế</a>
-    <a href="/tro-giup-y-te" class="bg-red-600 w-full py-3 block my-2 px-4 rounded-md uppercase text-white">Cấp cứu</a>
-  </div>
-
+    <div class="p-3">
+      <a href="/tro-giup-y-te" class="border rounded-md bg-blue-100 border-blue-200 my-2 w-full py-3 px-4 block">Trợ giúp y tế</a>
+      <a href="/tro-giup-y-te" class="border rounded-md bg-yellow-100 border-yellow-200 my-2 w-full py-3 px-4 block">Trợ giúp covid</a>
+      <a href="/tro-giup-y-te" class="border rounded-md bg-pink-100 border-pink-200 my-2 w-full py-3 px-4 block">Trợ giúp lương thực</a>
+      <a href="/tro-giup-y-te" class="border rounded-md bg-purple-100 border-purple-200 my-2 w-full py-3 px-4 block">Trợ giúp vật tư y tế</a>
+      <a href="/tro-giup-y-te" class="border rounded-md bg-green-100 border-green-200 my-2 w-full py-3 px-4 block">Tra cứu điện thoại trạm y tế</a>
+      <a href="/tro-giup-y-te" class="rounded-md bg-red-600 my-2 text-white w-full py-3 px-4 block uppercase">Cấp cứu</a>
+    </div>
     <%= @inner_content %>
     <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
       <div class="bg-gray-500 py-4">
@@ -66,5 +63,6 @@
         </p>
       </div>
     </div>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
   </body>
 </html>

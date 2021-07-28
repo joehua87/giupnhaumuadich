@@ -15,7 +15,30 @@
   <%= submit "Log in", class: "button" %>
 </div>
 <% end %>
-<p class="container max-w-screen-sm">
-  <%= link "Đăng ký", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Quên mật khẩu", to: Routes.user_reset_password_path(@conn, :new) %>
-</p>
+<div class="container max-w-screen-sm">
+  <p>
+    <%= link "Đăng ký", to: Routes.user_registration_path(@conn, :new) %> |
+    <%= link "Quên mật khẩu", to: Routes.user_reset_password_path(@conn, :new) %>
+  </p>
+  <%= form_for @conn, Routes.auth_path(@conn, :facebook), [id: "facebook-login"], fn f -> %>
+  <%= hidden_input f, :access_token %>
+  <button
+    style="background: linear-gradient(#4c69ba, #3b55a0)"
+    class="rounded flex text-white py-1 px-4 items-center"
+    onclick="loginWithFacebook()"
+    type="button"
+  >
+    <svg
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-5 text-accent-500 w-5 icon"
+      >
+      <use href="/assets/sprite-icons.svg#facebook"></use>
+    </svg>
+    <span class="font-bold ml-2">Đăng nhập với Facebook</span>
+  </button>
+<% end %>
+</div>

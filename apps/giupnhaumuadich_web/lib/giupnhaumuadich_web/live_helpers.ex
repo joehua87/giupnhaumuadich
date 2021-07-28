@@ -24,7 +24,7 @@ defmodule GiupnhaumuadichWeb.LiveHelpers do
       Routes.static_path(conn, "/assets/#{key}")
     else
       key = String.replace(key, ~r/\.js$/, ".ts")
-      "http://localhost:3000/assets/#{key}"
+      "https://localhost:3000/assets/#{key}"
     end
   end
 

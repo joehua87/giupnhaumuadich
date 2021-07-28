@@ -8,10 +8,12 @@ defmodule GiupnhaumuadichWeb.Application do
   def start(_type, _args) do
     children = [
       # Start the Telemetry supervisor
+
       GiupnhaumuadichWeb.Telemetry,
       # Start the Endpoint (http/https)
-      GiupnhaumuadichWeb.Endpoint
+      GiupnhaumuadichWeb.Endpoint,
       # Start a worker by calling: GiupnhaumuadichWeb.Worker.start_link(arg)
+      {Finch, name: MyFinch}
       # {GiupnhaumuadichWeb.Worker, arg}
     ]
 

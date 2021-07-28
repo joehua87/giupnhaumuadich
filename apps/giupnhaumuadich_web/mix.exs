@@ -38,6 +38,7 @@ defmodule GiupnhaumuadichWeb.MixProject do
   defp deps do
     [
       {:phx_gen_auth, "~> 0.7", only: [:dev], runtime: false},
+      {:finch, "~> 0.8.0"},
       {:timex, "~> 3.7"},
       {:number, "~> 1.0"},
       {:mime, "~> 1.6"},

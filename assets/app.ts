@@ -23,6 +23,7 @@ import { LiveSocket, ViewHook } from 'phoenix_live_view'
 
 declare global {
   interface Window {
+    loginWithFacebook: () => void
     liveSocket: any
     source_products: { id: string; name: string; other_names: string[] }[]
   }
@@ -75,3 +76,41 @@ liveSocket.connect()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
+
+FB.init({
+  appId: '573366700506831',
+  cookie: true,
+  xfbml: true,
+  version: 'v11.0',
+})
+
+window.loginWithFacebook = () => {
+  FB.login((response) => {
+    console.log(response)
+    const form = document.getElementById('facebook-login') as HTMLFormElement
+    const tokenInput = form.querySelector(
+      '[name=access_token]',
+    ) as HTMLInputElement
+    tokenInput.value = response.authResponse.accessToken
+    form.submit()
+
+    /*
+    const token = document
+      .querySelector('[name="csrf-token"]')
+      ?.getAttribute('content')
+    if (!token) {
+      throw new Error('Cannot get token')
+    }
+    const { json } = await fetch(`/auth/facebook`, {
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        'x-csrf-token': token,
+      },
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify({ accessToken: authResponse.accessToken }),
+    })
+    */
+  })
+}
