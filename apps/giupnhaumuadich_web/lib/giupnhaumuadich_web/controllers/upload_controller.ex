@@ -6,7 +6,7 @@ defmodule GiupnhaumuadichWeb.UploadController do
     mime = MIME.from_path(file)
 
     conn
-    |> put_resp_header("Content-Type", mime)
+    |> put_resp_header("content-type", mime)
     |> send_file(200, file)
   end
 
@@ -34,6 +34,6 @@ defmodule GiupnhaumuadichWeb.UploadController do
   end
 
   defp get_file(id) do
-    Path.join(["/Users/achilles/tmp", id])
+    Path.join([Application.get_env(:giupnhaumuadich, :upload_dir), id])
   end
 end

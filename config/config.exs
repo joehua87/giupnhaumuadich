@@ -11,6 +11,7 @@ use Mix.Config
 
 # Configure Mix tasks and generators
 config :giupnhaumuadich,
+  upload_dir: System.get_env("UPLOAD_DIR", "/Users/achilles/tmp"),
   ecto_repos: [Giupnhaumuadich.Repo]
 
 config :giupnhaumuadich, Giupnhaumuadich.Repo,
