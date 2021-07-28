@@ -9,9 +9,6 @@ defmodule GiupnhaumuadichWeb.PageLive do
   @impl true
   def render(assigns) do
     ~F"""
-    <form class="my-4" phx-change="keyword_changed">
-      <input class="border rounded text-lg w-full px-4" name="keyword" placeholder="Nhập từ khóa để tìm kiếm chuyên khoa..." />
-    </form>
     <div class="my-4">
       {#for %{path: path, image: image_src, label: label, description: description} <- items(@socket)}
         <a href={path} class="bg-white rounded-md flex shadow my-4 w-full py-3 px-3 items-center">

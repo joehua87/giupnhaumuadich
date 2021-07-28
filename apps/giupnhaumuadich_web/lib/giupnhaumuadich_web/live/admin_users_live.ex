@@ -20,7 +20,7 @@ defmodule GiupnhaumuadichWeb.AdminUsersLive do
   @impl true
   def handle_event(
         "set_role",
-        %{"role" => role, "user_id" => user_id} = params,
+        %{"role" => role, "user_id" => user_id},
         socket = %{assigns: %{data: data = %{entities: entities}}}
       ) do
     with {:ok, user} <-
@@ -45,8 +45,9 @@ defmodule GiupnhaumuadichWeb.AdminUsersLive do
         <tr>
           <th style="width: 60px">Index</th>
           <th style="width: 120px">Email</th>
+          <th style="width: 240px">Name</th>
           <th style="width: 300px">Role</th>
-          <th style="width: 300px">Inserted at</th>
+          <th style="width: 120px">Inserted at</th>
         </tr>
       </thead>
       <tbody>
@@ -54,6 +55,7 @@ defmodule GiupnhaumuadichWeb.AdminUsersLive do
           <tr>
             <td class="text-right">{index + 1}</td>
             <td>{entity.email}</td>
+            <td>{entity.name}</td>
             <td><RoleEdit value={entity.role} user_id={entity.id} change="set_role" /></td>
             <td>{Timex.format!(entity.inserted_at, "{relative}", :relative)}</td>
           </tr>

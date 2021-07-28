@@ -9,7 +9,7 @@ defmodule GiupnhaumuadichWeb.Components.BottomNav do
       {#for %{image: image_src, path: path, label: label} <- items(@socket)}
         <LiveRedirect class="flex flex-col items-center justify-center" to={path}>
           <img src={image_src} class="h-6 w-6" />
-          <span class="text-xs block mt-1">{label}</span>
+          <span class="mt-1 text-xs block">{label}</span>
         </LiveRedirect>
       {/for}
     </nav>
@@ -25,17 +25,17 @@ defmodule GiupnhaumuadichWeb.Components.BottomNav do
       },
       %{
         image: Routes.static_path(socket, "/images/nurse.svg"),
-        path: Routes.page_path(socket, :index),
+        path: Routes.doctors_path(socket, :index),
         label: "Bác sĩ"
       },
       %{
         image: Routes.static_path(socket, "/images/agenda.svg"),
-        path: Routes.page_path(socket, :index),
+        path: Routes.posts_path(socket, :index),
         label: "Cẩm nang"
       },
       %{
         image: Routes.static_path(socket, "/images/user.svg"),
-        path: Routes.page_path(socket, :index),
+        path: Routes.user_session_path(socket, :new),
         label: "Tài khoản"
       }
     ]
