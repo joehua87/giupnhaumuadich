@@ -5,9 +5,10 @@ defmodule GiupnhaumuadichWeb.AdminCategoriesLive do
   alias GiupnhaumuadichWeb.Components.{Pagination, Dialog}
 
   @impl true
-  def mount(_params, _session, socket) do
+  def mount(_params, session, socket) do
     socket =
       socket
+      |> assign_defaults(session)
       |> assign(%{
         path: Routes.admin_categories_path(socket, :index)
       })

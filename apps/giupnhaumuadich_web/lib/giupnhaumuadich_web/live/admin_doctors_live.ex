@@ -5,9 +5,10 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
   alias GiupnhaumuadichWeb.Components.{Icon, Pagination}
 
   @impl true
-  def mount(params, _session, socket) do
+  def mount(params, session, socket) do
     socket =
       socket
+      |> assign_defaults(session)
       |> load_data(params)
       |> assign(%{
         query: Map.delete(params, "id"),

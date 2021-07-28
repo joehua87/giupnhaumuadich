@@ -1,4 +1,4 @@
-<%= live_component GiupnhaumuadichWeb.Components.AdminNav %>
+<%= live_component GiupnhaumuadichWeb.Components.AdminNav, current_user: assigns[:current_user] %>
 <main role="main" class="container">
   <p class="alert alert-info" role="alert"
     phx-click="lv:clear-flash"

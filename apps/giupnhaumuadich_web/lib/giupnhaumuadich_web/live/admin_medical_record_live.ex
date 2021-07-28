@@ -4,8 +4,11 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordLive do
   alias Giupnhaumuadich.{Repo, MedicalRecord}
 
   @impl true
-  def mount(params, _session, socket) do
-    {:ok, load_data(socket, params)}
+  def mount(params, session, socket) do
+    {:ok,
+     socket
+     |> assign_defaults(session)
+     |> load_data(params)}
   end
 
   @impl true

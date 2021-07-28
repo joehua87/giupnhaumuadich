@@ -6,9 +6,10 @@ defmodule GiupnhaumuadichWeb.AdminUsersLive do
   alias GiupnhaumuadichWeb.Components.RoleEdit
 
   @impl true
-  def mount(params, _session, socket) do
+  def mount(params, session, socket) do
     socket =
       socket
+      |> assign_defaults(session)
       |> load_data(params)
       |> assign(:query, params)
       |> assign(:path, Routes.admin_medical_records_path(socket, :index))
