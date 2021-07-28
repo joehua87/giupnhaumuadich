@@ -3,7 +3,7 @@ defmodule GiupnhaumuadichWeb.PageLive do
   import Ecto.Query, only: [from: 2]
   alias Surface.Components.LiveRedirect
   alias Giupnhaumuadich.{Repo, Category}
-  alias GiupnhaumuadichWeb.Components.{Icon}
+  # alias GiupnhaumuadichWeb.Components.{Icon}
 
   @impl true
   def mount(params, _session, socket) do
@@ -22,19 +22,46 @@ defmodule GiupnhaumuadichWeb.PageLive do
     <form class="my-4" phx-change="keyword_changed">
       <input class="border rounded text-lg w-full px-4" name="keyword" placeholder="Nhập từ khóa để tìm kiếm chuyên khoa..." />
     </form>
-    <div class="p-3 divide-y divide-gray-200 gap-y-8">
-    <a href="/tro-giup-y-te" class="flex items-center w-full py-2">
-      <Icon icon="message-square" class="w-8 h-8 mr-2" />
+    <div class="p-3">
+    <a href="/tro-giup-y-te" class="flex items-center w-full py-3 bg-white my-3 rounded-md px-3 shadow">
+      <img src="/images/doctor.svg" class="w-10 h-10 mr-2" />
       <div class="">
         <span class="font-medium block">Trợ giúp y tế</span>
         <span class="block text-sm text-gray-600">Tư vấn bệnh, sức khỏe, tâm lý, thuốc</span>
       </div>
     </a>
-    <a href="/tro-giup-y-te" class="flex items-center w-full py-2">Trợ giúp covid</a>
-    <a href="/tro-giup-y-te" class="flex items-center w-full py-2">Trợ giúp lương thực</a>
-    <a href="/tro-giup-y-te" class="flex items-center w-full py-2">Trợ giúp vật tư y tế</a>
-    <a href="/tro-giup-y-te" class="flex items-center w-full py-2">Tra cứu điện thoại trạm y tế</a>
-    <a href="/tro-giup-y-te" class="bg-red-600 w-full py-3 block my-2 px-4 rounded-md uppercase text-white">Cấp cứu</a>
+    <a href="/tro-giup-y-te" class="flex items-center w-full py-3 bg-white my-3 rounded-md px-3 shadow">
+      <img src="/images/safety-suit.svg" class="w-10 h-10 mr-2" />
+      <div class="">
+        <span class="font-medium block">Trợ giúp bệnh nhân Covid</span>
+        <span class="block text-sm text-gray-600">Tư vấn bệnh, sức khỏe, tâm lý, thuốc</span>
+      </div>
+    </a>
+    <a href="/tro-giup-y-te" class="flex items-center w-full py-3 bg-white my-3 rounded-md px-3 shadow">
+      <img src="/images/groceries.svg" class="w-10 h-10 mr-2" />
+      <div class="">
+        <span class="font-medium block">Trợ giúp thực phẩm</span>
+        <span class="block text-sm text-gray-600">Tư vấn bệnh, sức khỏe, tâm lý, thuốc</span>
+      </div>
+    </a>
+    <a href="/tro-giup-y-te" class="flex items-center w-full py-3 bg-white my-3 rounded-md px-3 shadow">
+      <img src="/images/medicine.svg" class="w-10 h-10 mr-2" />
+      <div class="">
+        <span class="font-medium block">Trợ giúp vật tư y tế</span>
+        <span class="block text-sm text-gray-600">Tư vấn bệnh, sức khỏe, tâm lý, thuốc</span>
+      </div>
+    </a>
+    <a href="/tro-giup-y-te" class="flex items-center w-full py-3 bg-white my-3 rounded-md px-3 shadow">
+      <img src="/images/medical.svg" class="w-10 h-10 mr-2" />
+      <div class="">
+        <span class="font-medium block">Tra cứu điện thoại trạm y tế</span>
+        <span class="block text-sm text-gray-600">Tư vấn bệnh, sức khỏe, tâm lý, thuốc</span>
+      </div>
+    </a>
+    <a href="/tro-giup-y-te" class="flex items-center w-full py-2 bg-red-600 text-white uppercase rounded-md justify-center mt-4">
+      <img src="/images/ambulance.svg" class="w-10 h-10 mr-2" />
+      <span class="font-medium block">Cấp cứu</span>
+    </a>
     </div>
     <div class="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
       {#for cat <- @categories}
