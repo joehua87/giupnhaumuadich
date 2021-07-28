@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import WindiCSS from 'vite-plugin-windicss'
+import fs from 'fs'
 import path from 'path'
 // import reactRefresh from '@vitejs/plugin-react-refresh'
 
@@ -20,6 +21,10 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
+    https: {
+      key: fs.readFileSync('apps/giupnhaumuadich_web/priv/cert/test+4-key.pem'),
+      cert: fs.readFileSync('apps/giupnhaumuadich_web/priv/cert/test+4.pem'),
+    },
   },
   resolve: {
     alias: {

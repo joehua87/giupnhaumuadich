@@ -14,6 +14,12 @@ config :giupnhaumuadich, Giupnhaumuadich.Repo,
 # with webpack to recompile .js and .css sources.
 config :giupnhaumuadich_web, GiupnhaumuadichWeb.Endpoint,
   http: [port: 4000],
+  https: [
+    port: 4001,
+    cipher_suite: :strong,
+    certfile: "priv/cert/test+4.pem",
+    keyfile: "priv/cert/test+4-key.pem"
+  ],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
