@@ -45,7 +45,9 @@ defmodule GiupnhaumuadichWeb.Router do
     live "/benh-an/:id", AdminMedicalRecordLive, :show
     live "/users", AdminUsersLive, :index
     live "/categories", AdminCategoriesLive, :index
+    live "/categories/edit/:id", AdminCategoriesLive, :edit
     live "/doctors", AdminDoctorsLive, :index
+    live "/doctors/edit/:id", AdminDoctorsLive, :edit
   end
 
   # Other scopes may use custom stacks.

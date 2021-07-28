@@ -6,7 +6,7 @@ import {
   DeepMap,
   UseFormGetValues,
 } from 'react-hook-form'
-import { Field } from './types'
+import { Field } from '../types/form'
 import { MultiSelect } from './MultiSelect'
 import { FormGroup } from './FormGroup'
 import { Select } from './Select'

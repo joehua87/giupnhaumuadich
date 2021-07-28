@@ -1,5 +1,5 @@
 import React from 'react'
-import { SelectField } from './types'
+import { SelectField } from '../types/form'
 
 export function Select({
   field,

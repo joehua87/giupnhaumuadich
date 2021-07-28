@@ -1,5 +1,5 @@
 import React from 'react'
-import { MultiSelectField } from './types'
+import { MultiSelectField } from '../types/form'
 
 export function MultiSelect({
   field,

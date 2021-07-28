@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react'
-import { BaseField } from './types'
 
 export function FormGroup({
   label,

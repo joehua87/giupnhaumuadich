@@ -22,7 +22,7 @@ defmodule GiupnhaumuadichWeb.UploadController do
   end
 
   defp upload(%Plug.Upload{content_type: content_type, path: path}) do
-    with [ext | _] <- MIME.extensions(content_type) |> IO.inspect(),
+    with [ext | _] <- MIME.extensions(content_type),
          {:ok, content} <- File.read(path),
          hash <- :crypto.hash(:md5, content) |> Base.encode16(case: :lower),
          id <- "#{hash}.#{ext}",

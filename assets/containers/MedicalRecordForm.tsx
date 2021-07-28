@@ -1,13 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { useForm, Controller } from 'react-hook-form'
-import { MyDropzone } from './Dropzone'
 import { ViewHook } from 'phoenix_live_view'
-// import { RegionSelect } from './RegionSelect'
 import DatePicker from 'react-datepicker'
-import { Field } from './types'
-import { FormGroup } from './FormGroup'
-import { FormField } from './FormField'
+import { Field } from '../types/form'
+import { MyDropzone } from '~/components/Dropzone'
+import { FormField } from '~/components/FormField'
+import { FormGroup } from '~/components/FormGroup'
 
 const commonFields: Field[] = [
   {

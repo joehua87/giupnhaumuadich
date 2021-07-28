@@ -20,7 +20,6 @@ import 'phoenix_html'
 import { Socket } from 'phoenix'
 import topbar from 'topbar'
 import { LiveSocket, ViewHook } from 'phoenix_live_view'
-import { renderForm } from './components/MedicalRecordForm'
 
 declare global {
   interface Window {
@@ -37,7 +36,27 @@ let liveSocket = new LiveSocket('/live', Socket, {
   hooks: {
     DiagnosisForm: {
       mounted(this: ViewHook) {
-        renderForm(this)
+        import('~/containers/MedicalRecordForm').then((m) => {
+          m.renderForm(this)
+        })
+      },
+    },
+    DoctorEditForm: {
+      mounted(this: ViewHook) {
+        this.pushEvent('load_entity', {}, ({ entity, categories }) => {
+          import('~/containers/DoctorEditForm').then((m) => {
+            m.renderDoctorEditForm(this, { entity, categories })
+          })
+        })
+      },
+    },
+    CategoryEditForm: {
+      mounted(this: ViewHook) {
+        this.pushEvent('load_entity', {}, ({ entity }) => {
+          import('~/containers/CategoryEditForm').then((m) => {
+            m.renderCategoryEditForm(this, { entity })
+          })
+        })
       },
     },
   },

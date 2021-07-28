@@ -1,18 +1,59 @@
 defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
   use GiupnhaumuadichWeb, :live_view
   import Ecto.Query, only: [from: 2]
-  alias Giupnhaumuadich.{Repo, Doctor}
-  alias GiupnhaumuadichWeb.Components.Pagination
+  alias Giupnhaumuadich.{Repo, Doctor, Category}
+  alias GiupnhaumuadichWeb.Components.{Icon, Pagination}
 
   @impl true
   def mount(params, _session, socket) do
     socket =
       socket
       |> load_data(params)
-      |> assign(:query, params)
-      |> assign(:path, Routes.admin_doctors_path(socket, :index))
+      |> assign(%{
+        query: Map.delete(params, "id"),
+        path: Routes.admin_doctors_path(socket, :index)
+      })
 
     {:ok, socket}
+  end
+
+  @impl true
+  def handle_event("edit", %{"id" => id}, socket = %{assigns: %{query: query}}) do
+    socket = push_patch(socket, to: Routes.admin_doctors_path(socket, :edit, id, query))
+    {:noreply, socket}
+  end
+
+  def handle_event("reset", _, socket = %{assigns: %{query: query}}) do
+    socket = push_patch(socket, to: Routes.admin_doctors_path(socket, :index, query))
+    {:noreply, socket}
+  end
+
+  def handle_event(
+        "load_entity",
+        _,
+        socket = %{assigns: %{selected: selected, categories: categories}}
+      ) do
+    {:reply, ensure_nested_map(%{entity: selected, categories: categories}), socket}
+  end
+
+  def handle_event("save_entity", %{"data" => _data}, socket) do
+    {:reply, %{}, socket}
+  end
+
+  @impl true
+  def handle_params(params, _url, socket) do
+    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
+  end
+
+  defp apply_action(socket, :index, _params) do
+    assign(socket, %{selected: nil})
+  end
+
+  defp apply_action(socket, :edit, %{"id" => id}) do
+    assign(socket, %{
+      selected: get_selected(socket, id),
+      categories: Repo.all(Category)
+    })
   end
 
   @impl true
@@ -28,6 +69,7 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
           <th style="width: 60px">Index</th>
           <th style="width: 240px">Name</th>
           <th style="width: 120px">Phone</th>
+          <th style="width: 120px">Edit</th>
         </tr>
       </thead>
       <tbody>
@@ -36,10 +78,21 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
             <td class="text-right">{index + 1}</td>
             <td>{entity.name}</td>
             <td>{entity.phone}</td>
+            <td><button :on-click="edit" :values={id: entity.id}>Edit</button></td>
           </tr>
         {/for}
       </tbody>
     </table>
+    {#if @selected}
+      <div class="bg-black h-screen bg-opacity-25 w-screen top-0 left-0 fixed overflow-y-scroll" :on-capture-click="reset">
+        <div class="bg-white rounded mx-auto max-w-screen-sm shadow-lg my-32 p-4 relative">
+          <button class="top-2 right-2 absolute" :on-click="reset">
+            <Icon icon="x" class="h-6 text-gray-700 w-6" />
+          </button>
+          <div id={"edit-doctor-#{@selected.id}"} phx-hook="DoctorEditForm" phx-update="ignore" />
+        </div>
+      </div>
+    {/if}
     <div class="my-4">
       <Pagination path={@path} query={@query} paging={@data.paging} />
     </div>
@@ -50,5 +103,9 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
     %{paging: paging} = url_query_to_list_params(params)
     data = Repo.paginate(from(Doctor, order_by: :name), paging)
     assign(socket, %{data: data})
+  end
+
+  defp get_selected(%{assigns: %{data: %{entities: entities}}}, "" <> id) do
+    Enum.find(entities, &(&1.id == id))
   end
 end

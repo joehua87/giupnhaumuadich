@@ -31,6 +31,14 @@ thead th {
   @apply font-medium text-gray-600;
 }
 
+[data-component='tag'] {
+  @apply inline-flex border rounded items-center bg-white hover:bg-gray-50 px-1 cursor-pointer;
+}
+
+[data-component='tag'] [data-element='remove-icon'] {
+  @apply text-gray-500 h-4 w-4 ml-1;
+}
+
 .form-group {
   @apply not-last-of-type:mb-6;
 }

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import WindiCSS from 'vite-plugin-windicss'
+import path from 'path'
 // import reactRefresh from '@vitejs/plugin-react-refresh'
 
 // import { svelte } from '@sveltejs/vite-plugin-svelte'
@@ -19,6 +20,11 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
+  },
+  resolve: {
+    alias: {
+      '~': path.resolve('assets'),
+    },
   },
   build: {
     rollupOptions: {
