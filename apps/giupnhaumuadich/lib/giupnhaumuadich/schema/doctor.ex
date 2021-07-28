@@ -36,7 +36,10 @@ defmodule Giupnhaumuadich.Doctor do
     field :links, {:array, :map}, default: []
     field :meta, :map
     belongs_to :user, Giupnhaumuadich.Accounts.User
-    many_to_many :categories, Giupnhaumuadich.Category, join_through: "doctor_categories"
+
+    many_to_many :categories, Giupnhaumuadich.Category,
+      join_through: "doctor_categories",
+      on_replace: :delete
   end
 
   def changeset(entity, params) do

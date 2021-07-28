@@ -23,11 +23,6 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
     {:noreply, socket}
   end
 
-  def handle_event("reset", _, socket = %{assigns: %{query: query}}) do
-    socket = push_patch(socket, to: Routes.admin_doctors_path(socket, :index, query))
-    {:noreply, socket}
-  end
-
   def handle_event(
         "load_entity",
         _,
@@ -36,8 +31,37 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
     {:reply, ensure_nested_map(%{entity: selected, categories: categories}), socket}
   end
 
-  def handle_event("save_entity", %{"data" => _data}, socket) do
-    {:reply, %{}, socket}
+  def handle_event(
+        "save_entity",
+        %{"data" => %{"id" => id, "categories_id" => categories_id} = data},
+        socket = %{assigns: %{categories: categories}}
+      ) do
+    categories = Enum.map(categories_id, fn id -> Enum.find(categories, &(&1.id == id)) end)
+
+    with {:ok, entity} <-
+           get_selected(socket, id)
+           |> Doctor.changeset(data)
+           |> Ecto.Changeset.put_assoc(:categories, categories)
+           |> Repo.update() do
+      {
+        :reply,
+        ensure_nested_map(%{entity: entity}),
+        socket |> replace_entity(entity) |> reset_page()
+      }
+    end
+  end
+
+  def handle_event("reset", _params, socket) do
+    {:noreply, reset_page(socket)}
+  end
+
+  defp replace_entity(socket = %{assigns: %{data: %{entities: entities} = data}}, entity) do
+    index = Enum.find_index(entities, &(&1.id == entity.id))
+    assign(socket, %{data: %{data | entities: List.replace_at(entities, index, entity)}})
+  end
+
+  defp reset_page(socket = %{assigns: %{query: query}}) do
+    push_patch(socket, to: Routes.admin_doctors_path(socket, :index, query))
   end
 
   @impl true
@@ -66,9 +90,11 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
     <table>
       <thead>
         <tr>
-          <th style="width: 60px">Index</th>
-          <th style="width: 240px">Name</th>
+          <th style="width: 60px">STT</th>
+          <th style="width: 240px">Họ tên</th>
           <th style="width: 120px">Phone</th>
+          <th style="width: 120px">Facebook UID</th>
+          <th style="width: 320px">Chuyên khoa</th>
           <th style="width: 120px">Edit</th>
         </tr>
       </thead>
@@ -78,6 +104,12 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
             <td class="text-right">{index + 1}</td>
             <td>{entity.name}</td>
             <td>{entity.phone}</td>
+            <td>{entity.facebook_uid}</td>
+            <td>
+              {#for cat <- entity.categories}
+                <span class="mr-1 mb-1 tag">{cat.name}</span>
+              {/for}
+            </td>
             <td><button :on-click="edit" :values={id: entity.id}>Edit</button></td>
           </tr>
         {/for}
@@ -101,7 +133,7 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
 
   defp load_data(socket, params) do
     %{paging: paging} = url_query_to_list_params(params)
-    data = Repo.paginate(from(Doctor, order_by: :name), paging)
+    data = Repo.paginate(from(Doctor, preload: :categories, order_by: :name), paging)
     assign(socket, %{data: data})
   end
 

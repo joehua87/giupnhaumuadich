@@ -24,4 +24,5 @@ export interface Doctor {
   phone: string
   position?: string
   schedule_text?: string
+  categories: Category[]
 }
