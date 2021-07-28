@@ -4,12 +4,15 @@ defmodule Giupnhaumuadich.Doctor do
 
   @required_fields [:code, :name, :slug]
   @optional_fields [
+    :facebook_uid,
+    :user_id,
     :phone,
     :other_phones,
     :image,
     :intro,
     :position,
     :organizations,
+    :schedule,
     :schedule_text,
     :field_values,
     :links,
@@ -21,15 +24,18 @@ defmodule Giupnhaumuadich.Doctor do
     field :name, :string
     field :slug, :string
     field :phone, :string
+    field :facebook_uid, :string
     field :other_phones, {:array, :string}, default: []
     field :image, :string
     field :intro, :string
     field :position, :string
     field :organizations, {:array, :string}, default: []
+    field :schedule, {:array, :time}, default: []
     field :schedule_text, :string
     field :field_values, {:array, :map}, default: []
     field :links, {:array, :map}, default: []
     field :meta, :map
+    belongs_to :user, Giupnhaumuadich.Accounts.User
     many_to_many :categories, Giupnhaumuadich.Category, join_through: "doctor_categories"
   end
 
