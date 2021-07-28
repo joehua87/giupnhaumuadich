@@ -2,10 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :giupnhaumuadich, Giupnhaumuadich.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "giupnhaumuadich_dev",
-  hostname: "docker",
+  url: System.get_env("DATABASE_URL", "ecto://postgres:postgres@docker/giupnhaumuadich_dev"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

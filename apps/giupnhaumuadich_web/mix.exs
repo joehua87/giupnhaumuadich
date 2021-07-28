@@ -38,7 +38,6 @@ defmodule GiupnhaumuadichWeb.MixProject do
   defp deps do
     [
       {:phx_gen_auth, "~> 0.7", only: [:dev], runtime: false},
-      {:mongodb_driver, "~> 0.7.4"},
       {:timex, "~> 3.7"},
       {:number, "~> 1.0"},
       {:mime, "~> 1.6"},
