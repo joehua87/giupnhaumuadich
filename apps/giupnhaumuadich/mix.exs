@@ -38,7 +38,8 @@ defmodule Giupnhaumuadich.MixProject do
     [
       {:bcrypt_elixir, "~> 2.0"},
       {:nanoid, "~> 2.0"},
-      {:mongodb_driver, "~> 0.7.4"},
+      {:goth, "~> 1.2.0"},
+      {:google_api_sheets, "~> 0.27.0"},
       {:scrivener_ecto, "~> 2.7"},
       {:slugify, "~> 1.3"},
       {:phoenix_pubsub, "~> 2.0"},

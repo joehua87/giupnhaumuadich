@@ -10,8 +10,7 @@ defmodule Giupnhaumuadich.Application do
       # Start the Ecto repository
       Giupnhaumuadich.Repo,
       # Start the PubSub system
-      {Phoenix.PubSub, name: Giupnhaumuadich.PubSub},
-      {Mongo, name: :mongo, url: "mongodb://docker:27017/giupnhaumuadich", pool_size: 3}
+      {Phoenix.PubSub, name: Giupnhaumuadich.PubSub}
 
       # Start a worker by calling: Giupnhaumuadich.Worker.start_link(arg)
       # {Giupnhaumuadich.Worker, arg}
