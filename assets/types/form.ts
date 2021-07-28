@@ -2,6 +2,7 @@ import { RegisterOptions } from 'react-hook-form'
 export interface BaseField {
   name: string
   label: string
+  helpText?: string
   type: 'text' | 'number' | 'select' | 'multi_select' | 'textarea'
   showIf?: {
     field: string[]

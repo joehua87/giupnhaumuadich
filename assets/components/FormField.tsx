@@ -39,7 +39,11 @@ export function FormField({
   switch (field.type) {
     case 'text':
       return (
-        <FormGroup label={field.label} errorText={errorText}>
+        <FormGroup
+          label={field.label}
+          errorText={errorText}
+          helpText={field.helpText}
+        >
           <input
             className="w-full input"
             {...register(key, field.validations)}
@@ -48,7 +52,11 @@ export function FormField({
       )
     case 'number':
       return (
-        <FormGroup label={field.label} errorText={errorText}>
+        <FormGroup
+          label={field.label}
+          errorText={errorText}
+          helpText={field.helpText}
+        >
           <input
             className="w-full input"
             type="number"
@@ -58,7 +66,11 @@ export function FormField({
       )
     case 'textarea':
       return (
-        <FormGroup label={field.label} errorText={errorText}>
+        <FormGroup
+          label={field.label}
+          errorText={errorText}
+          helpText={field.helpText}
+        >
           <textarea
             className="w-full input"
             {...register(key, field.validations)}
@@ -67,7 +79,11 @@ export function FormField({
       )
     case 'multi_select':
       return (
-        <FormGroup label={field.label} errorText={errorText}>
+        <FormGroup
+          label={field.label}
+          errorText={errorText}
+          helpText={field.helpText}
+        >
           <Controller
             control={control}
             name={key}
@@ -80,7 +96,11 @@ export function FormField({
       )
     case 'select':
       return (
-        <FormGroup label={field.label} errorText={errorText}>
+        <FormGroup
+          label={field.label}
+          errorText={errorText}
+          helpText={field.helpText}
+        >
           <Controller
             control={control}
             name={`${prefix}.${field.name}`}
