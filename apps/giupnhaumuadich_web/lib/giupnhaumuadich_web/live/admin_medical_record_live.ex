@@ -24,9 +24,8 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordLive do
   @impl true
   def render(assigns) do
     ~F"""
-    <h1 class="heading-1">Gửi yêu cầu trợ giúp y tế thành công</h1>
-    <p class="rounded bg-yellow-50 p-2">Bạn vui lòng lưu đường dẫn này để theo dõi phải hỏi từ bác sĩ</p>
-    <div id="medical-record-view" phx-hook="MedicalRecordView" />
+    <h1 class="my-4 heading-1">{@entity.name}</h1>
+    <div id="medical-record-view my-4" phx-hook="MedicalRecordView" />
     """
   end
 

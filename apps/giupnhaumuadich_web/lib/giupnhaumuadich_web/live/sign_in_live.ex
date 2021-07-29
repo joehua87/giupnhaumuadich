@@ -9,31 +9,35 @@ defmodule GiupnhaumuadichWeb.SignInLive do
   def mount(_params, session, socket) do
     {:ok,
      socket
-     |> assign_defaults(session, false)}
+     |> assign_defaults(session, false)
+     |> assign(:show, false)}
   end
 
   @impl true
   def render(assigns) do
     ~F"""
     <div class="mx-auto max-w-screen-sm my-16">
-      <div class="bg-white rounded shadow-sm p-4">
-        <h1 class="heading-1">Đăng nhập</h1>
-        <Form for={:user} action={Routes.user_session_path(@socket, :create)}>
-          <Field name="email">
-            <Label class="label" />
-            <TextInput class="input" />
-          </Field>
-          <Field name="password" class="field">
-            <Label class="label">Mật khẩu</Label>
-            <TextInput class="input" />
-          </Field>
-          <div class="mt-4">
-            <Submit class="border rounded bg-brand-700 text-white py-1 px-4 hover:bg-brand-800">
-              Đăng nhập
-            </Submit>
-          </div>
-        </Form>
-      </div>
+      {#if @show}
+        <div class="bg-white rounded shadow-sm p-4">
+          <h1 class="heading-1">Đăng nhập</h1>
+          <Form for={:user} action={Routes.user_session_path(@socket, :create)}>
+            <Field name="email">
+              <Label class="label" />
+              <TextInput class="input" />
+            </Field>
+            <Field name="password" class="field">
+              <Label class="label">Mật khẩu</Label>
+              <TextInput class="input" />
+            </Field>
+            <div class="mt-4">
+              <Submit class="border rounded bg-brand-700 text-white py-1 px-4 hover:bg-brand-800">
+                Đăng nhập
+              </Submit>
+            </div>
+          </Form>
+        </div>
+      {/if}
+      <h1 class="heading-1">Đăng ký / đăng nhập</h1>
       <Form for={:user} class="mt-4" opts={id: "facebook-login"} action={Routes.auth_path(@socket, :facebook)}>
         <Field name="access_token">
           <HiddenInput />
@@ -54,7 +58,7 @@ defmodule GiupnhaumuadichWeb.SignInLive do
             >
             <use href="/assets/sprite-icons.svg#facebook"></use>
           </svg>
-          <span class="font-bold ml-2">Đăng nhập với Facebook</span>
+          <span class="font-bold ml-2">Đăng ký / đăng nhập với Facebook</span>
         </button>
       </Form>
     </div>

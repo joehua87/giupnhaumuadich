@@ -2,6 +2,7 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
   use GiupnhaumuadichWeb, :live_view
   import Ecto.Query, only: [from: 2]
   alias Giupnhaumuadich.{Repo, Doctor, Category}
+  alias Giupnhaumuadich.Accounts.User
   alias GiupnhaumuadichWeb.Components.{Icon, Pagination}
 
   @impl true
@@ -27,9 +28,9 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
   def handle_event(
         "load_entity",
         _,
-        socket = %{assigns: %{selected: selected, categories: categories}}
+        socket = %{assigns: %{selected: selected, categories: categories, users: users}}
       ) do
-    {:reply, ensure_nested_map(%{entity: selected, categories: categories}), socket}
+    {:reply, ensure_nested_map(%{entity: selected, categories: categories, users: users}), socket}
   end
 
   def handle_event(
@@ -77,7 +78,8 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
   defp apply_action(socket, :edit, %{"id" => id}) do
     assign(socket, %{
       selected: get_selected(socket, id),
-      categories: Repo.all(Category)
+      categories: Repo.all(Category),
+      users: Repo.all(User)
     })
   end
 
@@ -95,6 +97,7 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
           <th style="width: 240px">Họ tên</th>
           <th style="width: 120px">Phone</th>
           <th style="width: 120px">Link Facebook</th>
+          <th style="width: 120px">Tài khoản</th>
           <th style="width: 320px">Chuyên khoa</th>
           <th style="width: 120px">Edit</th>
         </tr>
@@ -106,6 +109,13 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
             <td>{entity.name}</td>
             <td>{entity.phone}</td>
             <td>{entity.facebook_uid}</td>
+            <td>
+            {#case entity.user}
+              {#match %{name: name, email: email}}
+                <span>{name || email}</span>
+              {#match _}
+            {/case}
+            </td>
             <td>
               {#for cat <- entity.categories}
                 <span class="mr-1 mb-1 tag">{cat.name}</span>
@@ -134,7 +144,7 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
 
   defp load_data(socket, params) do
     %{paging: paging} = url_query_to_list_params(params)
-    data = Repo.paginate(from(Doctor, preload: :categories, order_by: :name), paging)
+    data = Repo.paginate(from(Doctor, preload: [:categories, :user], order_by: :name), paging)
     assign(socket, %{data: data})
   end
 

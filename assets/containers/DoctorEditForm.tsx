@@ -1,19 +1,22 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { ViewHook } from 'phoenix_live_view'
-import { Category, Doctor } from '~/types/core'
+import { Category, Doctor, User } from '~/types/core'
 import { useForm, Controller } from 'react-hook-form'
 import { FormGroup } from '~/components/FormGroup'
 import { MultiDataSelect } from '~/components/MultiDataSelect'
+import { DataSelect } from '~/components/DataSelect'
 
 export function DoctorEditForm({
   liveViewHook: live,
   entity,
   categories,
+  users,
 }: {
   liveViewHook: ViewHook
   entity: Doctor
   categories: Category[]
+  users: User[]
 }) {
   const {
     control,
@@ -28,13 +31,14 @@ export function DoctorEditForm({
 
   return (
     <form
-      onSubmit={handleSubmit(({ id, name, categories, facebook_uid }) => {
+      onSubmit={handleSubmit(({ id, name, categories, facebook_uid, user }) => {
         live.pushEvent('save_entity', {
           data: {
             id,
             name,
             facebook_uid,
             categories_id: categories.map((x) => x.id),
+            user_id: user?.id,
           },
         })
       })}
@@ -86,6 +90,28 @@ export function DoctorEditForm({
           </FormGroup>
         )}
       />
+      <Controller
+        control={control}
+        name="user"
+        render={({ field: { onChange, value } }) => (
+          <FormGroup label="Người dùng">
+            <DataSelect
+              items={users}
+              value={value}
+              onChange={onChange}
+              renderItem={(item) => item.name || item.email}
+              filterFn={(item, inputValue) => {
+                if (!inputValue) {
+                  return true
+                }
+                return !!(item?.name + item?.email)
+                  ?.toLowerCase()
+                  .includes(inputValue.toLowerCase())
+              }}
+            />
+          </FormGroup>
+        )}
+      />
       <div>
         <button
           className="rounded bg-brand-500 text-white py-1 px-4 hover:bg-brand-600"
@@ -100,13 +126,18 @@ export function DoctorEditForm({
 
 export function renderDoctorEditForm(
   liveViewHook: ViewHook,
-  { entity, categories }: { entity: Doctor; categories: Category[] },
+  {
+    entity,
+    categories,
+    users,
+  }: { entity: Doctor; categories: Category[]; users: User[] },
 ) {
   render(
     <DoctorEditForm
       liveViewHook={liveViewHook}
       entity={entity}
       categories={categories}
+      users={users}
     />,
     liveViewHook.el,
   )

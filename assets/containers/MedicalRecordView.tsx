@@ -36,7 +36,7 @@ export function MedicalRecordView({
       {Object.keys(entity.assets).map((k) => {
         const images = entity.assets[k]
         return (
-          <div key={k}>
+          <div key={k} className="mt-4 mb-8">
             <h3 className="heading-3">{assetsLabels[k]}</h3>
             <Gallery images={images} />
           </div>

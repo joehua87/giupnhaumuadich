@@ -96,12 +96,16 @@ export function MultiDataSelect<T>({
             placeholder="Add new"
             {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
           />
-          <button {...getToggleButtonProps()} aria-label={'toggle menu'}>
+          <button
+            {...getToggleButtonProps()}
+            aria-label={'toggle menu'}
+            type="button"
+          >
             <Icon icon="chevron-down" className="text-gray-500" />
           </button>
           <ul
             {...getMenuProps()}
-            className="bg-white rounded top-full shadow-sm transform translate-y-2 absolute"
+            className="bg-white rounded top-full shadow-sm transform z-10 translate-y-2 absolute"
           >
             {isOpen &&
               getFilteredItems(items).map((item, index) => (

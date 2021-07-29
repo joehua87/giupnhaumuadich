@@ -9,13 +9,13 @@ export function Gallery({ images: _images }: { images: string[] }) {
 
   return (
     <div>
-      <div className="grid gap-2 grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-2 grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
         {images.map((x, index) => (
           <div key={x}>
             <img
               key={x}
               src={x}
-              className="object-cover object-center"
+              className="border object-cover object-center shadow-sm"
               onClick={() => {
                 setIsOpen(true)
                 setIndex(index)

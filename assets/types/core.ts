@@ -2,6 +2,13 @@ import { Field } from './form'
 
 export type Time = string
 
+export interface User {
+  id: string
+  email: string
+  name?: string
+  avatar?: string
+}
+
 export interface Category {
   id: string
   slug: string
@@ -18,6 +25,7 @@ export interface Doctor {
   name: string
   facebook_uid?: string | null
   user_id?: string | null
+  user?: User
   field_values: any[]
   image?: string
   intro: string

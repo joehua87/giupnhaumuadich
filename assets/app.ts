@@ -55,9 +55,9 @@ let liveSocket = new LiveSocket('/live', Socket, {
     },
     DoctorEditForm: {
       mounted(this: ViewHook) {
-        this.pushEvent('load_entity', {}, ({ entity, categories }) => {
+        this.pushEvent('load_entity', {}, ({ entity, categories, users }) => {
           import('~/containers/DoctorEditForm').then((m) => {
-            m.renderDoctorEditForm(this, { entity, categories })
+            m.renderDoctorEditForm(this, { entity, categories, users })
           })
         })
       },
