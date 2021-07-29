@@ -2,6 +2,7 @@ defmodule GiupnhaumuadichWeb.Router do
   use GiupnhaumuadichWeb, :router
 
   import GiupnhaumuadichWeb.UserAuth
+  alias GiupnhaumuadichWeb.EnsureRolePlug
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -11,6 +12,22 @@ defmodule GiupnhaumuadichWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
+  end
+
+  pipeline :admin do
+    plug EnsureRolePlug, :admin
+  end
+
+  pipeline :moderator do
+    plug EnsureRolePlug, [:admin, :moderator]
+  end
+
+  pipeline :doctor do
+    plug EnsureRolePlug, [:admin, :moderator, :doctor]
+  end
+
+  pipeline :standard do
+    plug EnsureRolePlug, [:admin, :moderator, :doctor, :standard]
   end
 
   pipeline :api do
@@ -41,17 +58,27 @@ defmodule GiupnhaumuadichWeb.Router do
   end
 
   scope "/admin", GiupnhaumuadichWeb do
-    pipe_through :browser
+    pipe_through [:browser, :doctor]
 
     live "/benh-an", AdminMedicalRecordsLive, :index
     live "/benh-an/:id", AdminMedicalRecordLive, :show
-    live "/users", AdminUsersLive, :index
+  end
+
+  scope "/admin", GiupnhaumuadichWeb do
+    pipe_through [:browser, :moderator]
+
     live "/categories", AdminCategoriesLive, :index
     live "/categories/new", AdminCategoriesLive, :new
     live "/categories/edit/:id", AdminCategoriesLive, :edit
     live "/doctors", AdminDoctorsLive, :index
     live "/doctors/new", AdminDoctorsLive, :new
     live "/doctors/edit/:id", AdminDoctorsLive, :edit
+  end
+
+  scope "/admin", GiupnhaumuadichWeb do
+    pipe_through [:browser, :admin]
+
+    live "/users", AdminUsersLive, :index
   end
 
   # Other scopes may use custom stacks.
@@ -81,7 +108,6 @@ defmodule GiupnhaumuadichWeb.Router do
   scope "/", GiupnhaumuadichWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
-    get "/auth/facebook/user-data-deletion", AuthController, :facebook_data_deletion
     post "/auth/facebook", AuthController, :facebook
     live "/dang-nhap", SignInLive, :show
     live "/dang-ky", SignUpLive, :show
@@ -112,5 +138,6 @@ defmodule GiupnhaumuadichWeb.Router do
     get "/users/confirm", UserConfirmationController, :new
     post "/users/confirm", UserConfirmationController, :create
     get "/users/confirm/:token", UserConfirmationController, :confirm
+    get "/auth/facebook/user-data-deletion", AuthController, :facebook_data_deletion
   end
 end
