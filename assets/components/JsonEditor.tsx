@@ -1,25 +1,5 @@
-import { EditorState, Compartment } from '@codemirror/state'
-import { json } from '@codemirror/lang-json'
 import React, { useEffect, useRef } from 'react'
-import { basicSetup, EditorView } from '@codemirror/basic-setup'
-
-let language = new Compartment()
-let tabSize = new Compartment()
-
-export function createEditor(ele: Element, doc = '') {
-  let state = EditorState.create({
-    doc: doc,
-    extensions: [
-      basicSetup,
-      language.of(json()),
-      tabSize.of(EditorState.tabSize.of(8)),
-    ],
-  })
-  return new EditorView({
-    parent: ele,
-    state,
-  })
-}
+import { EditorView } from '@codemirror/basic-setup'
 
 export function JsonEditor({
   value,
@@ -32,14 +12,15 @@ export function JsonEditor({
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!ref.current) {
-      return
-    }
-
-    editorRef.current = createEditor(
-      ref.current,
-      JSON.stringify(value, null, 2),
-    )
+    import('./createEditor').then(({ createEditor }) => {
+      if (!ref.current) {
+        return
+      }
+      editorRef.current = createEditor(
+        ref.current,
+        JSON.stringify(value, null, 2),
+      )
+    })
   }, [])
 
   return (
