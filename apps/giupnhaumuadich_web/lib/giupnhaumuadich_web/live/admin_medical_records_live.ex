@@ -17,6 +17,12 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
   end
 
   @impl true
+  def handle_event("assign_record", params, socket) do
+    IO.inspect(params)
+    {:noreply, socket}
+  end
+
+  @impl true
   def render(assigns) do
     ~F"""
     <h1 class="heading-1">Hồ sơ đang cần tư vấn</h1>
@@ -38,7 +44,7 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
     </LiveRedirect>
     <div class="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
       {#for entity <- @data.entities}
-        <MedicalRecordCard entity={entity} />
+        <MedicalRecordCard entity={entity} assign_record="assign_record" />
       {/for}
     </div>
     """

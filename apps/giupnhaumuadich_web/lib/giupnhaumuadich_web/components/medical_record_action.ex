@@ -1,23 +1,45 @@
 defmodule GiupnhaumuadichWeb.Components.MedicalRecordAction do
   use GiupnhaumuadichWeb, :component
-  alias Surface.Components.LiveRedirect
 
   prop entity, :any
+  prop assign_record, :event, required: true
 
   @impl true
   def render(assigns) do
+    %{label: state_label, class: state_class} = state_view(assigns.entity.state)
+    actions = get_actions(assigns)
+
     ~F"""
     <div>
-      <div>Tình trạng: {@entity.state}</div>
-      {#if @entity.doctor_id}
-        <div>Bác sĩ theo dõi: {@entity.doctor.name}</div>
-      {#else}
-        <button>Nhận tư vấn</button>
-        <LiveRedirect to={Routes.admin_medical_record_path(@socket, :show, @entity.id)}>
-          Xem chi tiết
-        </LiveRedirect>
-      {/if}
+      <div>
+        <button class={"font-medium rounded", state_class}>{state_label}</button>
+      </div>
+      {#for %{label: label, class: class, event: event} <- actions}
+        <button
+          class={"text-white px-2 rounded", class}
+          :on-click={event}
+          :values={id: @entity.id}
+        >
+          {label}
+        </button>
+      {/for}
     </div>
     """
   end
+
+  defp state_view(:pending), do: %{label: "Đang chờ", class: "text-yellow-700"}
+  defp state_view(:in_process), do: %{label: "Đang xử lý", class: "text-blue-700"}
+  defp state_view(:completed), do: %{label: "Hoàn tất", class: "text-green-700"}
+
+  defp get_actions(%{entity: %{state: :pending}, assign_record: assign_record}) do
+    [
+      %{label: "Nhận hồ sơ", class: "bg-green-700", event: assign_record}
+    ]
+  end
+
+  defp get_actions(%{entity: %{state: :in_process}}) do
+    []
+  end
+
+  defp get_actions(%{entity: %{state: :completed}}), do: []
 end

@@ -6,8 +6,6 @@ defmodule GiupnhaumuadichWeb.Components.AdminNav do
   prop current_user, :any
 
   def render(assigns) do
-    IO.inspect(assigns.socket.assigns, label: "XX")
-
     ~F"""
     {#if @current_user}
       <nav class="container flex bg-gray-700 h-8 text-brand-100 items-center">

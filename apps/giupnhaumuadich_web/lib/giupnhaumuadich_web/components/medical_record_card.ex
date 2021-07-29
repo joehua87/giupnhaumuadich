@@ -4,6 +4,7 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordCard do
   alias GiupnhaumuadichWeb.Components.MedicalRecordAction
 
   prop entity, :any
+  prop assign_record, :event, required: true
 
   @impl true
   def render(assigns) do
@@ -22,7 +23,13 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordCard do
           <p class="font-medium text-gray-700">{@entity.phone}</p>
           <a>Facebook: {@entity.facebook_uid}</a>
         </div>
-        <MedicalRecordAction entity={@entity} />
+        <MedicalRecordAction entity={@entity} assign_record={@assign_record} />
+        {#if @entity.doctor_id}
+          <div>Bác sĩ theo dõi: {@entity.doctor.name}</div>
+        {/if}
+        <LiveRedirect to={Routes.admin_medical_record_path(@socket, :show, @entity.id)}>
+          Xem chi tiết
+        </LiveRedirect>
       </div>
     </div>
     """
