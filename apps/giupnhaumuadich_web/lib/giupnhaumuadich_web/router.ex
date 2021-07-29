@@ -49,6 +49,7 @@ defmodule GiupnhaumuadichWeb.Router do
     live "/categories", AdminCategoriesLive, :index
     live "/categories/edit/:id", AdminCategoriesLive, :edit
     live "/doctors", AdminDoctorsLive, :index
+    live "/doctors/new", AdminDoctorsLive, :new
     live "/doctors/edit/:id", AdminDoctorsLive, :edit
   end
 

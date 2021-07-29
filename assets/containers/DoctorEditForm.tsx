@@ -31,19 +31,24 @@ export function DoctorEditForm({
 
   return (
     <form
-      onSubmit={handleSubmit(({ id, name, categories, facebook_uid, user }) => {
-        live.pushEvent('save_entity', {
-          data: {
-            id,
-            name,
-            facebook_uid,
-            categories_id: categories.map((x) => x.id),
-            user_id: user?.id,
-          },
-        })
-      })}
+      onSubmit={handleSubmit(
+        ({ id, name, phone, categories, facebook_uid, user }) => {
+          live.pushEvent('save_entity', {
+            data: {
+              id,
+              name,
+              phone,
+              facebook_uid,
+              categories_id: categories.map((x) => x.id),
+              user_id: user?.id,
+            },
+          })
+        },
+      )}
     >
-      <div className="mb-4 heading-2">{entity.name}</div>
+      <div className="mb-4 heading-2">
+        {entity.id ? entity.name : 'Thêm bác sĩ mới'}
+      </div>
       <FormGroup label="Tên" errorText={errors.name?.message}>
         <input
           className="w-full input"
@@ -55,6 +60,21 @@ export function DoctorEditForm({
             minLength: {
               value: 4,
               message: 'Tên chuyên ngành phải hơn 4 ký tự',
+            },
+          })}
+        />
+      </FormGroup>
+      <FormGroup label="Phone" errorText={errors.name?.message}>
+        <input
+          className="w-full input"
+          {...register('phone', {
+            required: {
+              message: 'Bạn vui lòng điền trường này',
+              value: true,
+            },
+            pattern: {
+              message: 'Điện thoại không hợp lệ',
+              value: /^0\d{8,10}$/,
             },
           })}
         />

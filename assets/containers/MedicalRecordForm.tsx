@@ -62,7 +62,7 @@ export function MedicalRecordForm({
               },
               pattern: {
                 message: 'Điện thoại không hợp lệ',
-                value: /0\d{8,10}/,
+                value: /^0\d{8,10}$/,
               },
             })}
           />
