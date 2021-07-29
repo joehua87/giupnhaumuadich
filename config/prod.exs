@@ -11,11 +11,9 @@ use Mix.Config
 # before starting your production server.
 config :giupnhaumuadich_web, GiupnhaumuadichWeb.Endpoint,
   check_origin: [
-    "//*.yum.com.vn",
+    "//*.giupnhaumuadich.org",
     "//localhost",
-    "//*.test",
-    "//192.168.0.135",
-    "//1.54.43.106"
+    "//*.test"
   ],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
