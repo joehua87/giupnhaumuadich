@@ -4,6 +4,10 @@
 import 'virtual:windi.css'
 import './app.css'
 import 'react-datepicker/dist/react-datepicker.css'
+import { renderMedicalRecordView } from '~/containers/MedicalRecordView'
+import { renderMedicalRecordForm } from '~/containers/MedicalRecordForm'
+import { renderCategoryEditForm } from '~/containers/CategoryEditForm'
+import { renderDoctorEditForm } from '~/containers/DoctorEditForm'
 
 // import { renderApp } from './entry'
 
@@ -38,36 +42,28 @@ let liveSocket = new LiveSocket('/live', Socket, {
     MedicalRecordForm: {
       mounted(this: ViewHook) {
         this.pushEvent('load_entity', {}, ({ entity }) => {
-          import('~/containers/MedicalRecordForm').then((m) => {
-            m.renderForm(this, { category: entity })
-          })
+          renderMedicalRecordForm(this, { category: entity })
         })
       },
     },
     MedicalRecordView: {
       mounted(this: ViewHook) {
         this.pushEvent('load_entity', {}, ({ entity }) => {
-          import('~/containers/MedicalRecordView').then((m) => {
-            m.renderForm(this, { entity })
-          })
+          renderMedicalRecordView(this, { entity })
         })
       },
     },
     DoctorEditForm: {
       mounted(this: ViewHook) {
         this.pushEvent('load_entity', {}, ({ entity, categories, users }) => {
-          import('~/containers/DoctorEditForm').then((m) => {
-            m.renderDoctorEditForm(this, { entity, categories, users })
-          })
+          renderDoctorEditForm(this, { entity, categories, users })
         })
       },
     },
     CategoryEditForm: {
       mounted(this: ViewHook) {
         this.pushEvent('load_entity', {}, ({ entity }) => {
-          import('~/containers/CategoryEditForm').then((m) => {
-            m.renderCategoryEditForm(this, { entity })
-          })
+          renderCategoryEditForm(this, { entity })
         })
       },
     },

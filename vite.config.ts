@@ -37,6 +37,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '~': path.resolve('assets'),
+      react: 'preact/compat',
+      'react-dom': 'preact/compat',
+      'react-dom/server': 'preact-render-to-string',
     },
   },
   build: {

@@ -3,7 +3,6 @@ import { render } from 'react-dom'
 import { useForm, Controller } from 'react-hook-form'
 import { ViewHook } from 'phoenix_live_view'
 import DatePicker from 'react-datepicker'
-import { Field } from '../types/form'
 import { MyDropzone } from '~/components/Dropzone'
 import { FormField } from '~/components/FormField'
 import { FormGroup } from '~/components/FormGroup'
@@ -178,7 +177,7 @@ export function MedicalRecordForm({
   )
 }
 
-export function renderForm(
+export function renderMedicalRecordForm(
   liveViewHook: ViewHook,
   { category }: { category: Category },
 ) {

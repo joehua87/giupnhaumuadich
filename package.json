@@ -28,6 +28,8 @@
     "phoenix": "^1.5.9",
     "phoenix_html": "^2.14.3",
     "phoenix_live_view": "^0.15.7",
+    "preact": "^10.5.14",
+    "preact-render-to-string": "^5.1.19",
     "react": "^17.0.2",
     "react-datepicker": "^4.1.1",
     "react-dom": "^17.0.2",

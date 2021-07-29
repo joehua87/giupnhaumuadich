@@ -20,6 +20,8 @@ specifiers:
   phoenix: ^1.5.9
   phoenix_html: ^2.14.3
   phoenix_live_view: ^0.15.7
+  preact: ^10.5.14
+  preact-render-to-string: ^5.1.19
   react: ^17.0.2
   react-datepicker: ^4.1.1
   react-dom: ^17.0.2
@@ -46,6 +48,8 @@ dependencies:
   phoenix: 1.5.9
   phoenix_html: 2.14.3
   phoenix_live_view: 0.15.7
+  preact: 10.5.14
+  preact-render-to-string: 5.1.19_preact@10.5.14
   react: 17.0.2
   react-datepicker: 4.1.1_react-dom@17.0.2+react@17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -1108,6 +1112,23 @@ packages:
       nanoid: 3.1.23
       source-map-js: 0.6.2
     dev: true
+
+  /preact-render-to-string/5.1.19_preact@10.5.14:
+    resolution: {integrity: sha512-bj8sn/oytIKO6RtOGSS/1+5CrQyRSC99eLUnEVbqUa6MzJX5dYh7wu9bmT0d6lm/Vea21k9KhCQwvr2sYN3rrQ==}
+    peerDependencies:
+      preact: '>=10'
+    dependencies:
+      preact: 10.5.14
+      pretty-format: 3.8.0
+    dev: false
+
+  /preact/10.5.14:
+    resolution: {integrity: sha512-KojoltCrshZ099ksUZ2OQKfbH66uquFoxHSbnwKbTJHeQNvx42EmC7wQVWNuDt6vC5s3nudRHFtKbpY4ijKlaQ==}
+    dev: false
+
+  /pretty-format/3.8.0:
+    resolution: {integrity: sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U=}
+    dev: false
 
   /prop-types/15.7.2:
     resolution: {integrity: sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==}
