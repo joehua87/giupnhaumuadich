@@ -6,7 +6,9 @@ defmodule GiupnhaumuadichWeb.LiveHelpers do
 
   def assign_defaults(socket, session, required \\ true)
 
-  def assign_defaults(socket, _session, false), do: socket
+  def assign_defaults(socket, session, false) do
+    assign_new(socket, :current_user, fn -> find_current_user(session) end)
+  end
 
   def assign_defaults(socket, session, true) do
     socket = assign_new(socket, :current_user, fn -> find_current_user(session) end)
@@ -75,4 +77,42 @@ defmodule GiupnhaumuadichWeb.LiveHelpers do
   end
 
   def ensure_nested_map(v), do: v
+
+  def nav_items(socket, current_user) do
+    [
+      %{
+        image: Routes.static_path(socket, "/images/home.svg"),
+        path: Routes.page_path(socket, :index),
+        label: "Trang chủ"
+      },
+      %{
+        image: Routes.static_path(socket, "/images/nurse.svg"),
+        path: Routes.medical_consultation_path(socket, :show),
+        label: "Tư vấn y tế"
+      },
+      %{
+        image: Routes.static_path(socket, "/images/nurse.svg"),
+        path: Routes.doctors_path(socket, :index),
+        label: "Bác sĩ"
+      },
+      %{
+        image: Routes.static_path(socket, "/images/agenda.svg"),
+        path: Routes.posts_path(socket, :index),
+        label: "Cẩm nang"
+      },
+      if current_user do
+        %{
+          image: Routes.static_path(socket, "/images/user.svg"),
+          path: Routes.profile_path(socket, :show),
+          label: "Tài khoản"
+        }
+      else
+        %{
+          image: Routes.static_path(socket, "/images/user.svg"),
+          path: Routes.sign_in_path(socket, :show),
+          label: "Đăng nhập"
+        }
+      end
+    ]
+  end
 end

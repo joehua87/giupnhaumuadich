@@ -1,3 +1,4 @@
+<%= live_component GiupnhaumuadichWeb.Components.DesktopNav, current_user: assigns[:current_user] %>
 <%= live_component GiupnhaumuadichWeb.Components.AdminNav, current_user: assigns[:current_user] %>
 <main role="main" class="container">
   <p class="alert alert-info" role="alert"
@@ -10,4 +11,4 @@
   </p>
   <%= @inner_content %>
 </main>
-<%= live_component GiupnhaumuadichWeb.Components.BottomNav %>
+<%= live_component GiupnhaumuadichWeb.Components.BottomNav, current_user: assigns[:current_user] %>

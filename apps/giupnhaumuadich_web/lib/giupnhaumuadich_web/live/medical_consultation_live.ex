@@ -1,9 +1,8 @@
 defmodule GiupnhaumuadichWeb.MedicalConsultationLive do
   use GiupnhaumuadichWeb, :live_view
   import Ecto.Query, only: [from: 2]
-  alias Surface.Components.LiveRedirect
   alias Giupnhaumuadich.{Repo, Category}
-  alias GiupnhaumuadichWeb.Components.{Icon}
+  alias GiupnhaumuadichWeb.Components.{Icon, CategoryCard}
 
   @impl true
   def mount(params, session, socket) do
@@ -29,19 +28,9 @@ defmodule GiupnhaumuadichWeb.MedicalConsultationLive do
       </div>
     </form>
     <h3 class="font-medium my-2 text-sm text-gray-500">Danh sách chuyên khoa</h3>
-    <div class="divide-y divide-gray-300 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+    <div class="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
       {#for cat <- @categories}
-        <LiveRedirect class="flex w-full py-1.5 items-center justify-between" to={Routes.category_path(@socket, :show, cat.slug)}>
-        <div>
-          <div class="heading-3">
-            {String.capitalize(cat.name)}
-          </div>
-          <div>
-            <span class="text-sm text-gray-500">{cat.doctor_count} bác sĩ</span>
-          </div>
-          </div>
-          <Icon icon="chevron-right" />
-        </LiveRedirect>
+        <CategoryCard entity={cat} />
       {/for}
     </div>
     """

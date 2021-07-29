@@ -27,3 +27,4 @@ npm-debug.log
 .elixir_ls
 node_modules
 log
+*.tmp

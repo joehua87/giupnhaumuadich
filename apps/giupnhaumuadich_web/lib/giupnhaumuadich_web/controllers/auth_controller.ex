@@ -4,6 +4,14 @@ defmodule GiupnhaumuadichWeb.AuthController do
   alias GiupnhaumuadichWeb.UserAuth
 
   def facebook(conn, %{"access_token" => access_token}) do
+    login_facebook(conn, access_token)
+  end
+
+  def facebook(conn, %{"user" => %{"access_token" => access_token}}) do
+    login_facebook(conn, access_token)
+  end
+
+  def login_facebook(conn, access_token) do
     querystring = URI.encode_query(%{"access_token" => access_token})
     url = "https://graph.facebook.com/v11.0/me?#{querystring}"
     headers = [{"user-agent", "giupnhaumuadich.org"}]

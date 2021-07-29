@@ -79,6 +79,7 @@ defmodule GiupnhaumuadichWeb.Router do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
     post "/auth/facebook", AuthController, :facebook
+    live "/sign-in", SignInLive, :show
 
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
@@ -93,6 +94,7 @@ defmodule GiupnhaumuadichWeb.Router do
   scope "/", GiupnhaumuadichWeb do
     pipe_through [:browser, :require_authenticated_user]
 
+    live "/profile", ProfileLive, :show
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
