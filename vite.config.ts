@@ -7,6 +7,8 @@ import path from 'path'
 // import { svelte } from '@sveltejs/vite-plugin-svelte'
 // import preprocess from 'svelte-preprocess'
 
+const isProd = process.env.NODE_ENV === 'production'
+
 export default defineConfig({
   // plugins: [svelte({ preprocess: preprocess() })],
   // rollupdedupe: ['svelte']
@@ -15,16 +17,22 @@ export default defineConfig({
     // reactRefresh(),
     // svelte({ preprocess: preprocess() as any }),
   ],
-  base: process.env.NODE_ENV === 'production' ? '/assets/' : undefined,
+  base: isProd ? '/assets/' : undefined,
   optimizeDeps: {
     include: ['phoenix', 'phoenix_html', 'phoenix_live_view'],
   },
   server: {
     host: '0.0.0.0',
-    https: {
-      key: fs.readFileSync('apps/giupnhaumuadich_web/priv/cert/test+4-key.pem'),
-      cert: fs.readFileSync('apps/giupnhaumuadich_web/priv/cert/test+4.pem'),
-    },
+    https: isProd
+      ? {}
+      : {
+          key: fs.readFileSync(
+            'apps/giupnhaumuadich_web/priv/cert/test+4-key.pem',
+          ),
+          cert: fs.readFileSync(
+            'apps/giupnhaumuadich_web/priv/cert/test+4.pem',
+          ),
+        },
   },
   resolve: {
     alias: {
