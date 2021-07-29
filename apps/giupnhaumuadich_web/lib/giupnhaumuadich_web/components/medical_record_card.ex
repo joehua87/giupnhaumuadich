@@ -18,25 +18,27 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordCard do
         </LiveRedirect>
         <div class="text-sm text-gray-800">
           <div>{@entity.region["address"]}</div>
-          <div class="grid grid-cols-3">
-            <div>Giới tính</div>
-            <div class="col-span-2">{@entity.common_field_values["sex"]}</div>
-          </div>
-          <div class="grid grid-cols-3">
-            <div>Chiều cao (cm)</div>
-            <div class="col-span-2">{@entity.common_field_values["height"]} cm</div>
-          </div>
-          <div class="grid grid-cols-3">
-          <div>Cân nặng (kg)</div>
-          <div class="col-span-2">{@entity.common_field_values["weight"]} kg</div>
-          </div>
-          <div class="grid grid-cols-3">
-          <div>Ngày sinh</div>
-          <div class="col-span-2">{@entity.birthday}</div>
+
+          <div className="grid divide-y divide-dotted divide-gray-400">
+            <div class="grid grid-cols-3 gap-x-4 py-1.5">
+              <div >Giới tính</div>
+              <div class="col-span-2">{@entity.common_field_values["sex"]}</div>
+            </div>
+            <div class="grid grid-cols-3 gap-x-4 py-1.5">
+              <div>Chiều cao (cm)</div>
+              <div class="col-span-2">{@entity.common_field_values["height"]} cm</div>
+            </div>
+            <div class="grid grid-cols-3 gap-x-4 py-1.5">
+              <div>Cân nặng (kg)</div>
+              <div class="col-span-2">{@entity.common_field_values["weight"]} kg</div>
+            </div>
+            <div class="grid grid-cols-3 gap-x-4 py-1.5">
+              <div>Ngày sinh</div>
+              <div class="col-span-2">{@entity.birthday}</div>
+            </div>
           </div>
           <div>{trieu_chung}</div>
           <p class="font-medium text-gray-700">{@entity.phone}</p>
-
         </div>
         <MedicalRecordAction entity={@entity} assign_record={@assign_record} />
         {#if @entity.doctor_id}
