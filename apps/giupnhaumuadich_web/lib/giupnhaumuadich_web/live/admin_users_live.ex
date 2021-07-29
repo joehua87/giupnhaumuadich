@@ -40,7 +40,7 @@ defmodule GiupnhaumuadichWeb.AdminUsersLive do
   def render(assigns) do
     ~F"""
     <h1 class="heading-1">Quản lý người dùng</h1>
-    <table>
+    <table class="text-sm">
       <thead>
         <tr>
           <th style="width: 60px">Index</th>

@@ -14,7 +14,7 @@ export default defineConfig({
     safelist: 'a h1 h2 h3 p img table',
   },
   shortcuts: {
-    'heading-1': 'text-gray-700 font-bold text-2xl mb-4',
+    'heading-1': 'text-gray-700 font-semibold text-2xl mb-4',
     'heading-2': 'text-gray-700 font-bold text-xl mb-2',
     'heading-3': 'text-gray-700 font-bold text-lg mb-1',
     money: 'font-semibold text-brand-700',

@@ -13,21 +13,29 @@ export function MedicalRecordView({
   entity: MedicalRecord
 }) {
   return (
-    <div>
-      <div className="border my-4 p-2">
-        <h3 className="mb-2 heading-3">Thông tin cơ bản</h3>
-        <div>Họ tên: {entity.name}</div>
-        <div>Số điện thoại: {entity.phone}</div>
+    <div className="mt-4">
+      <div className="bg-white border rounded-md mb-4 p-3">
+        <h3 className="mb-4 heading-3">Thông tin liên lạc</h3>
+        <div className="grid divide-y divide-dotted divide-gray-400">
+          <div className="grid grid-cols-3 gap-x-4 py-1.5">
+            <label className="font-medium text-gray-600">Họ tên</label>
+            <div className="col-span-2">{entity.name}</div>
+          </div>
+          <div className="grid grid-cols-3 gap-x-4 py-1.5">
+            <label className="font-medium text-gray-600">Số điện thoại</label>
+            <div className="col-span-2">{entity.phone}</div>
+          </div>
+        </div>
       </div>
-      <div className="border my-4 p-2">
-        <h3 className="mb-2 heading-3">Thông tin bệnh chung</h3>
+      <div className="bg-white border rounded-md mb-4 p-3">
+        <h3 className="mb-4 heading-3">Thông tin bệnh chung</h3>
         <FieldValues
           fieldValues={entity.common_field_values}
           fields={commonFields}
         />
       </div>
-      <div className="border my-4 p-2">
-        <h3 className="mb-2 heading-3">Thông tin chuyên khoa</h3>
+      <div className="bg-white border rounded-md mb-4 p-3">
+        <h3 className="mb-4 heading-3">Thông tin chuyên khoa</h3>
         <FieldValues
           fieldValues={entity.specialize_field_values}
           fields={entity.category.medical_record_fields}
