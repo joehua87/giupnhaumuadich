@@ -23,8 +23,8 @@ defmodule GiupnhaumuadichWeb.UserRegistrationController do
         |> put_flash(:info, "User created successfully.")
         |> UserAuth.log_in_user(user)
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+      {:error, %Ecto.Changeset{} = _changeset} ->
+        Phoenix.LiveView.Helpers.live_render(conn, GiupnhaumuadichWeb.SignUpLive)
     end
   end
 end

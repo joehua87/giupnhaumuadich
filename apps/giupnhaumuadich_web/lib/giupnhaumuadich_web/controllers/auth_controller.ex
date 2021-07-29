@@ -11,6 +11,10 @@ defmodule GiupnhaumuadichWeb.AuthController do
     login_facebook(conn, access_token)
   end
 
+  def facebook_data_deletion(conn, _params) do
+    json(conn, %{ok: 1})
+  end
+
   def login_facebook(conn, access_token) do
     querystring = URI.encode_query(%{"access_token" => access_token})
     url = "https://graph.facebook.com/v11.0/me?#{querystring}"

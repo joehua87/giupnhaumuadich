@@ -37,6 +37,7 @@ defmodule GiupnhaumuadichWeb.Router do
     live "/tim-kiem", SearchLive, :index
     live "/chu-de/:slug", TopicLive, :show
     live "/benh-an/:id", PublicMedicalRecordLive, :show
+    live "/chinh-sach-bao-mat", PrivacyPolicyLive, :show
   end
 
   scope "/admin", GiupnhaumuadichWeb do
@@ -78,8 +79,10 @@ defmodule GiupnhaumuadichWeb.Router do
   scope "/", GiupnhaumuadichWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
+    get "/auth/facebook/user-data-deletion", AuthController, :facebook_data_deletion
     post "/auth/facebook", AuthController, :facebook
-    live "/sign-in", SignInLive, :show
+    live "/dang-nhap", SignInLive, :show
+    live "/dang-ky", SignUpLive, :show
 
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
