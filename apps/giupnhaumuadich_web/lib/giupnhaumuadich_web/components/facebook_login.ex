@@ -31,6 +31,7 @@ defmodule GiupnhaumuadichWeb.Components.FacebookLogin do
         <span class="font-bold ml-2">{@label}</span>
       </button>
     </Form>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
     """
   end
 end

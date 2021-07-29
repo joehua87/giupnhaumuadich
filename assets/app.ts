@@ -84,14 +84,14 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
-FB.init({
-  appId: '573366700506831',
-  cookie: true,
-  xfbml: true,
-  version: 'v11.0',
-})
-
 window.loginWithFacebook = () => {
+  FB.init({
+    appId: '573366700506831',
+    cookie: true,
+    xfbml: true,
+    version: 'v11.0',
+  })
+
   FB.login((response) => {
     console.log(response)
     const form = document.getElementById('facebook-login') as HTMLFormElement
