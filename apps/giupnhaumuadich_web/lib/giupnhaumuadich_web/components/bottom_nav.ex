@@ -5,7 +5,7 @@ defmodule GiupnhaumuadichWeb.Components.BottomNav do
 
   def render(assigns) do
     ~F"""
-    <nav class="bg-white h-16 w-full grid right-0 bottom-0 left-0 grid-cols-4 lg:hidden fixed">
+    <nav class="bg-white h-16 w-full grid right-0 bottom-0 left-0 grid-cols-5 lg:hidden fixed">
       {#for %{image: image_src, path: path, label: label} <- items(@socket)}
         <LiveRedirect class="flex flex-col items-center justify-center" to={path}>
           <img src={image_src} class="h-6 w-6" />
@@ -22,6 +22,11 @@ defmodule GiupnhaumuadichWeb.Components.BottomNav do
         image: Routes.static_path(socket, "/images/home.svg"),
         path: Routes.page_path(socket, :index),
         label: "Trang chủ"
+      },
+      %{
+        image: Routes.static_path(socket, "/images/nurse.svg"),
+        path: Routes.medical_consultation_path(socket, :show),
+        label: "Tư vấn y tế"
       },
       %{
         image: Routes.static_path(socket, "/images/nurse.svg"),

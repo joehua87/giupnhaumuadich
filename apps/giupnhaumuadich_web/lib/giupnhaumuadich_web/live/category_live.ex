@@ -5,8 +5,11 @@ defmodule GiupnhaumuadichWeb.CategoryLive do
   alias Giupnhaumuadich.{Repo, Category, Doctor, DoctorCategory, MedicalRecord}
 
   @impl true
-  def mount(params, _session, socket) do
-    {:ok, load_data(socket, params)}
+  def mount(params, session, socket) do
+    {:ok,
+     socket
+     |> assign_defaults(session, false)
+     |> load_data(params)}
   end
 
   @impl true

@@ -2,8 +2,10 @@ defmodule GiupnhaumuadichWeb.NeedsLive do
   use GiupnhaumuadichWeb, :live_view
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, socket}
+  def mount(_params, session, socket) do
+    {:ok,
+     socket
+     |> assign_defaults(session, false)}
   end
 
   @impl true

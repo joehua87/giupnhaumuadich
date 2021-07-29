@@ -6,8 +6,11 @@ defmodule GiupnhaumuadichWeb.MedicalConsultationLive do
   alias GiupnhaumuadichWeb.Components.{Icon}
 
   @impl true
-  def mount(params, _session, socket) do
-    {:ok, load_data(socket, params)}
+  def mount(params, session, socket) do
+    {:ok,
+     socket
+     |> assign_defaults(session, false)
+     |> load_data(params)}
   end
 
   @impl true
@@ -20,15 +23,15 @@ defmodule GiupnhaumuadichWeb.MedicalConsultationLive do
   def render(assigns) do
     ~F"""
     <form class="my-4" phx-change="keyword_changed"">
-    <div class="flex items-center border rounded-md overflow-hidden">
-      <Icon icon="search" class="w-6 h-6 mx-2" />
-      <input class="text-base w-full px-3 py-2 focus:outline-none focus:border-blue-200 focus:bg-blue-50" name="keyword" placeholder="Tìm kiếm chuyên khoa…" />
+    <div class="border rounded-md flex items-center overflow-hidden">
+      <Icon icon="search" class="h-6 mx-2 w-6" />
+      <input class="text-base w-full py-2 px-3 focus:outline-none focus:border-blue-200 focus:bg-blue-50" name="keyword" placeholder="Tìm kiếm chuyên khoa…" />
       </div>
     </form>
-    <h3 class="font-medium text-gray-500 text-sm my-2">Danh sách chuyên khoa</h3>
-    <div class="grid divide-y divide-gray-300 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+    <h3 class="font-medium my-2 text-sm text-gray-500">Danh sách chuyên khoa</h3>
+    <div class="divide-y divide-gray-300 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
       {#for cat <- @categories}
-        <LiveRedirect class="flex items-center justify-between w-full py-1.5" to={Routes.category_path(@socket, :show, cat.slug)}>
+        <LiveRedirect class="flex w-full py-1.5 items-center justify-between" to={Routes.category_path(@socket, :show, cat.slug)}>
         <div>
           <div class="heading-3">
             {String.capitalize(cat.name)}

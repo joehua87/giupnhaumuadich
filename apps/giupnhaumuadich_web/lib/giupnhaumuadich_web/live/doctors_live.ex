@@ -5,9 +5,10 @@ defmodule GiupnhaumuadichWeb.DoctorsLive do
   alias Giupnhaumuadich.{Repo, Doctor}
 
   @impl true
-  def mount(params, _session, socket) do
+  def mount(params, session, socket) do
     socket =
       socket
+      |> assign_defaults(session, false)
       |> load_data(params)
       |> assign(:query, params)
       |> assign(:path, Routes.doctors_path(socket, :index))

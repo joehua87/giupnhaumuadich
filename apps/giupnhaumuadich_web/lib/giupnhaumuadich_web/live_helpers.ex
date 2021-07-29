@@ -4,7 +4,11 @@ defmodule GiupnhaumuadichWeb.LiveHelpers do
   alias Giupnhaumuadich.Accounts
   alias Giupnhaumuadich.Accounts.User
 
-  def assign_defaults(socket, session) do
+  def assign_defaults(socket, session, required \\ true)
+
+  def assign_defaults(socket, _session, false), do: socket
+
+  def assign_defaults(socket, session, true) do
     socket = assign_new(socket, :current_user, fn -> find_current_user(session) end)
 
     case socket.assigns.current_user do
