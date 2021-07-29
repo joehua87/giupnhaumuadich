@@ -29,3 +29,16 @@ export interface Doctor {
   schedule_text?: string
   categories: Category[]
 }
+export interface MedicalRecord {
+  id: string
+  name: string
+  phone: string
+  facebook_uid?: string
+  common_field_values: Record<string, any>[]
+  specialize_field_values: Record<string, any>[]
+  assets: Record<string, string[]>
+  category: Category
+  dotor: Doctor
+  state: string
+  token: string
+}

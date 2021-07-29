@@ -12,20 +12,21 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordLive do
   end
 
   @impl true
+
+  def handle_event(
+        "load_entity",
+        _,
+        socket = %{assigns: %{entity: entity}}
+      ) do
+    {:reply, ensure_nested_map(%{entity: entity}), socket}
+  end
+
+  @impl true
   def render(assigns) do
     ~F"""
     <h1 class="heading-1">Gửi yêu cầu trợ giúp y tế thành công</h1>
     <p class="rounded bg-yellow-50 p-2">Bạn vui lòng lưu đường dẫn này để theo dõi phải hỏi từ bác sĩ</p>
-    <div class="grid grid-cols-3">
-      <div>Họ tên:</div>
-      <div class="col-span-2">{@entity.name}</div>
-    </div>
-    <div>Số điện thoại: {@entity.phone}</div>
-    <div>Ngày sinh: {@entity.birthday}</div>
-    <div>Chuyên khoa: {@entity.category.name}</div>
-    <div>Bác sĩ: {@entity.doctor_id && @entity.doctor.name}</div>
-    <div>Tình trạng: {@entity.state}</div>
-    <div class="bg-yellow-50">Thông tin bệnh án: Work in progress</div>
+    <div id="medical-record-view" phx-hook="MedicalRecordView" />
     """
   end
 

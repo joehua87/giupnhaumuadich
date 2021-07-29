@@ -44,6 +44,15 @@ let liveSocket = new LiveSocket('/live', Socket, {
         })
       },
     },
+    MedicalRecordView: {
+      mounted(this: ViewHook) {
+        this.pushEvent('load_entity', {}, ({ entity }) => {
+          import('~/containers/MedicalRecordView').then((m) => {
+            m.renderForm(this, { entity })
+          })
+        })
+      },
+    },
     DoctorEditForm: {
       mounted(this: ViewHook) {
         this.pushEvent('load_entity', {}, ({ entity, categories }) => {
