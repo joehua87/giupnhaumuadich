@@ -115,3 +115,10 @@ export const commonFields: Field[] = [
     },
   },
 ]
+
+export const assetsLabels = {
+  current_symptoms: 'Hình ảnh triệu chứng nếu có',
+  currentSymptoms: 'Hình ảnh triệu chứng nếu có',
+  examination: 'Hình ảnh các kết quả xét nghiệm gần nhất',
+  prescription: 'Hình ảnh toa thuốc (hoặc bao thuốc)',
+}

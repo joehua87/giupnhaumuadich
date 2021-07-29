@@ -1,9 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { ViewHook } from 'phoenix_live_view'
-import { commonFields } from '~/data/medical'
+import { assetsLabels, commonFields } from '~/data/medical'
 import { MedicalRecord } from '~/types/core'
 import { FieldValues } from '~/components/FieldValuesView'
+import { Gallery } from '~/components/Gallery'
 
 export function MedicalRecordView({
   entity,
@@ -32,6 +33,15 @@ export function MedicalRecordView({
           fields={entity.category.medical_record_fields}
         />
       </div>
+      {Object.keys(entity.assets).map((k) => {
+        const images = entity.assets[k]
+        return (
+          <div key={k}>
+            <h3 className="heading-3">{assetsLabels[k]}</h3>
+            <Gallery images={images} />
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -7,7 +7,7 @@ import { Field } from '../types/form'
 import { MyDropzone } from '~/components/Dropzone'
 import { FormField } from '~/components/FormField'
 import { FormGroup } from '~/components/FormGroup'
-import { commonFields } from '~/data/medical'
+import { assetsLabels, commonFields } from '~/data/medical'
 import { Category } from '~/types/core'
 
 export function MedicalRecordForm({
@@ -142,7 +142,7 @@ export function MedicalRecordForm({
           control={control}
           name="assets.prescription"
           render={({ field: { onChange, value } }) => (
-            <FormGroup label="Hình ảnh đơn thuốc">
+            <FormGroup label={assetsLabels.prescription}>
               <MyDropzone value={value || []} onChange={onChange} />
             </FormGroup>
           )}
@@ -151,16 +151,16 @@ export function MedicalRecordForm({
           control={control}
           name="assets.examination"
           render={({ field: { onChange, value } }) => (
-            <FormGroup label="Hình ảnh các kết quả xét nghiệm gần nhất">
+            <FormGroup label={assetsLabels.examination}>
               <MyDropzone value={value || []} onChange={onChange} />
             </FormGroup>
           )}
         />
         <Controller
           control={control}
-          name="assets.currentSymptoms"
+          name="assets.current_symptoms"
           render={({ field: { onChange, value } }) => (
-            <FormGroup label="Hình ảnh triệu chứng nếu có">
+            <FormGroup label={assetsLabels.current_symptoms}>
               <MyDropzone value={value || []} onChange={onChange} />
             </FormGroup>
           )}

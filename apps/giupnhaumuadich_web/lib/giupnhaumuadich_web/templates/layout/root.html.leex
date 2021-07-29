@@ -11,6 +11,9 @@
       <link rel="stylesheet" phx-track-static href="<%= Routes.static_path(@conn, "/assets/app.css") %>" />
     <%end %>
     <script defer type="module" src="<%= assets_path(@conn, "app.js") %>"></script>
+    <script>
+      var global = window // For react-image-gallery
+    </script>
   </head>
   <body>
     <header class="bg-brand-700 bottom-0 fixed">
