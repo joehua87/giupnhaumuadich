@@ -28,11 +28,12 @@ export function DoctorEditForm({
 
   return (
     <form
-      onSubmit={handleSubmit(({ id, name, categories }) => {
+      onSubmit={handleSubmit(({ id, name, categories, facebook_uid }) => {
         live.pushEvent('save_entity', {
           data: {
             id,
             name,
+            facebook_uid,
             categories_id: categories.map((x) => x.id),
           },
         })
@@ -54,14 +55,14 @@ export function DoctorEditForm({
           })}
         />
       </FormGroup>
-      <FormGroup label="Facebook UID" errorText={errors.facebook_uid?.message}>
+      <FormGroup label="Link Facebook" errorText={errors.facebook_uid?.message}>
         <input
           className="w-full input"
           {...register('facebook_uid', {
-            pattern: {
-              value: /\d+/,
-              message: 'Facebook id không hợp lệ',
-            },
+            // pattern: {
+            //   value: /\d+/,
+            //   message: 'Facebook id không hợp lệ',
+            // },
           })}
         />
       </FormGroup>

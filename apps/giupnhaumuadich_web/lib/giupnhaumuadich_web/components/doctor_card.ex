@@ -11,7 +11,7 @@ defmodule GiupnhaumuadichWeb.Components.DoctorCard do
     <div class="bg-white border rounded shadow-sm block">
       <div class="flex p-4">
         <div class="flex-none">
-          <div class="rounded-full bg-gray-400 h-32 w-32" />
+          <div class="rounded-full bg-gray-400 h-20 w-20" />
           <div class="border-t flex border-gray-100 mt-2 pt-2 text-gray-700">
             <a><Icon icon="facebook" /></a>
             <a class="ml-2"><Icon icon="message-square" /></a>

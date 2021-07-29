@@ -3,7 +3,7 @@ defmodule GiupnhaumuadichWeb.MedicalConsultationLive do
   import Ecto.Query, only: [from: 2]
   alias Surface.Components.LiveRedirect
   alias Giupnhaumuadich.{Repo, Category}
-  # alias GiupnhaumuadichWeb.Components.{Icon}
+  alias GiupnhaumuadichWeb.Components.{Icon}
 
   @impl true
   def mount(params, _session, socket) do
@@ -19,22 +19,26 @@ defmodule GiupnhaumuadichWeb.MedicalConsultationLive do
   @impl true
   def render(assigns) do
     ~F"""
-    <form class="my-4" phx-change="keyword_changed">
-      <input class="border rounded-md text-lg w-full py-2 px-3 focus:outline-none focus:border-blue-200 focus:bg-blue-50" name="keyword" placeholder="Tìm kiếm chuyên khoa…" />
+    <form class="my-4" phx-change="keyword_changed"">
+    <div class="flex items-center border rounded-md overflow-hidden">
+      <Icon icon="search" class="w-6 h-6 mx-2" />
+      <input class="text-base w-full px-3 py-2 focus:outline-none focus:border-blue-200 focus:bg-blue-50" name="keyword" placeholder="Tìm kiếm chuyên khoa…" />
+      </div>
     </form>
-    <div class="divide-y divide-gray-300 grid gap-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+    <h3 class="font-medium text-gray-500 text-sm my-2">Danh sách chuyên khoa</h3>
+    <div class="grid divide-y divide-gray-300 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
       {#for cat <- @categories}
-        <div class="pt-2">
-          <LiveRedirect
-            class="heading-3"
-            to={Routes.category_path(@socket, :show, cat.slug)}
-          >
+        <LiveRedirect class="flex items-center justify-between w-full py-1.5" to={Routes.category_path(@socket, :show, cat.slug)}>
+        <div>
+          <div class="heading-3">
             {String.capitalize(cat.name)}
-          </LiveRedirect>
-          <p>
+          </div>
+          <div>
             <span class="text-sm text-gray-500">{cat.doctor_count} bác sĩ</span>
-          </p>
-        </div>
+          </div>
+          </div>
+          <Icon icon="chevron-right" />
+        </LiveRedirect>
       {/for}
     </div>
     """

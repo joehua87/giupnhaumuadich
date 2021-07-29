@@ -94,7 +94,7 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
           <th style="width: 60px">STT</th>
           <th style="width: 240px">Họ tên</th>
           <th style="width: 120px">Phone</th>
-          <th style="width: 120px">Facebook UID</th>
+          <th style="width: 120px">Link Facebook</th>
           <th style="width: 320px">Chuyên khoa</th>
           <th style="width: 120px">Edit</th>
         </tr>
