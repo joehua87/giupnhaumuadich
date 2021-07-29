@@ -13,7 +13,7 @@ defmodule GiupnhaumuadichWeb.PageLive do
     ~F"""
     <div class="my-4">
       {#for %{path: path, image: image_src, label: label, description: description} <- items(@socket)}
-        <a href={path} class="bg-white rounded-md flex shadow my-4 w-full py-3 px-3 items-center">
+        <a href={path} class="bg-white rounded-md flex shadow my-3 w-full py-3 px-3 items-center">
           <img src={image_src} class="h-10 mr-2 w-10" />
           <div class="">
             <span class="font-medium block">{label}</span>
@@ -40,7 +40,7 @@ defmodule GiupnhaumuadichWeb.PageLive do
         description: "Tư vấn bệnh, sức khỏe, tâm lý, thuốc"
       },
       %{
-        image: Routes.static_path(socket, "/images/safety-suit.svg"),
+        image: Routes.static_path(socket, "/images/virus.svg"),
         path: Routes.category_path(socket, :show, "covid"),
         label: "Trợ giúp bệnh nhân Covid",
         description: "Cách điều trị, theo dõi tại nhà…"

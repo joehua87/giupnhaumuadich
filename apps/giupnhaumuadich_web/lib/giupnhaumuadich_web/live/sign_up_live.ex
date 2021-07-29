@@ -15,9 +15,9 @@ defmodule GiupnhaumuadichWeb.SignUpLive do
   @impl true
   def render(assigns) do
     ~F"""
-    <div class="mx-auto max-w-screen-sm my-16">
+    <div class="mx-auto max-w-screen-sm my-4">
       <h1 class="my-4 heading-1">Đăng ký</h1>
-      <div class="bg-white rounded shadow-sm p-4">
+      <div class="bg-white rounded shadow-sm p-4 shadow">
         <Form for={:user} method="post" action={Routes.user_registration_path(@socket, :create)}>
           <Field class="form-group" name="email">
             <Label class="label" />
@@ -32,15 +32,17 @@ defmodule GiupnhaumuadichWeb.SignUpLive do
             <PasswordInput class="input" />
           </Field>
           <div class="mt-4">
-            <Submit class="border rounded bg-brand-700 text-white py-1 px-4 hover:bg-brand-800">
+          <Submit class="border rounded bg-brand-700 text-white py-2 px-4 hover:bg-brand-800 w-full font-medium">
               Đăng ký
             </Submit>
           </div>
-          <div class="mt-4">
-            <LiveRedirect class="text-brand-900" to={Routes.sign_in_path(@socket, :show)}>Đăng nhập</LiveRedirect>
+          <div class="mt-4 flex items-center justify-between">
+          <div class="text-gray-600">Đã có tài khoản?</div>
+          <LiveRedirect class="text-brand-900 underline font-medium" to={Routes.sign_in_path(@socket, :show)}>Đăng nhập</LiveRedirect>
           </div>
         </Form>
       </div>
+      <div class="text-center mt-4 block">hoặc</div>
       <FacebookLogin label="Đăng ký với Facebook" />
     </div>
     """

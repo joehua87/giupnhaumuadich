@@ -7,14 +7,14 @@ defmodule GiupnhaumuadichWeb.Components.FacebookLogin do
 
   def render(assigns) do
     ~F"""
-    <p class="bg-yellow-100 p-2">Hiện này, tính năng đăng nhập với Facebook đang chờ Facebook xét duyệt</p>
+
     <Form for={:user} class="mt-4" opts={id: "facebook-login"} action={Routes.auth_path(@socket, :facebook)}>
       <Field name="access_token">
         <HiddenInput />
       </Field>
       <button
-        style="background: linear-gradient(#4c69ba, #3b55a0)"
-        class="rounded flex text-white py-1 px-4 items-center"
+        style="background: #4c69ba"
+        class="rounded flex text-white py-2 px-4 items-center w-full items-center justify-center"
         onclick="loginWithFacebook()"
         type="button"
       >
@@ -31,6 +31,7 @@ defmodule GiupnhaumuadichWeb.Components.FacebookLogin do
         <span class="font-bold ml-2">{@label}</span>
       </button>
     </Form>
+    <p class="text-sm mt-2 text-gray-700 text-center px-6">Tính năng đăng nhập với Facebook đang chờ Facebook xét duyệt</p>
     <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
     """
   end
