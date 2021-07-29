@@ -9,7 +9,7 @@ defmodule GiupnhaumuadichWeb.SignInLive do
     {:ok,
      socket
      |> assign_defaults(session, false)
-     |> assign(:show, false)}
+     |> assign(:show, true)}
   end
 
   @impl true

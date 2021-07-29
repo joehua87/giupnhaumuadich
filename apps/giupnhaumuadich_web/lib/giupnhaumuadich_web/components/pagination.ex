@@ -1,6 +1,7 @@
 defmodule GiupnhaumuadichWeb.Components.Pagination do
   use Surface.Component
   alias Surface.Components.LiveRedirect
+  alias GiupnhaumuadichWeb.Components.Icon
   prop path, :string, required: true
   prop query, :any, required: true
   prop paging, :any, required: true
@@ -11,17 +12,17 @@ defmodule GiupnhaumuadichWeb.Components.Pagination do
 
     ~F"""
     <div class="flex justify-between">
-      <div>
+      <div class="flex items-center">
         {#if prev}
-          <LiveRedirect to={prev}>Prev</LiveRedirect>
+          <LiveRedirect to={prev}><Icon icon="chevron-left" class="w-8 h-8 bg-white rounded shadow" /></LiveRedirect>
         {#else}
-          <span class="cursor-not-allowed text-gray-400">Prev</span>
+          <span class="cursor-not-allowed text-gray-400"><Icon icon="chevron-left" class="w-8 h-8 rounded" /></span>
         {/if}
-        <span class="mx-2">Page {@paging.page_number} / {@paging.total_pages} ({@paging.total_entities})</span>
+        <span class="mx-2"><span class="font-bold">{@paging.page_number}</span> / {@paging.total_pages} ({@paging.total_entities})</span>
         {#if next}
-          <LiveRedirect to={next}>Next</LiveRedirect>
+          <LiveRedirect to={next}><Icon icon="chevron-right" class="w-8 h-8 bg-white rounded shadow" /></LiveRedirect>
         {#else}
-          <span class="cursor-not-allowed text-gray-400">Next</span>
+          <span class="cursor-not-allowed text-gray-400"><Icon icon="chevron-right" class="w-8 h-8 rounded" /></span>
         {/if}
       </div>
       <div>
@@ -36,12 +37,6 @@ defmodule GiupnhaumuadichWeb.Components.Pagination do
           to={make_limit_url(path, query, 60)}
         >
           60
-        </LiveRedirect>
-        <LiveRedirect
-          class={"border p-1", "bg-brand-700 text-white": query["limit"] == "120"}
-          to={make_limit_url(path, query, 120)}
-        >
-          120
         </LiveRedirect>
       </div>
     </div>

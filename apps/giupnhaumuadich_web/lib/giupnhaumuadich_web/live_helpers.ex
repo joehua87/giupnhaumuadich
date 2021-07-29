@@ -86,7 +86,7 @@ defmodule GiupnhaumuadichWeb.LiveHelpers do
         label: "Trang chủ"
       },
       %{
-        image: Routes.static_path(socket, "/images/nurse.svg"),
+        image: Routes.static_path(socket, "/images/online.svg"),
         path: Routes.medical_consultation_path(socket, :show),
         label: "Tư vấn y tế"
       },

@@ -21,22 +21,21 @@ defmodule GiupnhaumuadichWeb.Components.DoctorCard do
           <LiveRedirect to={Routes.doctor_path(@socket, :show, @entity.slug)}>
             <h3 class="heading-3">{@entity.name}</h3>
           </LiveRedirect>
-          <p class="font-medium text-gray-700">{@entity.phone}</p>
+          <p class="font-medium text-gray-700 flex items-center"><Icon icon="phone" class="w-4 h-4 mr-1" />{@entity.phone}</p>
           <div class="mt-1">
             {#for cat <- @entity.categories}
-              <span class="tag">{cat.name}</span>
+              <span class="italic">{cat.name}</span>
             {/for}
           </div>
           <div class="text-sm text-gray-600">
             <TextMessage value={@entity.schedule_text}></TextMessage>
           </div>
-
         </div>
       </div>
-      <div class="divide-x border-t flex font-medium py-2 text-gray-700">
+      <div class="divide-x border-t flex font-medium py-2 text-gray-700 text-sm">
         <div class="flex flex-1 items-center justify-center">Zalo</div>
         <div class="flex flex-1 items-center justify-center">Messenger</div>
-        <div class="flex flex-1 items-center justify-center">Call</div>
+        <div class="flex flex-1 items-center justify-center">Gọi</div>
       </div>
     </div>
     """
