@@ -25,18 +25,18 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
   @impl true
   def render(assigns) do
     ~F"""
-    <h1 class="heading-1 my-6">Hồ sơ đang cần chờ vấn</h1>
+    <h1 class="heading-1 my-6">Hồ sơ đang chờ tư vấn</h1>
     <LiveRedirect class={
-        "border-b text-gray-700 px-2 py-2 inline-block",
-        "border-b-2 border-blue-700 text-blue-700 bg-blue-100": @query["show"] in [nil, ""]
+        "border-b text-gray-700 px-3 py-2 inline-block",
+        "border-b-2 border-blue-700 text-blue-700 bg-blue-100 rounded rounded-b-none": @query["show"] in [nil, ""]
       }
       to={Routes.admin_medical_records_path(@socket, :index)}
     >
       Xem tất cả
     </LiveRedirect>
     <LiveRedirect class={
-        "border-b text-gray-700 px-2 py-2 inline-block",
-        "border-b-2 border-blue-700 text-blue-700 bg-blue-100": @query["show"] == "my-specialize"
+        "border-b text-gray-700 px-3 py-2 inline-block",
+        "border-b-2 border-blue-700 text-blue-700 bg-blue-100 rounded rounded-b-none": @query["show"] == "my-specialize"
       }
       to={Routes.admin_medical_records_path(@socket, :index, show: "my-specialize")}
     >
