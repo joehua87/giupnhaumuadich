@@ -53,7 +53,7 @@ config :giupnhaumuadich_web, GiupnhaumuadichWeb.Endpoint,
 config :giupnhaumuadich_web, GiupnhaumuadichWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      # ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/giupnhaumuadich/.*(ex)$",
       ~r"lib/giupnhaumuadich_web/(components|live|views)/.*(ex)$",
