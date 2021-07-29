@@ -1,3 +1,5 @@
+import { Field } from './form'
+
 export type Time = string
 
 export interface Category {
@@ -6,6 +8,7 @@ export interface Category {
   name: string
   tags: string[]
   symptoms: string[]
+  medical_record_fields: Field[]
 }
 
 export interface Doctor {

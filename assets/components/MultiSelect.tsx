@@ -15,7 +15,7 @@ export function MultiSelect({
       {field.options
         // .sort((a, b) => a.localeCompare(b))
         .map((x) => (
-          <label key={x}>
+          <label key={x} className="flex items-baseline">
             <input
               type="checkbox"
               checked={value.includes(x)}

@@ -20,9 +20,9 @@ defmodule GiupnhaumuadichWeb.MedicalConsultationLive do
   def render(assigns) do
     ~F"""
     <form class="my-4" phx-change="keyword_changed">
-      <input class="border rounded-md text-lg w-full px-3 py-2 focus:outline-none focus:border-blue-200 focus:bg-blue-50" name="keyword" placeholder="Tìm kiếm chuyên khoa…" />
+      <input class="border rounded-md text-lg w-full py-2 px-3 focus:outline-none focus:border-blue-200 focus:bg-blue-50" name="keyword" placeholder="Tìm kiếm chuyên khoa…" />
     </form>
-    <div class="grid gap-3 divide-y divide-gray-300 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+    <div class="divide-y divide-gray-300 grid gap-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
       {#for cat <- @categories}
         <div class="pt-2">
           <LiveRedirect

@@ -5,6 +5,7 @@ import { TagsInput } from '~/components/TagsInput'
 import { Category } from '~/types/core'
 import { useForm, Controller } from 'react-hook-form'
 import { FormGroup } from '~/components/FormGroup'
+import { JsonEditor } from '~/components/JsonEditor'
 
 export function CategoryEditForm({
   liveViewHook: live,
@@ -63,6 +64,15 @@ export function CategoryEditForm({
         render={({ field: { onChange, value } }) => (
           <FormGroup label="Symptoms">
             <TagsInput value={value} onChange={onChange} />
+          </FormGroup>
+        )}
+      />
+      <Controller
+        control={control}
+        name="medical_record_fields"
+        render={({ field: { onChange, value } }) => (
+          <FormGroup label="Medical record fields">
+            <JsonEditor value={value} onSubmit={onChange} />
           </FormGroup>
         )}
       />

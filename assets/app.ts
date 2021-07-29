@@ -35,10 +35,12 @@ let csrfToken = document
 let liveSocket = new LiveSocket('/live', Socket, {
   params: { _csrf_token: csrfToken },
   hooks: {
-    DiagnosisForm: {
+    MedicalRecordForm: {
       mounted(this: ViewHook) {
-        import('~/containers/MedicalRecordForm').then((m) => {
-          m.renderForm(this)
+        this.pushEvent('load_entity', {}, ({ entity }) => {
+          import('~/containers/MedicalRecordForm').then((m) => {
+            m.renderForm(this, { category: entity })
+          })
         })
       },
     },

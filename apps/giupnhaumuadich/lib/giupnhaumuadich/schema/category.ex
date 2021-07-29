@@ -3,7 +3,7 @@ defmodule Giupnhaumuadich.Category do
   import Ecto.Changeset
 
   @required_fields [:name, :slug]
-  @optional_fields [:description, :tags, :symptoms, :image, :doctor_count]
+  @optional_fields [:description, :tags, :symptoms, :medical_record_fields, :image, :doctor_count]
 
   schema "categories" do
     field :name, :string
@@ -11,6 +11,7 @@ defmodule Giupnhaumuadich.Category do
     field :description, :string
     field :tags, {:array, :string}, default: []
     field :symptoms, {:array, :string}, default: []
+    field :medical_record_fields, {:array, :map}, default: []
     field :image, :string
     field :doctor_count, :integer
   end

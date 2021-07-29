@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@codemirror/basic-setup": "^0.18.2",
+    "@codemirror/lang-json": "^0.18.0",
     "@codemirror/lang-markdown": "^0.18.4",
     "@codemirror/state": "^0.18.7",
     "@fontsource/roboto": "^4.5.0",

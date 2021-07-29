@@ -10,6 +10,15 @@ defmodule GiupnhaumuadichWeb.CategoryLive do
   end
 
   @impl true
+
+  def handle_event(
+        "load_entity",
+        _,
+        socket = %{assigns: %{category: category}}
+      ) do
+    {:reply, ensure_nested_map(%{entity: category}), socket}
+  end
+
   def handle_event("submit", params, socket = %{assigns: %{category: %{id: category_id}}}) do
     # {:ok, load_data(socket, params)}
     with {:ok, %{id: id, token: token}} <-
@@ -37,7 +46,7 @@ defmodule GiupnhaumuadichWeb.CategoryLive do
         <div class="border rounded bg-yellow-50 border-yellow-200 my-4 p-3 text-yellow-700">
           <p>Vui lòng điền thông tin càng chi tiết càng tốt để giúp tiết kiệm thời gian chẩn đoán cho bác sỹ.</p>
         </div>
-        <div id="diagnosis-form" phx-hook="DiagnosisForm" />
+        <div id="diagnosis-form" phx-hook="MedicalRecordForm" />
       </div>
       <div class="border-b my-8" />
       <div>

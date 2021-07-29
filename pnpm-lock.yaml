@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@codemirror/basic-setup': ^0.18.2
+  '@codemirror/lang-json': ^0.18.0
   '@codemirror/lang-markdown': ^0.18.4
   '@codemirror/state': ^0.18.7
   '@fontsource/roboto': ^4.5.0
@@ -33,6 +34,7 @@ specifiers:
 
 dependencies:
   '@codemirror/basic-setup': 0.18.2
+  '@codemirror/lang-json': 0.18.0
   '@codemirror/lang-markdown': 0.18.4
   '@codemirror/state': 0.18.7
   '@fontsource/roboto': 4.5.0
@@ -454,6 +456,14 @@ packages:
       '@codemirror/state': 0.18.7
       '@codemirror/view': 0.18.19
       lezer-javascript: 0.13.4
+    dev: false
+
+  /@codemirror/lang-json/0.18.0:
+    resolution: {integrity: sha512-1xquwhwrocZEcURmccMYk1C3g2oj6mu0np1LT1dDGmvd/VVXC0Z9j6NV78zCSyJCIdL2y+RRBh4LVWW6J6NU6Q==}
+    dependencies:
+      '@codemirror/highlight': 0.18.4
+      '@codemirror/language': 0.18.2
+      lezer-json: 0.13.2
     dev: false
 
   /@codemirror/lang-markdown/0.18.4:
@@ -987,6 +997,12 @@ packages:
 
   /lezer-javascript/0.13.4:
     resolution: {integrity: sha512-nhRbeSwPZo2xVYq6TWyUhi/r9j0CFSUpkuA5J992Az2AYZFw2HnGVjixfP43DKufL+npJwSy0qcCcAHFQ2bFOQ==}
+    dependencies:
+      lezer: 0.13.5
+    dev: false
+
+  /lezer-json/0.13.2:
+    resolution: {integrity: sha512-J5wc5KpYywJroIQ7A2+bW0e3JiSo2wX4uDgbCni2Ww5bvTD/iV2tvZ0cHBLmMU/p5qS4dD5bAPysSqHMS9eNAg==}
     dependencies:
       lezer: 0.13.5
     dev: false
