@@ -46,10 +46,10 @@ export function MultiDataSelect<T>({
     items: getFilteredItems(items),
     onStateChange: ({ inputValue, type, selectedItem }) => {
       switch (type) {
-        case useCombobox.stateChangeTypes.InputChange:
-          setInputValue(inputValue || '')
-
-          break
+        // case useCombobox.stateChangeTypes.InputChange:
+        //   console.log({ inputValue })
+        //   setInputValue(inputValue || '')
+        //   break
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
         case useCombobox.stateChangeTypes.InputBlur:
@@ -58,7 +58,6 @@ export function MultiDataSelect<T>({
             addSelectedItem(selectedItem)
             selectItem(null)
           }
-
           break
         default:
           break
@@ -94,7 +93,14 @@ export function MultiDataSelect<T>({
           <input
             className="focus:outline-none"
             placeholder="Add new"
-            {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
+            {...getInputProps(
+              getDropdownProps({
+                preventKeyAction: isOpen,
+                onChange: (e) => {
+                  setInputValue(e.target.value)
+                },
+              }),
+            )}
           />
           <button
             {...getToggleButtonProps()}
