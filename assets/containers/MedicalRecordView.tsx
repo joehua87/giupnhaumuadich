@@ -16,6 +16,7 @@ export function MedicalRecordView({
     <div className="mt-4">
       <div className="bg-white border rounded-md mb-4 p-3">
         <h3 className="mb-4 heading-3">Thông tin liên lạc</h3>
+        <div>{entity.category.name}</div>
         <div className="divide-y divide-dotted divide-gray-400 grid">
           <div className="grid py-1.5 gap-x-4 grid-cols-3">
             <label className="font-medium text-gray-600">Họ tên</label>

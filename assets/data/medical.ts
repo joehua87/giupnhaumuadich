@@ -68,6 +68,11 @@ export const commonFields: Field[] = [
     },
   },
   {
+    name: 'trieu_chung',
+    label: 'Triệu chứng',
+    type: 'textarea',
+  },
+  {
     name: 'huyet_ap_trung_binh',
     label: 'Huyết áp trung bình (vd: 110/70)',
     type: 'text',

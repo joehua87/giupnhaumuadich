@@ -126,7 +126,7 @@ export function MedicalRecordForm({
             <FormField
               key={field.name}
               field={field}
-              prefix="specialized_field_values"
+              prefix="specialize_field_values"
               errors={errors}
               control={control}
               register={register}

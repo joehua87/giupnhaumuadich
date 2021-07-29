@@ -8,6 +8,8 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordCard do
 
   @impl true
   def render(assigns) do
+    trieu_chung = assigns.entity.common_field_values["trieu_chung"]
+
     ~F"""
     <div class="bg-white border rounded shadow-sm p-4">
       <div>
@@ -32,7 +34,7 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordCard do
           <div>Ngày sinh</div>
           <div class="col-span-2">{@entity.birthday}</div>
           </div>
-
+          <div>{trieu_chung}</div>
           <p class="font-medium text-gray-700">{@entity.phone}</p>
 
         </div>

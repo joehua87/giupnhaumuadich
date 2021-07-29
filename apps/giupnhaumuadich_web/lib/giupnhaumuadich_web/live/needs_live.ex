@@ -12,6 +12,7 @@ defmodule GiupnhaumuadichWeb.NeedsLive do
   def render(assigns) do
     ~F"""
     <h1 class="heading-1">Danh sách cần nhận</h1>
+    <p class="bg-yellow-50 p-2">Tính năng đang được phát triển</p>
     """
   end
 end

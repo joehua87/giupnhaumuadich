@@ -44,9 +44,11 @@ defmodule GiupnhaumuadichWeb.MedicalConsultationLive do
         all_categories
 
       _ ->
-        Enum.filter(all_categories, fn %{name: name} ->
+        Enum.filter(all_categories, fn %{name: name, tags: tags} ->
+          text = name <> Enum.join(tags, "")
+
           String.contains?(
-            Slug.slugify(name, separator: " "),
+            Slug.slugify(text, separator: " "),
             Slug.slugify(keyword, separator: " ")
           )
         end)
