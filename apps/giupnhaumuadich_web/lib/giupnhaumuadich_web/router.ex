@@ -47,6 +47,7 @@ defmodule GiupnhaumuadichWeb.Router do
     live "/benh-an/:id", AdminMedicalRecordLive, :show
     live "/users", AdminUsersLive, :index
     live "/categories", AdminCategoriesLive, :index
+    live "/categories/new", AdminCategoriesLive, :new
     live "/categories/edit/:id", AdminCategoriesLive, :edit
     live "/doctors", AdminDoctorsLive, :index
     live "/doctors/new", AdminDoctorsLive, :new

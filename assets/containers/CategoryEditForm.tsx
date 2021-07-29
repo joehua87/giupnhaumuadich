@@ -33,7 +33,9 @@ export function CategoryEditForm({
         live.pushEvent('save_entity', { data: v })
       })}
     >
-      <div className="mb-4 heading-2">{entity.name}</div>
+      <div className="mb-4 heading-2">
+        {entity.id ? entity.name : 'Thêm chuyên khoa'}
+      </div>
       <FormGroup label="Tên" errorText={errors.name?.message}>
         <input
           className="w-full input"

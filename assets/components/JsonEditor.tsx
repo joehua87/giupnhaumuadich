@@ -45,26 +45,31 @@ export function JsonEditor({
   return (
     <div>
       <div className="border" ref={ref} />
-      <button
-        type="button"
-        onClick={() => {
-          console.log(editorRef.current)
-          const editor = editorRef.current
-          if (!editor) {
-            return
-          }
-          const json = editor.state.doc.toJSON().join('\n')
-          try {
-            const v = JSON.parse(json)
-            console.log(v)
-            onSubmit(v)
-          } catch (err) {
-            alert('JSON is not valid')
-          }
-        }}
-      >
-        Save
-      </button>
+      <div className="my-2">
+        <button
+          type="button"
+          className="rounded bg-brand-700 text-white px-2 hover:bg-brand-800"
+          onClick={() => {
+            const editor = editorRef.current
+            if (!editor) {
+              return
+            }
+            const json = editor.state.doc.toJSON().join('\n')
+            try {
+              const v = JSON.parse(json)
+              console.log(v)
+              onSubmit(v)
+            } catch (err) {
+              alert('JSON is not valid')
+            }
+          }}
+        >
+          Save
+        </button>
+      </div>
+      <p className="bg-yellow-50 my-2 p-2 text-yellow-900">
+        Sau khi sửa thông field chuyên khoa, xong vui lòng bấm nút save bên trên
+      </p>
     </div>
   )
 }

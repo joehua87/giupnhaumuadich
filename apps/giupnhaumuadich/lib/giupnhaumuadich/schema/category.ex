@@ -21,4 +21,8 @@ defmodule Giupnhaumuadich.Category do
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
   end
+
+  def new(params) do
+    changeset(%__MODULE__{}, params)
+  end
 end

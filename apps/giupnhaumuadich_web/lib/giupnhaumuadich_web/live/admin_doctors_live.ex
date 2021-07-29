@@ -147,11 +147,12 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
       <input class="input" type="search" placeholder="Gõ để số điện thoại hoặc tên để kiếm" name="keyword" value={@query["keyword"]} />
     </form>
     <div class="my-4">
-      <Pagination path={@path} query={@query} paging={@data.paging} />
-    </div>
-    <div class="my-4">
       <LiveRedirect class="rounded bg-brand-700 text-white py-1 px-4" to={Routes.admin_doctors_path(@socket, :new)}>Thêm bác sĩ</LiveRedirect>
     </div>
+    <div class="my-4">
+      <Pagination path={@path} query={@query} paging={@data.paging} />
+    </div>
+
     <table>
       <thead>
         <tr>

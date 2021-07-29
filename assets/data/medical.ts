@@ -31,7 +31,7 @@ export const commonFields: Field[] = [
     name: 'sex',
     label: 'Giới tính',
     type: 'select',
-    options: ['Nam', 'Nữ', 'Khác'],
+    options: ['Nam', 'Nữ'],
     validations: {
       required: {
         value: true,

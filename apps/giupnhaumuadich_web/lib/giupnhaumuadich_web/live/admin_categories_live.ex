@@ -1,6 +1,7 @@
 defmodule GiupnhaumuadichWeb.AdminCategoriesLive do
   use GiupnhaumuadichWeb, :live_view
   import Ecto.Query, only: [from: 2]
+  alias Surface.Components.LiveRedirect
   alias Giupnhaumuadich.{Repo, Category}
   alias GiupnhaumuadichWeb.Components.{Pagination, Dialog}
 
@@ -24,6 +25,20 @@ defmodule GiupnhaumuadichWeb.AdminCategoriesLive do
 
   def handle_event("load_entity", _, socket = %{assigns: %{selected: selected}}) do
     {:reply, ensure_nested_map(%{entity: selected}), socket}
+  end
+
+  def handle_event("save_entity", %{"data" => %{"id" => nil, "name" => name} = data}, socket) do
+    with {:ok, entity} <-
+           data
+           |> Map.put("slug", Slug.slugify(name))
+           |> Category.new()
+           |> Repo.insert() do
+      {
+        :reply,
+        ensure_nested_map(%{entity: entity}),
+        socket |> append_entity(entity) |> reset_page()
+      }
+    end
   end
 
   def handle_event("save_entity", %{"data" => %{"id" => id} = data}, socket) do
@@ -68,6 +83,15 @@ defmodule GiupnhaumuadichWeb.AdminCategoriesLive do
     })
   end
 
+  defp apply_action(socket, :new, params) do
+    socket = lazy_load_data(socket, params)
+
+    assign(socket, %{
+      query: Map.delete(params, "id"),
+      selected: %Category{}
+    })
+  end
+
   defp apply_action(socket, :edit, %{"id" => id} = params) do
     socket = lazy_load_data(socket, params)
 
@@ -85,6 +109,9 @@ defmodule GiupnhaumuadichWeb.AdminCategoriesLive do
     <form :on-submit="search">
       <input class="input" type="search" placeholder="Gõ để tìm kiếm" name="keyword" value={@query["keyword"]} />
     </form>
+    <div class="my-4">
+      <LiveRedirect class="rounded bg-brand-700 text-white py-1 px-4" to={Routes.admin_categories_path(@socket, :new)}>Thêm chuyên khoa</LiveRedirect>
+    </div>
     <div class="my-4">
       <Pagination path={@path} query={@query} paging={@data.paging} />
     </div>
@@ -143,5 +170,9 @@ defmodule GiupnhaumuadichWeb.AdminCategoriesLive do
 
   defp get_selected(%{assigns: %{data: %{entities: entities}}}, "" <> id) do
     Enum.find(entities, &(&1.id == id))
+  end
+
+  defp append_entity(socket = %{assigns: %{data: %{entities: entities} = data}}, entity) do
+    assign(socket, %{data: %{data | entities: List.insert_at(entities, 0, entity)}})
   end
 end
