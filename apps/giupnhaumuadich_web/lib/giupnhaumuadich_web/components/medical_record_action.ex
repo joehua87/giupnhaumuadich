@@ -27,7 +27,7 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordAction do
     """
   end
 
-  defp state_view(:pending), do: %{label: "Đang chờ", class: "text-yellow-700"}
+  defp state_view(:pending), do: %{label: "Đang chờ tư vấn", class: "text-yellow-700"}
   defp state_view(:in_process), do: %{label: "Đang xử lý", class: "text-blue-700"}
   defp state_view(:completed), do: %{label: "Hoàn tất", class: "text-green-700"}
 

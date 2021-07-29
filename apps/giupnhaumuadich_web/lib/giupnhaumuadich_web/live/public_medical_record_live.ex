@@ -31,8 +31,10 @@ defmodule GiupnhaumuadichWeb.PublicMedicalRecordLive do
     </div>
     </div>
     <h1 class="heading-1 text-center px-6">Gửi yêu cầu trợ giúp y tế thành công</h1>
+    <div class="max-w-lg mx-auto">
     <p class="rounded bg-yellow-50 p-2">Vui lòng lưu đường dẫn này để theo dõi phản hồi từ bác sĩ</p>
     <div id="medical-record-view" phx-hook="MedicalRecordView" />
+    </div>
     """
   end
 

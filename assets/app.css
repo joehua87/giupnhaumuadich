@@ -118,3 +118,62 @@ thead th {
 .button-outline {
   @apply inline-block border border-brand-500 text-brand-500 hover:text-brand-700 hover:border-brand-700 px-2 rounded transition;
 }
+
+.rich-text {
+  h2 {
+    @apply text-3xl lg:text-4xl leading-tight -mt-20 pt-24 mb-8 font-serif;
+  }
+  h3 {
+    @apply text-xl lg:text-2xl leading-normal -mt-16 pt-20 mb-4;
+  }
+  h4 {
+    @apply text-base leading-relaxed tracking-wide uppercase font-bold -mt-16 pt-20 mb-6;
+  }
+  h5 {
+    @apply my-4 text-sm leading-relaxed uppercase;
+  }
+  p {
+    @apply my-3 leading-relaxed text-gray-900 text-base;
+  }
+  li {
+    @apply leading-loose;
+  }
+  ul {
+    @apply mb-4 ml-6 list-disc;
+  }
+  ol {
+    @apply mb-4 ml-6 list-decimal;
+  }
+  li {
+    @apply leading-loose text-base;
+  }
+  blockquote {
+    @apply bg-yellow-100 p-6 my-6;
+  }
+  figure {
+    @apply my-10;
+  }
+  img {
+    @apply w-full;
+  }
+  figcaption {
+    @apply text-center px-1 py-2 text-sm text-gray-500;
+  }
+  a {
+    @apply text-red-700 font-sans;
+  }
+  [data-component='youtube-video'] {
+    @apply mx-auto w-full;
+  }
+  [data-element='iframe-wrapper'] {
+    @apply w-full relative aspect-w-16 aspect-h-9;
+  }
+  [data-element='iframe-wrapper'] iframe {
+    @apply inset-0;
+  }
+  /* When focus for edit */
+  iframe.active,
+  img.active {
+    @apply ring;
+  }
+}

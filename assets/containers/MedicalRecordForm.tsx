@@ -67,7 +67,7 @@ export function MedicalRecordForm({
             })}
           />
         </FormGroup>
-        <Controller
+        {/* <Controller
           control={control}
           name="birthday"
           rules={{
@@ -87,7 +87,7 @@ export function MedicalRecordForm({
               />
             </FormGroup>
           )}
-        />
+        /> */}
         {/* <FormGroup label="Link Facebook (không bắt buộc)">
           <input className="w-full input" {...register('facebook_uid')} />
         </FormGroup> */}
@@ -121,7 +121,7 @@ export function MedicalRecordForm({
         })}
       </div>
       <div className="bg-white border rounded-md mb-4 p-3">
-        <h3 className="mb-4 heading-3">Thông tin chuyên khoa</h3>
+        <h3 className="mb-4 heading-3">Thông tin bệnh</h3>
         {medical_record_fields?.map((field) => {
           return (
             <FormField

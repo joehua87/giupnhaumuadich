@@ -14,14 +14,27 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordCard do
         <LiveRedirect to={Routes.admin_medical_record_path(@socket, :show, @entity.id)}>
           <h3 class="heading-3">{@entity.name}</h3>
         </LiveRedirect>
-        <div class="font-medium text-sm text-gray-500">
+        <div class="text-sm text-gray-800">
           <div>{@entity.region["address"]}</div>
-          <div>{@entity.common_field_values["height"]} cm</div>
-          <div>{@entity.common_field_values["weight"]} kg</div>
-          <div>{@entity.common_field_values["sex"]}</div>
-          <div>{@entity.birthday}</div>
+          <div class="grid grid-cols-3">
+            <div>Giới tính</div>
+            <div class="col-span-2">{@entity.common_field_values["sex"]}</div>
+          </div>
+          <div class="grid grid-cols-3">
+            <div>Chiều cao (cm)</div>
+            <div class="col-span-2">{@entity.common_field_values["height"]} cm</div>
+          </div>
+          <div class="grid grid-cols-3">
+          <div>Cân nặng (kg)</div>
+          <div class="col-span-2">{@entity.common_field_values["weight"]} kg</div>
+          </div>
+          <div class="grid grid-cols-3">
+          <div>Ngày sinh</div>
+          <div class="col-span-2">{@entity.birthday}</div>
+          </div>
+
           <p class="font-medium text-gray-700">{@entity.phone}</p>
-          <a>Facebook: {@entity.facebook_uid}</a>
+
         </div>
         <MedicalRecordAction entity={@entity} assign_record={@assign_record} />
         {#if @entity.doctor_id}
