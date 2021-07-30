@@ -13,16 +13,16 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordAction do
 
     ~F"""
     <div>
-      <div>
-        <span class={"font-medium rounded", state_class}>{state_label}</span>
+      <div class="mt-4 mb-2 text-center">
+        <span class={"font-medium", state_class}>Trạng thái: {state_label}</span>
       </div>
       {#for action <- actions}
         <button
           class={
-            "text-white px-2 rounded",
-            "bg-green-500": action == :process,
-            "bg-yellow-500": action == :return,
-            "bg-blue-500": action == :complete
+            "px-4 w-full rounded py-2.5 text-center font-medium shadow mb-3",
+            "bg-green-100 text-green-600": action == :process,
+            "bg-yellow-100 text-yellow-600": action == :return,
+            "bg-blue-100 text-blue-600": action == :complete
           }
           :on-click={@transit}
           :values={id: @entity.id, action: action}
@@ -38,6 +38,6 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordAction do
   defp state_view(:in_process), do: %{label: "Đang xử lý", class: "text-blue-700"}
   defp state_view(:completed), do: %{label: "Hoàn tất", class: "text-green-700"}
   defp get_action_label(:process), do: "Nhận hồ sơ"
-  defp get_action_label(:return), do: "Trả về"
+  defp get_action_label(:return), do: "Trả lại hồ sơ"
   defp get_action_label(:complete), do: "Hoàn tất"
 end

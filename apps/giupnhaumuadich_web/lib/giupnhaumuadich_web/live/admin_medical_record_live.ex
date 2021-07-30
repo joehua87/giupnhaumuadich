@@ -42,13 +42,20 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordLive do
   def render(assigns) do
     ~F"""
     <div class="mt-6" />
-    <MedicalRecordAction entity={@entity} doctor={@doctor} transit="transit" />
+
     <h1 class="heading-1 max-w-lg mx-auto">{@entity.name}</h1>
     <div class="max-w-lg mx-auto">
     <div id="medical-record-view my-4" phx-hook="MedicalRecordView" />
-      <div class="grid grid-cols-2 gap-x-4 mb-6">
-        <div class=" py-2.5 rounded bg-green-500 text-white text-center font-medium shadow">Nhận hồ sơ</div>
-        <div class="bg-blue-500 py-2.5 rounded text-white text-center font-medium shadow">Tư vấn qua Zalo</div>
+    <MedicalRecordAction entity={@entity} doctor={@doctor} transit="transit" />
+      <div class="grid grid-cols-2 gap-x-3 mb-6">
+      <a class="w-full block bg-blue-500 py-2.5 rounded text-white text-center  shadow" href={"https://zalo.me/#{@entity.phone}"}>
+        <div class="text-sm">Tư vấn nhanh</div>
+        <div class="font-medium">chat Zalo</div>
+      </a>
+      <a class="w-full block bg-green-500 py-2.5 rounded text-white text-center font-medium shadow" href={"tel:#{@entity.phone}"}>
+        <div class="text-sm">Gọi trực tiếp</div>
+        <div class="font-medium">{@entity.phone}</div>
+      </a>
       </div>
     </div>
 

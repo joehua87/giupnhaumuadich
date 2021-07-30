@@ -158,6 +158,9 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
         dynamic([v], ^acc and ^item_filter)
       end)
 
-    from r in MedicalRecord, where: ^condition, preload: [:doctor, :category]
+    from r in MedicalRecord,
+      where: ^condition,
+      preload: [:doctor, :category],
+      order_by: [desc: :inserted_at]
   end
 end
