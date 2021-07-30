@@ -23,17 +23,32 @@ defmodule GiupnhaumuadichWeb.PublicMedicalRecordLive do
   end
 
   @impl true
-  def render(assigns) do
+  def render(assigns = %{socket: socket, entity: entity}) do
+    path = Routes.public_medical_record_path(socket, :show, entity.id, token: entity.token)
+    link = "https://giupnhaumuadich.org#{path}"
+
     ~F"""
-    <div class="my-6 flex items-center justify-center">
-    <div class="bg-green-500 w-14 h-14 rounded-full flex items-center justify-center">
-    <Icon icon="check" class="w-10 h-10 text-white" />
-    </div>
-    </div>
-    <h1 class="heading-1 text-center px-6">Gửi yêu cầu trợ giúp y tế thành công</h1>
-    <div class="max-w-lg mx-auto">
-    <p class="rounded bg-yellow-50 p-2">Vui lòng lưu đường dẫn này để theo dõi phản hồi từ bác sĩ</p>
-    <div id="medical-record-view" phx-hook="MedicalRecordView" />
+    <div class="flex my-6 items-center justify-center">
+      <div class="rounded-full flex bg-green-500 h-14 w-14 items-center justify-center">
+        <Icon icon="check" class="h-10 text-white w-10" />
+      </div>
+      </div>
+      <h1 class="text-center px-6 heading-1">Gửi yêu cầu trợ giúp y tế thành công</h1>
+      <div class="mx-auto max-w-lg">
+        <p class="rounded bg-yellow-50 p-2">Vui lòng lưu đường dẫn này để theo dõi phản hồi từ bác sĩ</p>
+        <p class="rounded bg-yellow-50 mt-4 p-2">Hoặc bạn có thể copy đường dẫn sau để gửi bệnh án cho bác sĩ</p>
+        {!--<a class="text-blue-700 hover:text-blue-900" href={link}>{link}</a> --}
+        <a
+          id="copy-to-clipboard"
+          class="rounded cursor-pointer flex bg-blue-600 my-4 text-xl text-white text-center w-full py-2 items-center justify-center"
+          phx-hook="CopyToClipboard"
+          data-link={link}
+          phx-update="ignore"
+        >
+          <Icon icon="copy" />
+          <span class="ml-2">Copy đường dẫn</span>
+        </a>
+        <div id="medical-record-view" phx-hook="MedicalRecordView" />
     </div>
     """
   end

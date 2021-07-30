@@ -62,7 +62,7 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
       Xem tất cả
     </LiveRedirect>--}
     <div class="my-4">
-      <p class="label">Lọc theo chuyên khoa</p>
+      <p class="label">Lọc theo chuyên khoa của tôi</p>
       <FilterItem
         path={:admin_medical_records_path}
         action={:index}
@@ -117,6 +117,9 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
 
             {"state", _} ->
               dynamic([r], r.state != :completed)
+
+            {"show", _} ->
+              true
           end
 
         dynamic([v], ^acc and ^item_filter)

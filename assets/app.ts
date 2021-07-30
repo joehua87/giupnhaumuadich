@@ -8,6 +8,7 @@ import { renderMedicalRecordView } from '~/containers/MedicalRecordView'
 import { renderMedicalRecordForm } from '~/containers/MedicalRecordForm'
 import { renderCategoryEditForm } from '~/containers/CategoryEditForm'
 import { renderDoctorEditForm } from '~/containers/DoctorEditForm'
+import copy from 'copy-text-to-clipboard'
 
 // import { renderApp } from './entry'
 
@@ -29,7 +30,7 @@ declare global {
   interface Window {
     loginWithFacebook: () => void
     liveSocket: any
-    source_products: { id: string; name: string; other_names: string[] }[]
+    bindCopyToClipboard: (button: HTMLButtonElement, text: string) => void
   }
 }
 let csrfToken = document
@@ -64,6 +65,17 @@ let liveSocket = new LiveSocket('/live', Socket, {
       mounted(this: ViewHook) {
         this.pushEvent('load_entity', {}, ({ entity }) => {
           renderCategoryEditForm(this, { entity })
+        })
+      },
+    },
+    CopyToClipboard: {
+      mounted(this: ViewHook) {
+        const link = this.el.dataset['link']
+        this.el.addEventListener('click', () => {
+          if (link) {
+            copy(link)
+            alert('Đã copy đường dẫn!')
+          }
         })
       },
     },

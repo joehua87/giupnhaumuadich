@@ -21,7 +21,7 @@ defmodule GiupnhaumuadichWeb.Components.DoctorCard do
           <LiveRedirect to={Routes.doctor_path(@socket, :show, @entity.slug)}>
             <h3 class="heading-3">{@entity.name}</h3>
           </LiveRedirect>
-          <p class="font-medium text-gray-700 flex items-center"><Icon icon="phone" class="w-4 h-4 mr-1" />{@entity.phone}</p>
+          <p class="flex font-medium text-gray-700 items-center"><Icon icon="phone" class="h-4 mr-1 w-4" />{@entity.phone}</p>
           <div class="mt-1">
             {#for cat <- @entity.categories}
               <span class="tag-subtle">{cat.name}</span>
@@ -32,10 +32,10 @@ defmodule GiupnhaumuadichWeb.Components.DoctorCard do
           </div>
         </div>
       </div>
-      <div class="divide-x border-t flex font-medium py-2 text-gray-700 text-sm">
+      <div class="divide-x border-t flex font-medium text-sm py-2 text-gray-700">
         <a class="flex flex-1 items-center justify-center" href={"https://zalo.me/#{@entity.phone}"}>Zalo</a>
         <div class="flex flex-1 items-center justify-center">Messenger</div>
-        <div class="flex flex-1 items-center justify-center">Gọi</div>
+        <a class="flex flex-1 items-center justify-center" href={"tel:#{@entity.phone}"}>Gọi</a>
       </div>
     </div>
     """
