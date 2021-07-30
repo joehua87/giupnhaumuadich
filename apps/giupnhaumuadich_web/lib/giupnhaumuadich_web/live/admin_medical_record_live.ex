@@ -48,7 +48,7 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordLive do
     <div id="medical-record-view my-4" phx-hook="MedicalRecordView" />
     <MedicalRecordAction entity={@entity} doctor={@doctor} transit="transit" />
       <div class="grid grid-cols-2 gap-x-3 mb-6">
-      <a class="w-full block bg-blue-500 py-2.5 rounded text-white text-center  shadow" href={"https://zalo.me/#{@entity.phone}"}>
+      <a class="w-full block bg-blue-500 py-2.5 rounded text-white text-center shadow" href={"https://zalo.me/#{@entity.phone}"}>
         <div class="text-sm">Tư vấn nhanh</div>
         <div class="font-medium">chat Zalo</div>
       </a>

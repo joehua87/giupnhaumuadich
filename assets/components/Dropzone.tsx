@@ -8,7 +8,7 @@ export function MyDropzone({
   value,
   onChange,
   activeText = `Thả file tại đây ...`,
-  text = `Kéo thả hoặc click để tải file lên`,
+  text = `Nhấn để để tải file lên`,
 }: {
   value: string[]
   onChange: (value: string[]) => void

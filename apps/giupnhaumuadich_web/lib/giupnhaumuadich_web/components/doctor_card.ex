@@ -24,7 +24,7 @@ defmodule GiupnhaumuadichWeb.Components.DoctorCard do
           <p class="font-medium text-gray-700 flex items-center"><Icon icon="phone" class="w-4 h-4 mr-1" />{@entity.phone}</p>
           <div class="mt-1">
             {#for cat <- @entity.categories}
-              <span class="italic">{cat.name}</span>
+              <span class="tag-subtle">{cat.name}</span>
             {/for}
           </div>
           <div class="text-sm text-gray-600">
@@ -33,7 +33,7 @@ defmodule GiupnhaumuadichWeb.Components.DoctorCard do
         </div>
       </div>
       <div class="divide-x border-t flex font-medium py-2 text-gray-700 text-sm">
-        <div class="flex flex-1 items-center justify-center">Zalo</div>
+        <a class="flex flex-1 items-center justify-center" href={"https://zalo.me/#{@entity.phone}"}>Zalo</a>
         <div class="flex flex-1 items-center justify-center">Messenger</div>
         <div class="flex flex-1 items-center justify-center">Gọi</div>
       </div>
