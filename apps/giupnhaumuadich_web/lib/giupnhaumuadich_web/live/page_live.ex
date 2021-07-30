@@ -46,10 +46,10 @@ defmodule GiupnhaumuadichWeb.PageLive do
         description: "Cách điều trị, theo dõi tại nhà…"
       },
       %{
-        image: Routes.static_path(socket, "/images/groceries.svg"),
+        image: Routes.static_path(socket, "/images/helping-hand.svg"),
         path: Routes.page_path(socket, :index),
-        label: "Trợ giúp thực phẩm",
-        description: "Gạo mỳ, rau củ…"
+        label: "Trợ giúp",
+        description: "Cho/nhận thực phẩm, vật tư y tế, thuốc…"
       },
       %{
         image: Routes.static_path(socket, "/images/medicine.svg"),
@@ -60,8 +60,8 @@ defmodule GiupnhaumuadichWeb.PageLive do
       %{
         image: Routes.static_path(socket, "/images/medical.svg"),
         path: Routes.page_path(socket, :index),
-        label: "Tra cứu điện thoại trạm y tế",
-        description: "Danh sách trạm y tế toàn TP.HCM"
+        label: "Tra cứu điện thoại",
+        description: "CDC, trạm y tế TP.HCM, dịch vụ khác…"
       }
     ]
   end

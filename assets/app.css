@@ -14,6 +14,10 @@ body {
   @apply rounded bg-brand-100 text-sm px-2 text-brand-900 inline-flex hover:bg-brand-200;
 }
 
+.tag-subtle {
+  @apply rounded-sm bg-indigo-100 text-sm px-1 text-indigo-500 inline-flex;
+}
+
 table {
   @apply border-t border-l;
 }
