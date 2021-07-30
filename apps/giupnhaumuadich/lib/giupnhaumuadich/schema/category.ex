@@ -22,7 +22,16 @@ defmodule Giupnhaumuadich.Category do
     |> validate_required(@required_fields)
   end
 
+  def assoc_changeset(entity, params) do
+    params = Giupnhaumuadich.Util.ensure_slug(params)
+
+    entity
+    |> cast(params, @required_fields ++ @optional_fields)
+    |> validate_required(@required_fields)
+  end
+
   def new(params) do
+    params = Giupnhaumuadich.Util.ensure_slug(params)
     changeset(%__MODULE__{}, params)
   end
 end

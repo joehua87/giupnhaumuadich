@@ -3,6 +3,12 @@ defmodule Giupnhaumuadich.Categories do
 
   @spreadsheet_id "1ngEZPAZ8Ql6D3sKvvnmMuhLFghP5hE09v4f-j_BeIQ4"
 
+  def create(params) do
+    params
+    |> Category.new()
+    |> Repo.insert()
+  end
+
   def upsert_from_spreadsheet() do
     conn = Spreadsheets.get_connection()
 

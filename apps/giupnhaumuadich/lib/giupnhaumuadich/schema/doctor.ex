@@ -2,6 +2,9 @@ defmodule Giupnhaumuadich.Doctor do
   use Giupnhaumuadich.Schema
   import Ecto.Changeset
 
+  alias Giupnhaumuadich.Accounts.User
+  alias Giupnhaumuadich.Category
+
   @required_fields [:code, :name, :slug]
   @optional_fields [
     :facebook_uid,
@@ -35,11 +38,8 @@ defmodule Giupnhaumuadich.Doctor do
     field :field_values, {:array, :map}, default: []
     field :links, {:array, :map}, default: []
     field :meta, :map
-    belongs_to :user, Giupnhaumuadich.Accounts.User
-
-    many_to_many :categories, Giupnhaumuadich.Category,
-      join_through: "doctor_categories",
-      on_replace: :delete
+    belongs_to :user, User
+    many_to_many :categories, Category, join_through: "doctor_categories", on_replace: :delete
   end
 
   def changeset(entity, params) do
@@ -53,6 +53,10 @@ defmodule Giupnhaumuadich.Doctor do
   end
 
   def new(params) do
-    changeset(%__MODULE__{code: make_code()}, params)
+    params = Giupnhaumuadich.Util.ensure_slug(params)
+
+    %__MODULE__{code: make_code()}
+    |> changeset(params)
+    |> cast_assoc(:categories, with: &Category.assoc_changeset/2)
   end
 end
