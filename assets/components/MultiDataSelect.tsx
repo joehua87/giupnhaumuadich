@@ -25,7 +25,12 @@ export function MultiDataSelect<T>({
     selectedItems,
   } = useMultipleSelection({
     initialSelectedItems: value || [],
-    onStateChange: ({ selectedItems }) => onChange(selectedItems || []),
+    onStateChange: ({ selectedItems }) => {
+      if (!selectedItems) {
+        return
+      }
+      onChange(selectedItems)
+    },
   })
 
   const getFilteredItems = (items: T[]) =>
