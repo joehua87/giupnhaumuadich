@@ -14,7 +14,7 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordAction do
     ~F"""
     <div>
       <div>
-        <button class={"font-medium rounded", state_class}>{state_label}</button>
+        <span class={"font-medium rounded", state_class}>{state_label}</span>
       </div>
       {#for action <- actions}
         <button
@@ -37,7 +37,6 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordAction do
   defp state_view(:pending), do: %{label: "Đang chờ tư vấn", class: "text-yellow-700"}
   defp state_view(:in_process), do: %{label: "Đang xử lý", class: "text-blue-700"}
   defp state_view(:completed), do: %{label: "Hoàn tất", class: "text-green-700"}
-
   defp get_action_label(:process), do: "Nhận hồ sơ"
   defp get_action_label(:return), do: "Trả về"
   defp get_action_label(:complete), do: "Hoàn tất"
