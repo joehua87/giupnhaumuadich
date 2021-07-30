@@ -13,7 +13,7 @@ defmodule Giupnhaumuadich.Repo.Migrations.AddMedicalRecords do
       add :phone, :string
       add :facebook_uid, :string
       add :region, :map, null: false
-      add :birthday, :date, null: false
+      add :birthday, :date
       add :common_field_values, :map
       add :specialize_field_values, :map
       add :assets, :map

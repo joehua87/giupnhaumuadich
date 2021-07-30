@@ -66,15 +66,15 @@ export function MedicalRecordForm({
             })}
           />
         </FormGroup>
-        {/* <Controller
+        <Controller
           control={control}
           name="birthday"
-          rules={{
-            required: {
-              message: 'Bạn vui lòng điền trường này',
-              value: true,
-            },
-          }}
+          // rules={{
+          //   required: {
+          //     message: 'Bạn vui lòng điền trường này',
+          //     value: true,
+          //   },
+          // }}
           render={({ field: { onChange, value } }) => (
             <FormGroup label="Năm sinh" errorText={errors.birthday?.message}>
               <DatePicker
@@ -86,7 +86,7 @@ export function MedicalRecordForm({
               />
             </FormGroup>
           )}
-        /> */}
+        />
         {/* <FormGroup label="Link Facebook (không bắt buộc)">
           <input className="w-full input" {...register('facebook_uid')} />
         </FormGroup> */}
