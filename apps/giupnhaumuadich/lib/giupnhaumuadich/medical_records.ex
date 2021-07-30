@@ -52,4 +52,6 @@ defmodule Giupnhaumuadich.MedicalRecords do
   end
 
   def get_actions(%MedicalRecord{state: :pending}, %Doctor{}), do: [:process]
+
+  def get_actions(%MedicalRecord{}, _), do: []
 end

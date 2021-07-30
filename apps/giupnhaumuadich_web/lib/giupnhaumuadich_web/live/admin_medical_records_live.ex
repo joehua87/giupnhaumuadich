@@ -1,8 +1,7 @@
 defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
   use GiupnhaumuadichWeb, :live_view
-  import Ecto.Query, only: [from: 2]
-  alias Surface.Components.LiveRedirect
-  alias Giupnhaumuadich.{Repo, MedicalRecord, Doctor, MedicalRecords}
+  import Ecto.Query, only: [from: 2, dynamic: 2]
+  alias Giupnhaumuadich.{Repo, MedicalRecord, Doctor, DoctorCategory, MedicalRecords}
   alias GiupnhaumuadichWeb.Components.{MedicalRecordCard, FilterItem}
 
   @impl true
@@ -37,9 +36,15 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
   @impl true
   def render(assigns) do
     ~F"""
-    <h1 class="my-6 heading-1">Hồ sơ đang chờ tư vấn</h1>
-    <div>Bạn là: {@doctor.name}</div>
-    <LiveRedirect class={
+    <div class="flex my-6 justify-between">
+      <h1 class="heading-1">Hồ sơ đang chờ tư vấn</h1>
+      {#case @doctor}
+        {#match %{name: name}}
+          <div>Bạn là: {name}</div>
+        {#match _}
+      {/case}
+    </div>
+    {!--<LiveRedirect class={
         "border-b text-gray-700 px-3 py-2 inline-block",
         "border-b-2 border-blue-700 text-blue-700 bg-blue-100 rounded rounded-b-none": @query["show"] in [nil, ""]
       }
@@ -54,9 +59,9 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
       to={Routes.admin_medical_records_path(@socket, :index, show: "all")}
     >
       Xem tất cả
-    </LiveRedirect>
+    </LiveRedirect>--}
     <div class="my-4">
-      <p>Lọc theo chuyên khóa</p>
+      <p>Lọc theo chuyên khoa</p>
       <FilterItem
         path={:admin_medical_records_path}
         action={:index}
@@ -83,18 +88,75 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
     """
   end
 
-  defp load_data(socket, params) do
+  defp load_data(socket = %{assigns: %{current_user: current_user}}, params) do
     %{paging: paging, filter: filter} = url_query_to_list_params(params)
-    data = Repo.paginate(queryable(filter), paging)
-    doctor = Repo.one(from Doctor, limit: 1)
+
+    doctor =
+      case current_user do
+        %{role: :doctor} -> Repo.one(from Doctor, where: [user_id: ^current_user.id], limit: 1)
+        _ -> nil
+      end
+
+    data = Repo.paginate(queryable(filter, doctor), paging)
     assign(socket, %{data: data, doctor: doctor})
   end
 
-  defp queryable(%{"show" => "all"}) do
-    from r in MedicalRecord, where: r.state == :completed, preload: [:doctor]
+  defp queryable(filter, nil) do
+    condition =
+      filter
+      |> Enum.into(%{"state" => nil})
+      |> Enum.reduce(true, fn item, acc ->
+        item_filter =
+          case item do
+            {"state", "all"} ->
+              true
+
+            {"state", state} when state in ["completed", "in_process", "pending"] ->
+              dynamic([r], r.state == ^state)
+
+            {"state", _} ->
+              dynamic([r], r.state != :completed)
+          end
+
+        dynamic([v], ^acc and ^item_filter)
+      end)
+
+    from r in MedicalRecord, where: ^condition, preload: [:doctor, :category]
   end
 
-  defp queryable(_) do
-    from r in MedicalRecord, where: r.state == :completed, preload: [:doctor]
+  defp queryable(filter, %{id: doctor_id}) do
+    condition =
+      filter
+      |> Enum.into(%{"show" => nil, "state" => nil})
+      |> Enum.reduce(true, fn item, acc ->
+        item_filter =
+          case item do
+            {"show", "all"} ->
+              true
+
+            {"show", _} ->
+              dynamic(
+                [r],
+                r.category_id in subquery(
+                  from dc in DoctorCategory,
+                    where: [doctor_id: ^doctor_id],
+                    select: dc.category_id
+                )
+              )
+
+            {"state", "all"} ->
+              true
+
+            {"state", state} when state in ["completed", "in_process", "pending"] ->
+              dynamic([r], r.state == ^state)
+
+            {"state", _} ->
+              dynamic([r], r.state != :completed)
+          end
+
+        dynamic([v], ^acc and ^item_filter)
+      end)
+
+    from r in MedicalRecord, where: ^condition, preload: [:doctor, :category]
   end
 end

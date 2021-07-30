@@ -1,7 +1,7 @@
 defmodule GiupnhaumuadichWeb.Components.MedicalRecordCard do
   use GiupnhaumuadichWeb, :component
   alias Surface.Components.LiveRedirect
-  alias GiupnhaumuadichWeb.Components.MedicalRecordAction
+  alias GiupnhaumuadichWeb.Components.{MedicalRecordAction, ImageSlider, Icon}
 
   prop entity, :any
   prop doctor, :any
@@ -17,6 +17,7 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordCard do
         <LiveRedirect to={Routes.admin_medical_record_path(@socket, :show, @entity.id)}>
           <h3 class="heading-3">{@entity.name}</h3>
         </LiveRedirect>
+        <div class="font-bold text-gray-700">{@entity.category.name}</div>
         <div class="text-sm text-gray-800">
           <div>{@entity.region["address"]}</div>
           <div className="divide-y divide-dotted divide-gray-400 grid">
@@ -37,7 +38,7 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordCard do
               <div class="col-span-2">{@entity.birthday}</div>
             </div>
           </div>
-          <div>{trieu_chung}</div>
+          <div>Triệu chứng: {trieu_chung}</div>
           <p class="font-medium text-gray-700">{@entity.phone}</p>
         </div>
         <MedicalRecordAction entity={@entity} doctor={@doctor} transit={@transit} />
@@ -46,13 +47,12 @@ defmodule GiupnhaumuadichWeb.Components.MedicalRecordCard do
         {/if}
         {#case @entity}
           {#match %{assets: %{"current_symptoms" => images = [_ | _]}}}
-            {#for image <- images}
-              <img src={"/upload/#{image}"} />
-            {/for}
+            <ImageSlider value={Enum.map(images, &"/upload/#{&1}")} />
           {#match _}
         {/case}
-        <LiveRedirect to={Routes.admin_medical_record_path(@socket, :show, @entity.id)}>
-          Xem chi tiết
+        <LiveRedirect class="flex text-brand-700 items-center hover:text-brand-800" to={Routes.admin_medical_record_path(@socket, :show, @entity.id)}>
+          <span class="mr-1">Xem chi tiết</span>
+          <Icon icon="arrow-right" />
         </LiveRedirect>
       </div>
     </div>
