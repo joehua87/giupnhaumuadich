@@ -42,14 +42,14 @@ defmodule Giupnhaumuadich.MedicalRecords do
     |> Repo.update()
   end
 
-  def get_next_states(%MedicalRecord{state: :completed}, %Doctor{}), do: []
+  def get_actions(%MedicalRecord{state: :completed}, %Doctor{}), do: []
 
-  def get_next_states(
+  def get_actions(
         %MedicalRecord{state: :in_process, doctor_id: doctor_id},
         %Doctor{id: doctor_id}
       ) do
-    [:process, :complete]
+    [:return, :complete]
   end
 
-  def get_next_states(%MedicalRecord{state: :pending}, %Doctor{}), do: [:process]
+  def get_actions(%MedicalRecord{state: :pending}, %Doctor{}), do: [:process]
 end

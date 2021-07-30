@@ -167,12 +167,4 @@ defmodule GiupnhaumuadichWeb.AdminCategoriesLive do
     data = Repo.paginate(from(query, order_by: :name), paging)
     assign(socket, %{data: data})
   end
-
-  defp get_selected(%{assigns: %{data: %{entities: entities}}}, "" <> id) do
-    Enum.find(entities, &(&1.id == id))
-  end
-
-  defp append_entity(socket = %{assigns: %{data: %{entities: entities} = data}}, entity) do
-    assign(socket, %{data: %{data | entities: List.insert_at(entities, 0, entity)}})
-  end
 end

@@ -92,15 +92,6 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
     {:noreply, reset_page(socket)}
   end
 
-  defp replace_entity(socket = %{assigns: %{data: %{entities: entities} = data}}, entity) do
-    index = Enum.find_index(entities, &(&1.id == entity.id))
-    assign(socket, %{data: %{data | entities: List.replace_at(entities, index, entity)}})
-  end
-
-  defp append_entity(socket = %{assigns: %{data: %{entities: entities} = data}}, entity) do
-    assign(socket, %{data: %{data | entities: List.insert_at(entities, 0, entity)}})
-  end
-
   defp reset_page(socket = %{assigns: %{query: query}}) do
     push_patch(socket, to: Routes.admin_doctors_path(socket, :index, query))
   end
@@ -231,9 +222,5 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
 
     data = Repo.paginate(from(queryable, preload: [:categories, :user], order_by: :name), paging)
     assign(socket, %{data: data})
-  end
-
-  defp get_selected(%{assigns: %{data: %{entities: entities}}}, "" <> id) do
-    Enum.find(entities, &(&1.id == id))
   end
 end

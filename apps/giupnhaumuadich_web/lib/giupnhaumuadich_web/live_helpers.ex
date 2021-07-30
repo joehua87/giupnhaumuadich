@@ -61,6 +61,22 @@ defmodule GiupnhaumuadichWeb.LiveHelpers do
     System.get_env("MIX_ENV") == "prod"
   end
 
+  @doc """
+  Get selected entity by id
+  """
+  def get_selected(%{assigns: %{data: %{entities: entities}}}, "" <> id) do
+    Enum.find(entities, &(&1.id == id))
+  end
+
+  def replace_entity(socket = %{assigns: %{data: %{entities: entities} = data}}, entity) do
+    index = Enum.find_index(entities, &(&1.id == entity.id))
+    assign(socket, %{data: %{data | entities: List.replace_at(entities, index, entity)}})
+  end
+
+  def append_entity(socket = %{assigns: %{data: %{entities: entities} = data}}, entity) do
+    assign(socket, %{data: %{data | entities: List.insert_at(entities, 0, entity)}})
+  end
+
   defdelegate ensure_nested_map(params), to: Giupnhaumuadich.Util
 
   def nav_items(socket, current_user) do
