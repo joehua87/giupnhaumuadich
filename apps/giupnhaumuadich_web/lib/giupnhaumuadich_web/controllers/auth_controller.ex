@@ -26,7 +26,7 @@ defmodule GiupnhaumuadichWeb.AuthController do
          {:ok, user} <- authenticate(:facebook, params) do
       UserAuth.log_in_user(conn, user)
     else
-      _ -> render(conn, "new.html", error_message: "Invalid credentials")
+      _ -> redirect(conn, to: Routes.sign_in_path(conn, :show))
     end
   end
 

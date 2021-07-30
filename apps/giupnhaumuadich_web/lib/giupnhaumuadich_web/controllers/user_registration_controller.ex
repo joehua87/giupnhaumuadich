@@ -24,7 +24,7 @@ defmodule GiupnhaumuadichWeb.UserRegistrationController do
         |> UserAuth.log_in_user(user)
 
       {:error, %Ecto.Changeset{} = _changeset} ->
-        Phoenix.LiveView.Helpers.live_render(conn, GiupnhaumuadichWeb.SignUpLive)
+        redirect(conn, to: Routes.sign_up_path(conn, :show))
     end
   end
 end
