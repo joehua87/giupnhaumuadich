@@ -15,7 +15,7 @@ defmodule GiupnhaumuadichWeb.Components.FilterItem do
       {#for %{value: value, label: label} <- @items}
         <LiveRedirect
           class={
-            "rounded border text-gray-700 px-2 py-0.5 inline-block not-last:mr-2",
+            "rounded border text-gray-700 px-2 py-0.5 inline-block not-last:mr-2 bg-white shadow",
             "border-blue-700 text-blue-700 bg-blue-100": @query[@key] == value
           }
           to={apply(Routes, @path, [@socket, @action, Map.put(@query, @key, value)])}
@@ -28,7 +28,7 @@ defmodule GiupnhaumuadichWeb.Components.FilterItem do
         to={apply(Routes, @path, [@socket, @action, Map.delete(@query, @key)])}
       >
         <Icon icon="x"></Icon>
-        <span class="ml-1">Xóa lọc</span>
+        <span class="ml-1">Bỏ lọc</span>
       </LiveRedirect>
     </div>
     """

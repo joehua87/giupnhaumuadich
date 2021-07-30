@@ -41,9 +41,17 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordLive do
   @impl true
   def render(assigns) do
     ~F"""
-    <h1 class="my-4 heading-1">{@entity.name}</h1>
-    <div id="medical-record-view my-4" phx-hook="MedicalRecordView" />
+    <div class="mt-6" />
     <MedicalRecordAction entity={@entity} doctor={@doctor} transit="transit" />
+    <h1 class="heading-1 max-w-lg mx-auto">{@entity.name}</h1>
+    <div class="max-w-lg mx-auto">
+    <div id="medical-record-view my-4" phx-hook="MedicalRecordView" />
+      <div class="grid grid-cols-2 gap-x-4 mb-6">
+        <div class=" py-2.5 rounded bg-green-500 text-white text-center font-medium shadow">Nhận hồ sơ</div>
+        <div class="bg-blue-500 py-2.5 rounded text-white text-center font-medium shadow">Tư vấn qua Zalo</div>
+      </div>
+    </div>
+
     """
   end
 

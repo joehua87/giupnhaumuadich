@@ -36,13 +36,14 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
   @impl true
   def render(assigns) do
     ~F"""
-    <div class="flex my-6 justify-between">
+    <div class="my-6">
+    {#case @doctor}
+    {#match %{name: name}}
+      <div>Xin chào, {name}</div>
+    {#match _}
+    {/case}
       <h1 class="heading-1">Hồ sơ đang chờ tư vấn</h1>
-      {#case @doctor}
-        {#match %{name: name}}
-          <div>Bạn là: {name}</div>
-        {#match _}
-      {/case}
+
     </div>
     {!--<LiveRedirect class={
         "border-b text-gray-700 px-3 py-2 inline-block",
@@ -61,7 +62,7 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
       Xem tất cả
     </LiveRedirect>--}
     <div class="my-4">
-      <p>Lọc theo chuyên khoa</p>
+      <p class="label">Lọc theo chuyên khoa</p>
       <FilterItem
         path={:admin_medical_records_path}
         action={:index}
@@ -71,7 +72,7 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
       />
     </div>
     <div class="my-4">
-      <p>Lọc theo trạng thái</p>
+    <p class="label">Lọc theo trạng thái</p>
       <FilterItem
         path={:admin_medical_records_path}
         action={:index}
