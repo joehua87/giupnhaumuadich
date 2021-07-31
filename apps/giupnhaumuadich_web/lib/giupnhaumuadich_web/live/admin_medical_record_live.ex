@@ -43,16 +43,16 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordLive do
     ~F"""
     <div class="mt-6" />
 
-    <h1 class="heading-1 max-w-lg mx-auto">{@entity.name}</h1>
-    <div class="max-w-lg mx-auto">
+    <h1 class="mx-auto max-w-lg heading-1">{@entity.name}</h1>
+    <div class="mx-auto max-w-lg">
     <div id="medical-record-view my-4" phx-hook="MedicalRecordView" />
     <MedicalRecordAction entity={@entity} doctor={@doctor} transit="transit" />
-      <div class="grid grid-cols-2 gap-x-3 mb-6">
-      <a class="w-full block bg-blue-500 py-2.5 rounded text-white text-center shadow" href={"https://zalo.me/#{@entity.phone}"}>
+      <div class="mb-6 grid gap-x-3 grid-cols-2">
+      <a class="rounded bg-blue-500 shadow text-white text-center w-full py-2.5 block" href={"https://zalo.me/#{@entity.phone}"}>
         <div class="text-sm">Tư vấn nhanh</div>
         <div class="font-medium">chat Zalo</div>
       </a>
-      <a class="w-full block bg-green-500 py-2.5 rounded text-white text-center font-medium shadow" href={"tel:#{@entity.phone}"}>
+      <a class="rounded font-medium bg-green-500 shadow text-white text-center w-full py-2.5 block" href={"tel:#{@entity.phone}"}>
         <div class="text-sm">Gọi trực tiếp</div>
         <div class="font-medium">{@entity.phone}</div>
       </a>
@@ -75,6 +75,10 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordLive do
         _ -> nil
       end
 
-    assign(socket, %{entity: entity, doctor: doctor})
+    assign(socket, %{
+      entity: entity,
+      doctor: doctor,
+      page_title: "Khám #{entity.category.name} - #{entity.name}"
+    })
   end
 end

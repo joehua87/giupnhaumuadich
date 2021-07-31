@@ -17,6 +17,13 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
   end
 
   @impl true
+  def handle_params(params, _url, socket) do
+    socket = socket
+
+    {:noreply, socket}
+  end
+
+  @impl true
   def handle_event(
         "transit",
         %{"id" => id, "action" => action},
@@ -99,7 +106,7 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
       end
 
     data = Repo.paginate(queryable(filter, doctor), paging)
-    assign(socket, %{data: data, doctor: doctor})
+    assign(socket, %{data: data, doctor: doctor, page_title: "Bệnh án"})
   end
 
   defp queryable(filter, nil) do
@@ -125,7 +132,10 @@ defmodule GiupnhaumuadichWeb.AdminMedicalRecordsLive do
         dynamic([v], ^acc and ^item_filter)
       end)
 
-    from r in MedicalRecord, where: ^condition, preload: [:doctor, :category]
+    from r in MedicalRecord,
+      where: ^condition,
+      preload: [:doctor, :category],
+      order_by: [desc: :inserted_at]
   end
 
   defp queryable(filter, %{id: doctor_id}) do

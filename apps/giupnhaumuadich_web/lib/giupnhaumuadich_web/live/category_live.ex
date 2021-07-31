@@ -77,6 +77,10 @@ defmodule GiupnhaumuadichWeb.CategoryLive do
           preload: [:categories]
       )
 
-    assign(socket, %{category: category, doctors: doctors})
+    assign(socket, %{
+      category: category,
+      doctors: doctors,
+      page_title: "Tư vấn khám #{category.name}"
+    })
   end
 end

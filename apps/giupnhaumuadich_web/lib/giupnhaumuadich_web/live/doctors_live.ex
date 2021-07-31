@@ -39,6 +39,6 @@ defmodule GiupnhaumuadichWeb.DoctorsLive do
   defp load_data(socket, params) do
     %{paging: paging} = url_query_to_list_params(params)
     data = Repo.paginate(from(d in Doctor, preload: [:categories]), paging)
-    assign(socket, %{data: data})
+    assign(socket, %{data: data, page_title: "Danh sách bác sĩ"})
   end
 end

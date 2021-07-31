@@ -221,6 +221,6 @@ defmodule GiupnhaumuadichWeb.AdminDoctorsLive do
       end
 
     data = Repo.paginate(from(queryable, preload: [:categories, :user], order_by: :name), paging)
-    assign(socket, %{data: data})
+    assign(socket, %{data: data, page_title: "Danh sách bác sĩ"})
   end
 end

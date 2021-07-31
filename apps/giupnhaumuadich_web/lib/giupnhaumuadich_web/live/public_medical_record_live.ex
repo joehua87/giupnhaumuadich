@@ -1,6 +1,7 @@
 defmodule GiupnhaumuadichWeb.PublicMedicalRecordLive do
   use GiupnhaumuadichWeb, :live_view
   import Ecto.Query, only: [from: 2]
+  alias Surface.Components.LiveRedirect
   alias Giupnhaumuadich.{Repo, MedicalRecord}
   alias GiupnhaumuadichWeb.Components.Icon
 
@@ -48,6 +49,15 @@ defmodule GiupnhaumuadichWeb.PublicMedicalRecordLive do
           <Icon icon="copy" />
           <span class="ml-2">Copy đường dẫn</span>
         </a>
+        <h2>
+          Chuyên khoa:
+          <LiveRedirect
+            class="font-bold text-brand-700"
+            to={Routes.category_path(@socket, :show, @entity.category.slug)}
+          >
+            {@entity.category.name}
+          </LiveRedirect>
+        </h2>
         <div id="medical-record-view" phx-hook="MedicalRecordView" />
     </div>
     """
@@ -62,6 +72,6 @@ defmodule GiupnhaumuadichWeb.PublicMedicalRecordLive do
           limit: 1
       )
 
-    assign(socket, %{entity: entity})
+    assign(socket, %{entity: entity, page_title: "Khám #{entity.category.name} - #{entity.name}"})
   end
 end

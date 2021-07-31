@@ -60,7 +60,8 @@ defmodule GiupnhaumuadichWeb.MedicalConsultationLive do
 
     assign(socket, %{
       all_categories: all_categories,
-      categories: all_categories
+      categories: all_categories,
+      page_title: "Tư vấn y tế"
     })
   end
 end

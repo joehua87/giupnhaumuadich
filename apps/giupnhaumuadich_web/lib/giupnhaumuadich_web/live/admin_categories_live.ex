@@ -165,6 +165,6 @@ defmodule GiupnhaumuadichWeb.AdminCategoriesLive do
       end
 
     data = Repo.paginate(from(query, order_by: :name), paging)
-    assign(socket, %{data: data})
+    assign(socket, %{data: data, page_title: "Danh sách chuyên khoa"})
   end
 end

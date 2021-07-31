@@ -68,6 +68,6 @@ defmodule GiupnhaumuadichWeb.AdminUsersLive do
   defp load_data(socket, params) do
     %{paging: paging} = url_query_to_list_params(params)
     data = Repo.paginate(from(User, order_by: :inserted_at), paging)
-    assign(socket, %{data: data})
+    assign(socket, %{data: data, page_title: "Danh sách người dùng"})
   end
 end

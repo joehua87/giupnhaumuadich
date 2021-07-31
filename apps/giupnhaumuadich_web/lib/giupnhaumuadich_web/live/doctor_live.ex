@@ -30,6 +30,6 @@ defmodule GiupnhaumuadichWeb.DoctorLive do
 
   defp load_data(socket, %{"slug" => slug}) do
     doctor = Repo.one(from d in Doctor, where: d.slug == ^slug, limit: 1)
-    assign(socket, %{doctor: doctor})
+    assign(socket, %{doctor: doctor, page_title: "Bác sĩ #{doctor.name}"})
   end
 end
